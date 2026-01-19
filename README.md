@@ -26,23 +26,13 @@ The app allows users to search stations by city or airport name, select date and
 
 ---
 
-## 🧠 Scientific & Technical Stack
-
-- **Streamlit** – Web application framework
-- **MetPy** – Atmospheric calculations and Skew-T diagrams
-- **Plotly** – Interactive visualization
-- **Pandas / NumPy** – Data handling and processing
-- **Matplotlib** – Static plotting backend
-
----
-
 ## 📂 Project Structure
 
 ```text
 MeTroV/
 │
 ├── data/
-│   └── igra_stations_all.csv      # Station catalog (auto-generated)
+│   └── igra_stations_active.csv      # Station catalog (auto-generated)
 │
 ├── scripts/
 │   └── build_igra_station_list.py # Script to generate station catalog

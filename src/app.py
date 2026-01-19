@@ -26,7 +26,7 @@ with st.sidebar:
     st.markdown("## ℹ️ About")
     st.markdown(
         """
-        **MeTroV**
+        **[MeTroV](https://github.com/oscarmtr/MeTroV.git)**
 
         Developed by **[Óscar Mata-Romero](https://github.com/oscarmtr)**  
 
@@ -190,8 +190,6 @@ if 'sounding_data' in st.session_state:
     tab_static, tab_interactive = st.tabs(["🖼️ Static (MetPy)", "🔍 Interactive (Plotly)"])
     
     with tab_static:
-        # User requested high quality, but 2100 triggers PIL DecompressionBombError.
-        # 1200 DPI is ~155MP (Safe under 178MP limit) and ultra-high res.
         fig = plt.figure(figsize=(9, 12), dpi=1200)
         skew = SkewT(fig, rotation=45)
         
@@ -206,7 +204,6 @@ if 'sounding_data' in st.session_state:
         handles, labels = skew.ax.get_legend_handles_labels()
         
         # Add patches for CAPE/CIN
-        # Colors should match default MetPy shading (approximate)
         patch_cape = Patch(color='orangered', alpha=0.3, label=f"CAPE")
         patch_cin  = Patch(color='cornflowerblue', alpha=0.3, label=f"CIN")
         
@@ -215,9 +212,6 @@ if 'sounding_data' in st.session_state:
         skew.ax.legend(handles=handles, loc='upper left')
 
         # Plot Wind Barbs (Decimated)
-        # Plot every 5th barb to avoid clutter
-        # Ensure we have valid wind data (not all NaNs)
-        # Also filter to reasonable pressure range to avoid clutter at surface or top
         if not np.isnan(u).all() and not np.isnan(v).all():
                 # Conditional spacing based on source
                 if source_used.startswith("UWYO"):
@@ -248,9 +242,6 @@ if 'sounding_data' in st.session_state:
         skew.plot_mixing_lines()
 
         # Reference lines & Labels
-        # Only plot if within visible range (1050 to 75 hPa)
-        # Colors: LCL=sienna (brown), LFC=blue, EL=darkorchid (magenta-ish)
-        # Avoid 'black' because it conflicts with the Parcel Profile line
         level_config = [
             (lcl_p, 'LCL', 'sienna'),
             (lfc_p, 'LFC', 'blue'),
@@ -260,13 +251,9 @@ if 'sounding_data' in st.session_state:
         for p_level, label, color in level_config:
             if not pd.isna(p_level.magnitude) and 75 <= p_level.magnitude <= 1050:
                 skew.ax.axhline(p_level.magnitude, linestyle='--', color=color, linewidth=1.5)
-                # Text slightly offset to separate from line (e.g. -2 hPa visually up/down depending on log scale)
-                # For skwe-t Y axis is log p decreasing up. Subtracting hPa moves it "up".
                 skew.ax.text(-38, p_level.magnitude - 5, label, color=color, fontsize=10, fontweight='bold')
 
         # Add copyright text to the bottom of the figure
-        # Using fig.text to place it relative to the figure (0,0 is bottom left, 1,1 is top right)
-        # Added source_url as requested
         license_text = (
             "MeTroV © 2026 by Óscar Mata-Romero is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International\n"
             f"Data: {source_url}"
@@ -275,12 +262,10 @@ if 'sounding_data' in st.session_state:
 
         # Save high-res image to buffer
         buf = io.BytesIO()
-        # Use figure's DPI (defined above as 2100 or 1500)
         fig.savefig(buf, format='png', bbox_inches='tight')
         buf.seek(0)
         
         # Display image directly
-        # Explicit width removed to fix API error
         st.image(buf, output_format="PNG")
         
         # Add download button for full quality
@@ -302,9 +287,9 @@ if 'sounding_data' in st.session_state:
 st.markdown(
     f"""<hr style="margin-top: 3rem; margin-bottom: 1rem;">
 <div style="text-align: center; font-size: 0.85em; color: gray;">
-<div style="margin-bottom: 5px;">MeTroV (v0.1.0) — Data: NOAA IGRA & University of Wyoming</div>
+<div style="margin-bottom: 5px;">MeTroV (v1.0.0) — Data: NOAA IGRA & University of Wyoming</div>
 <div xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
-<a property="dct:title" rel="cc:attributionURL" href="link oficial de la web, aun por determinar" style="color: inherit; text-decoration: none;">MeTroV</a> © <span id="copyrightYear">{datetime.now().year}</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://sites.google.com/view/oscarmr-en">Óscar Mata-Romero</a>.
+<a property="dct:title" rel="cc:attributionURL" href="https://metrovgit.streamlit.app/" style="color: inherit; text-decoration: none;">MeTroV</a> © <span id="copyrightYear">{datetime.now().year}</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://sites.google.com/view/oscarmr-en">Óscar Mata-Romero</a>.
 <br>
 Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0</a>.
 Source code licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" style="display:inline-block;">GNU AGPLv3</a>.

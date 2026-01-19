@@ -92,7 +92,7 @@ def lecturaSondeoIGRA(CodEst, yr, mn, dy, hr):
             wspd_val = np.nan
         else:
             wdir_val = float(wdir)
-            wspd_val = float(wspd) / 10.0 # IGRA wind speed is m/s * 10 ?? Wait, checking docs.
+            wspd_val = float(wspd) / 10.0
             # IGRA readme: WSPD is output in tenths of meters per second. 
             # Example: 123 = 12.3 m/s. 
             # Let's verify standard IGRA usage. 
