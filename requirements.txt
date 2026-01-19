@@ -1,0 +1,13 @@
+streamlit
+requests
+
+numpy
+pandas
+matplotlib
+scipy
+pillow
+xarray
+netcdf4
+cartopy
+metpy
+plotly

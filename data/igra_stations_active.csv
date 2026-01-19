@@ -1,0 +1,999 @@
+code,display_name,city,raw_name
+AEM00041217,Abu Dhabi International Air (Abu Dhabi International Air),Abu Dhabi International Air,ABU DHABI INTERNATIONAL AIR
+AFM00040948,Kabul Airport (Kabul Airport),Kabul Airport,KABUL AIRPORT
+AGM00060390,Dar-El-Beida,Dar-El-Beida,DAR-EL-BEIDA
+AGM00060571,Bechar,Bechar,BECHAR
+AGM00060630,In-Salah,In-Salah,IN-SALAH
+AGM00060656,Tindouf,Tindouf,TINDOUF
+AGM00060680,Tamanrasset,Tamanrasset,TAMANRASSET
+AMM00037789,Yerevan Aero,Yerevan Aero,YEREVAN AERO
+AOM00066160,Luanda,Luanda,LUANDA
+AOM00066285,Luena,Luena,LUENA
+AOM00066390,Lubango Sa Da Bandeira,Lubango Sa Da Bandeira,LUBANGO SA DA BANDEIRA
+AQM00091765,Pago Pago (Pago Pago/Int.Airp. America),Pago Pago,PAGO PAGO/INT.AIRP. AMERICA
+ARM00087155,Resistencia Aero,Resistencia Aero,RESISTENCIA AERO
+ARM00087344,Cordoba Aero,Cordoba Aero,CORDOBA AERO
+ARM00087418,Mendoza Aero,Mendoza Aero,MENDOZA AERO
+ARM00087576,Ezeiza Aero,Ezeiza Aero,EZEIZA AERO
+ARM00087582,Aeroparque Aero,Aeroparque Aero,AEROPARQUE AERO
+ARM00087585,Buenos Aires Observatorio (Buenos Aires Observatorio),Buenos Aires Observatorio,BUENOS AIRES OBSERVATORIO
+ARM00087623,Santa Rosa Aero,Santa Rosa Aero,SANTA ROSA AERO
+ARM00087715,Neuquen Aero,Neuquen Aero,NEUQUEN AERO
+ARM00087860,Comodoro Rivadavia Aero,Comodoro Rivadavia Aero,COMODORO RIVADAVIA AERO
+ASM00094120,Darwin Airport (Darwin Airport),Darwin Airport,DARWIN AIRPORT
+ASM00094155,East Arnhem,East Arnhem,EAST ARNHEM
+ASM00094170,Weipa Aero,Weipa Aero,WEIPA AERO
+ASM00094203,Broome Airport (Broome Airport),Broome Airport,BROOME AIRPORT
+ASM00094299,Willis Island,Willis Island,WILLIS ISLAND
+ASM00094302,Learmonth Airport (Learmonth Airport),Learmonth Airport,LEARMONTH AIRPORT
+ASM00094312,Port Hedland Airport (Port Hedland Airport),Port Hedland Airport,PORT HEDLAND AIRPORT
+ASM00094326,Alice Springs Airport (Alice Springs Airport),Alice Springs Airport,ALICE SPRINGS AIRPORT
+ASM00094332,Mount Isa Aero,Mount Isa Aero,MOUNT ISA AERO
+ASM00094374,Rockhampton Aero,Rockhampton Aero,ROCKHAMPTON AERO
+ASM00094403,Geraldton Airport (Geraldton Airport),Geraldton Airport,GERALDTON AIRPORT
+ASM00094430,Meekatharra Airport (Meekatharra Airport),Meekatharra Airport,MEEKATHARRA AIRPORT
+ASM00094461,Giles Meteorological Office,Giles Meteorological Office,GILES METEOROLOGICAL OFFICE
+ASM00094510,Charleville Aero,Charleville Aero,CHARLEVILLE AERO
+ASM00094578,Brisbane Aero,Brisbane Aero,BRISBANE AERO
+ASM00094610,Perth Airport (Perth Airport),Perth Airport,PERTH AIRPORT
+ASM00094637,Kalgoorlie-Boulder Airport (Kalgoorlie-Boulder Airport),Kalgoorlie-Boulder Airport,KALGOORLIE-BOULDER AIRPORT
+ASM00094638,Esperance,Esperance,ESPERANCE
+ASM00094653,Ceduna Amo,Ceduna Amo,CEDUNA AMO
+ASM00094659,Woomera Aerodrome,Woomera Aerodrome,WOOMERA AERODROME
+ASM00094672,Adelaide Airport (Adelaide Airport),Adelaide Airport,ADELAIDE AIRPORT
+ASM00094711,Cobar Mo,Cobar Mo,COBAR MO
+ASM00094750,Nowra Ran Air Station Aws (Nowra Ran Air Station Aws),Nowra Ran Air Station Aws,NOWRA RAN AIR STATION AWS
+ASM00094767,Sydney Airport Amo (Sydney Airport Amo),Sydney Airport Amo,SYDNEY AIRPORT AMO
+ASM00094776,Williamtown Raaf,Williamtown Raaf,WILLIAMTOWN RAAF
+ASM00094802,Albany Airport (Albany Airport),Albany Airport,ALBANY AIRPORT
+ASM00094821,Mount Gambier Aero,Mount Gambier Aero,MOUNT GAMBIER AERO
+ASM00094866,Melbourne Airport (Melbourne Airport),Melbourne Airport,MELBOURNE AIRPORT
+ASM00094910,Wagga Wagga Amo,Wagga Wagga Amo,WAGGA WAGGA AMO
+ASM00094975,Hobart Airport West (Hobart Airport West),Hobart Airport West,HOBART AIRPORT WEST
+ASM00094995,Lord Howe Island Aero,Lord Howe Island Aero,LORD HOWE ISLAND AERO
+ASM00094998,Macquarie Island,Macquarie Island,MACQUARIE ISLAND
+ASM00095527,Moree Aero,Moree Aero,MOREE AERO
+ATM00094001,Yeppoon (Barmaryee),Yeppoon (Barmaryee),YEPPOON (BARMARYEE)
+ATM00094005,Clifton Beach,Clifton Beach,CLIFTON BEACH
+ATM00094775,Tocal Aws,Tocal Aws,TOCAL AWS
+ATM00095282,Woodstock,Woodstock,WOODSTOCK
+ATM00095954,Kennaook  (Kennaook / Cape Grim),Kennaook ,KENNAOOK / CAPE GRIM
+AUM00011010,Linz,Linz,LINZ/HOERSCHING-FLUGHAFEN
+AUM00011035,Wien,Wien,WIEN/HOHE WARTE (11035-0)
+AUM00011120,Innsbruck-Flughafen,Innsbruck-Flughafen,INNSBRUCK-FLUGHAFEN
+AUM00011240,Graz-Thalerhof-Flughafen,Graz-Thalerhof-Flughafen,GRAZ-THALERHOF-FLUGHAFEN
+AYM00089002,Georg Von Neumayer,Georg Von Neumayer,GEORG VON NEUMAYER
+AYM00089022,Halley,Halley,HALLEY
+AYM00089055,Base Marambio (Base Marambio),Base Marambio,BASE MARAMBIO
+AYM00089056,Centro Met. Anti Rtico Pres,Centro Met. Anti Rtico Pres,CENTRO MET. ANTI RTICO PRES
+AYM00089062,Rothera,Rothera,ROTHERA
+AYM00089063,Vernadsky,Vernadsky,VERNADSKY
+AYM00089512,Novolazarevskaja,Novolazarevskaja,NOVOLAZAREVSKAJA
+AYM00089532,Syowa,Syowa,SYOWA
+AYM00089564,Mawson,Mawson,MAWSON
+AYM00089571,Davis,Davis,DAVIS
+AYM00089592,Mirnyj (89592-0),Mirnyj (89592-0),MIRNYJ (89592-0)
+AYM00089611,Casey,Casey,CASEY
+AYM00089625,Concordia,Concordia,CONCORDIA
+AYM00089642,Dumont D'Urville,Dumont D'Urville,DUMONT D'URVILLE
+AYM00089662,Mario Zuchelli Station,Mario Zuchelli Station,MARIO ZUCHELLI STATION
+AYM00089664,Mcmurdo,Mcmurdo,MCMURDO
+AYM00089859,Jang Bogo,Jang Bogo,JANG BOGO
+BBM00078954,Grantley Adams,Grantley Adams,GRANTLEY ADAMS
+BDM00078016,L F Wade International Airp (L F Wade International Airp),L F Wade International Airp,L F WADE INTERNATIONAL AIRP
+BEM00006458,Beauvechain,Beauvechain,BEAUVECHAIN
+BFM00078073,Nassau Airport New Providen (Nassau Airport New Providen),Nassau Airport New Providen,NASSAU AIRPORT NEW PROVIDEN
+BGM00041859,Rangpur,Rangpur,RANGPUR
+BGM00041883,Bogra,Bogra,BOGRA
+BGM00041891,Sylhet,Sylhet,SYLHET
+BGM00041907,Ishwardi,Ishwardi,ISHWARDI
+BGM00041923,Dhaka,Dhaka,DHAKA
+BGM00041936,Jessore,Jessore,JESSORE
+BGM00041943,Feni (41943-0),Feni (41943-0),FENI (41943-0)
+BGM00041950,Barisal,Barisal,BARISAL
+BGM00041977,Chittagong (Ambagan),Chittagong (Ambagan),CHITTAGONG (AMBAGAN)
+BGM00041992,Cox'S Bazar,Cox'S Bazar,COX'S BAZAR
+BHM00078583,Belize,Belize,BELIZE/PHILLIP GOLDSTON INT
+BMM00048042,Mandalay,Mandalay,MANDALAY
+BMM00048097,Yangon,Yangon,YANGON
+BNM00065344,Cotonou,Cotonou,COTONOU
+BOM00026850,Minsk,Minsk,MINSK
+BOM00033008,Brest (33008-0),Brest (33008-0),BREST (33008-0)
+BOM00033041,Gomel (33041-0),Gomel (33041-0),GOMEL (33041-0)
+BRM00082022,Boa Vista (Aero),Boa Vista (Aero),BOA VISTA (AERO)
+BRM00082026,Tirios (Aero),Tirios (Aero),TIRIOS (AERO)
+BRM00082099,Macapa (Aero) (Macapa (Aero)),Macapa (Aero),MACAPA (AERO)
+BRM00082107,Sao Gabriel Da Cachoeira,Sao Gabriel Da Cachoeira,SAO GABRIEL DA CACHOEIRA
+BRM00082193,Belem (Aero),Belem (Aero),BELEM (AERO)
+BRM00082244,Santarem (Aero),Santarem (Aero),SANTAREM (AERO)
+BRM00082281,Sao Luis (Aero),Sao Luis (Aero),SAO LUIS (AERO)
+BRM00082332,Manaus (Aero),Manaus (Aero),MANAUS (AERO)
+BRM00082400,Fernando De Noronha (Aero),Fernando De Noronha (Aero),FERNANDO DE NORONHA (AERO)
+BRM00082411,Tabatinga (Aero),Tabatinga (Aero),TABATINGA (AERO)
+BRM00082532,Manicore (Aero),Manicore (Aero),MANICORE (AERO)
+BRM00082599,Natal (Aero),Natal (Aero),NATAL (AERO)
+BRM00082705,Cruzeiro Do Sul (Aero),Cruzeiro Do Sul (Aero),CRUZEIRO DO SUL (AERO)
+BRM00082824,Porto Velho (Aero),Porto Velho (Aero),PORTO VELHO (AERO)
+BRM00082917,Rio Branco (Aero),Rio Branco (Aero),RIO BRANCO (AERO)
+BRM00082965,Alta Floresta (Aero),Alta Floresta (Aero),ALTA FLORESTA (AERO)
+BRM00082983,Petrolina (82983-0),Petrolina (82983-0),PETROLINA (82983-0)
+BRM00083208,Vilhena (Aero),Vilhena (Aero),VILHENA (AERO)
+BRM00083362,Cuiaba (Aero),Cuiaba (Aero),CUIABA (AERO)
+BRM00083378,Brasilia (Aero),Brasilia (Aero),BRASILIA (AERO)
+BRM00083525,Uberlandia (Aero),Uberlandia (Aero),UBERLANDIA (AERO)
+BRM00083566,Confins (Aero),Confins (Aero),CONFINS (AERO)
+BRM00083612,Campo Grande (Aero),Campo Grande (Aero),CAMPO GRANDE (AERO)
+BRM00083649,Vitoria (Aero),Vitoria (Aero),VITORIA (AERO)
+BRM00083746,Galeao (Aero),Galeao (Aero),GALEAO (AERO)
+BRM00083768,Londrina (Aero),Londrina (Aero),LONDRINA (AERO)
+BRM00083779,Marte (Aero),Marte (Aero),MARTE (AERO)
+BRM00083827,Foz Do Iguacu (Aero),Foz Do Iguacu (Aero),FOZ DO IGUACU (AERO)
+BRM00083840,Curitiba (Aero),Curitiba (Aero),CURITIBA (AERO)
+BRM00083899,Florianopolis (Aero),Florianopolis (Aero),FLORIANOPOLIS (AERO)
+BRM00083928,Uruguaiana (Aero),Uruguaiana (Aero),URUGUAIANA (AERO)
+BRM00083937,Santa Maria (Aero),Santa Maria (Aero),SANTA MARIA (AERO)
+BUM00015614,Sofia (Observ.),Sofia (Observ.),SOFIA (OBSERV.)
+BXM00096315,Brunei Airport (Brunei Airport),Brunei Airport,BRUNEI AIRPORT
+BXM00096323,Kuala Belait,Kuala Belait,KUALA BELAIT
+CAM00071043,Norman Wells A; Nwt,Norman Wells A; Nwt,NORMAN WELLS A; NWT
+CAM00071081,Hall Beach Ua; Nu,Hall Beach Ua; Nu,HALL BEACH UA; NU
+CAM00071082,Alert Ua; Nu,Alert Ua; Nu,ALERT UA; NU
+CAM00071109,Port Hardy A; Bc,Port Hardy A; Bc,PORT HARDY A; BC
+CAM00071119,Stony Plain Ua; Alta,Stony Plain Ua; Alta,STONY PLAIN UA; ALTA
+CAM00071603,Yarmouth A; Ns,Yarmouth A; Ns,YARMOUTH A; NS
+CAM00071701,Gagetown A; Nb,Gagetown A; Nb,GAGETOWN A; NB
+CAM00071722,Maniwaki Ua; Que,Maniwaki Ua; Que,MANIWAKI UA; QUE
+CAM00071802,St John'S West Ua; Nfld,St John'S West Ua; Nfld,ST JOHN'S WEST UA; NFLD
+CAM00071811,Sept-Iles Ua; Que,Sept-Iles Ua; Que,SEPT-ILES UA; QUE
+CAM00071815,Stephenville A; Nfld,Stephenville A; Nfld,STEPHENVILLE A; NFLD
+CAM00071816,Goose A; Nfld,Goose A; Nfld,GOOSE A; NFLD
+CAM00071823,La Grande Iv Ua; Que,La Grande Iv Ua; Que,LA GRANDE IV UA; QUE
+CAM00071836,Moosonee A; Ont,Moosonee A; Ont,MOOSONEE A; ONT
+CAM00071843,Winnipeg Ua; Man,Winnipeg Ua; Man,WINNIPEG UA; MAN
+CAM00071845,Pickle Lake A; Ont,Pickle Lake A; Ont,PICKLE LAKE A; ONT
+CAM00071867,The Pas A; Man,The Pas A; Man,THE PAS A; MAN
+CAM00071906,Kuujjuaq A; Que,Kuujjuaq A; Que,KUUJJUAQ A; QUE
+CAM00071907,Inukjuak A; Que,Inukjuak A; Que,INUKJUAK A; QUE
+CAM00071908,Prince George Ua; Bc,Prince George Ua; Bc,PRINCE GEORGE UA; BC
+CAM00071909,Iqaluit A; Nu,Iqaluit A; Nu,IQALUIT A; NU
+CAM00071913,Churchill A Ua; Man,Churchill A Ua; Man,CHURCHILL A UA; MAN
+CAM00071917,Eureka A; Nu,Eureka A; Nu,EUREKA A; NU
+CAM00071924,Resolute Cars; Nu,Resolute Cars; Nu,RESOLUTE CARS; NU
+CAM00071925,Cambridge Bay A; Nu,Cambridge Bay A; Nu,CAMBRIDGE BAY A; NU
+CAM00071926,Baker Lake A; Nu,Baker Lake A; Nu,BAKER LAKE A; NU
+CAM00071934,Fort Smith A; Nwt,Fort Smith A; Nwt,FORT SMITH A; NWT
+CAM00071945,Fort Nelson A; Bc,Fort Nelson A; Bc,FORT NELSON A; BC
+CAM00071957,Inuvik Awos A; Nwt,Inuvik Awos A; Nwt,INUVIK AWOS A; NWT
+CAM00071964,Whitehorse A; Yt,Whitehorse A; Yt,WHITEHORSE A; YT
+CAM00073033,Vernon Ua; Bc,Vernon Ua; Bc,VERNON UA; BC
+CAM00073111,Kapuskasing Ua; On (Kapuskasing Ua; On),Kapuskasing Ua; On,KAPUSKASING UA; ON
+CDM00064700,Ndjamena,Ndjamena,NDJAMENA
+CDM00064750,Sarh,Sarh,SARH
+CEM00043413,Mannar,Mannar,MANNAR
+CEM00043418,Trincomalee,Trincomalee,TRINCOMALEE
+CEM00043466,Colombo,Colombo,COLOMBO
+CEM00043497,Hambantota,Hambantota,HAMBANTOTA
+CFM00064450,Brazzaville ,Brazzaville ,BRAZZAVILLE /MAYA-MAYA
+CHM00050527,Hailar (50527-0),Hailar (50527-0),HAILAR (50527-0)
+CHM00050557,Nenjiang,Nenjiang,NENJIANG
+CHM00050774,Yichun (50774-0),Yichun (50774-0),YICHUN (50774-0)
+CHM00050953,Harbin (50953-0),Harbin (50953-0),HARBIN (50953-0)
+CHM00051076,Altay,Altay,ALTAY
+CHM00051243,Karamay,Karamay,KARAMAY
+CHM00051431,Yining,Yining,YINING
+CHM00051463,Wu Lu Mu Qi (51463-0),Wu Lu Mu Qi (51463-0),WU LU MU QI (51463-0)
+CHM00051644,Kuqa,Kuqa,KUQA
+CHM00051656,Korla,Korla,KORLA
+CHM00051709,Kashi,Kashi,KASHI
+CHM00051777,Ruoqiang,Ruoqiang,RUOQIANG
+CHM00051828,Hotan,Hotan,HOTAN
+CHM00051839,Minfeng,Minfeng,MINFENG
+CHM00052203,Hami,Hami,HAMI
+CHM00052267,Ejin Qi,Ejin Qi,EJIN QI
+CHM00052323,Mazong Shan,Mazong Shan,MAZONG SHAN
+CHM00052418,Dunhuang,Dunhuang,DUNHUANG
+CHM00052533,Jiuquan,Jiuquan,JIUQUAN
+CHM00052681,Minqin,Minqin,MINQIN
+CHM00052818,Golmud,Golmud,GOLMUD
+CHM00052836,Doulan,Doulan,DOULAN
+CHM00052866,Xining (52866-0),Xining (52866-0),XINING (52866-0)
+CHM00052983,Yu Zhong,Yu Zhong,YU ZHONG
+CHM00053336,Haliut,Haliut,HALIUT
+CHM00053463,Hohhot,Hohhot,HOHHOT
+CHM00053513,Linhe,Linhe,LINHE
+CHM00053543,Dongsheng,Dongsheng,DONGSHENG
+CHM00053614,Yinchuan,Yinchuan,YINCHUAN
+CHM00053772,Taiyuan (53772-0),Taiyuan (53772-0),TAIYUAN (53772-0)
+CHM00053798,Xingtai,Xingtai,XINGTAI
+CHM00053845,Yan An,Yan An,YAN AN
+CHM00053915,Pingliang,Pingliang,PINGLIANG
+CHM00054102,Xilin Hot,Xilin Hot,XILIN HOT
+CHM00054135,Tongliao,Tongliao,TONGLIAO
+CHM00054161,Changchun,Changchun,CHANGCHUN
+CHM00054218,Chifeng (54218-0),Chifeng (54218-0),CHIFENG (54218-0)
+CHM00054292,Yanji,Yanji,YANJI
+CHM00054340,Shenyang,Shenyang,SHENYANG
+CHM00054374,Linjiang,Linjiang,LINJIANG
+CHM00054401,Zhangjiakou,Zhangjiakou,ZHANGJIAKOU
+CHM00054511,Beijing,Beijing,BEIJING
+CHM00054662,Dalian,Dalian,DALIAN
+CHM00054727,Zhangqiu,Zhangqiu,ZHANGQIU
+CHM00054857,Qingdao,Qingdao,QINGDAO
+CHM00055299,Nagqu,Nagqu,NAGQU
+CHM00055591,Lhasa,Lhasa,LHASA
+CHM00056029,Yushu (56029-0),Yushu (56029-0),YUSHU (56029-0)
+CHM00056046,Darlag,Darlag,DARLAG
+CHM00056080,Hezuo,Hezuo,HEZUO
+CHM00056137,Qamdo (56137-0),Qamdo (56137-0),QAMDO (56137-0)
+CHM00056187,Wenjiang (56187-0),Wenjiang (56187-0),WENJIANG (56187-0)
+CHM00056492,Yibin,Yibin,YIBIN
+CHM00056571,Xichang,Xichang,XICHANG
+CHM00056651,Lijing,Lijing,LIJING
+CHM00056691,Weining,Weining,WEINING
+CHM00056739,Tengchong,Tengchong,TENGCHONG
+CHM00056778,Kunming,Kunming,KUNMING
+CHM00056964,Simao,Simao,SIMAO
+CHM00056985,Mengzi,Mengzi,MENGZI
+CHM00057083,Zhengzhou,Zhengzhou,ZHENGZHOU
+CHM00057127,Hanzhong,Hanzhong,HANZHONG
+CHM00057131,Jinghe (57131-0),Jinghe (57131-0),JINGHE (57131-0)
+CHM00057178,Nanyang,Nanyang,NANYANG
+CHM00057245,Ankang,Ankang,ANKANG
+CHM00057447,Enshi,Enshi,ENSHI
+CHM00057461,Yichang,Yichang,YICHANG
+CHM00057494,Wuhan,Wuhan,WUHAN
+CHM00057516,Chongqing (57516-0),Chongqing (57516-0),CHONGQING (57516-0)
+CHM00057541,Xuan' En,Xuan' En,XUAN' EN
+CHM00057687,Changsha (57687-0),Changsha (57687-0),CHANGSHA (57687-0)
+CHM00057816,Guiyang (57816-0),Guiyang (57816-0),GUIYANG (57816-0)
+CHM00057957,Guilin,Guilin,GUILIN
+CHM00057972,Chenzhou,Chenzhou,CHENZHOU
+CHM00058027,Xuzhou,Xuzhou,XUZHOU
+CHM00058150,Sheyang,Sheyang,SHEYANG
+CHM00058203,Fuyang,Fuyang,FUYANG
+CHM00058238,Nanjing,Nanjing,NANJING
+CHM00058362,Shanghai (Baoshan),Shanghai (Baoshan),SHANGHAI (BAOSHAN)
+CHM00058424,Anqing,Anqing,ANQING
+CHM00058457,Hangzhou,Hangzhou,HANGZHOU
+CHM00058606,Nanchang,Nanchang,NANCHANG
+CHM00058633,Qu Xian,Qu Xian,QU XIAN
+CHM00058665,Hongjia,Hongjia,HONGJIA
+CHM00058725,Shaowu,Shaowu,SHAOWU
+CHM00058847,Fuzhou,Fuzhou,FUZHOU
+CHM00059023,Hechi,Hechi,HECHI
+CHM00059134,Xiamen,Xiamen,XIAMEN
+CHM00059211,Baise,Baise,BAISE
+CHM00059265,Wuzhou,Wuzhou,WUZHOU
+CHM00059280,Qingyuan (59280-0),Qingyuan (59280-0),QINGYUAN (59280-0)
+CHM00059293,Heyuan,Heyuan,HEYUAN
+CHM00059316,Shantou (59316-0),Shantou (59316-0),SHANTOU (59316-0)
+CHM00059663,Yangjiang,Yangjiang,YANGJIANG
+CHM00059948,Sanya,Sanya,SANYA
+CIM00085442,Antofagasta,Antofagasta,ANTOFAGASTA
+CIM00085469,Isla De Pascua,Isla De Pascua,ISLA DE PASCUA
+CIM00085586,Santo Domingo Ad.,Santo Domingo Ad.,SANTO DOMINGO AD.
+CIM00085799,Puerto Montt,Puerto Montt,PUERTO MONTT
+CIM00085934,Punta Arenas,Punta Arenas,PUNTA ARENAS
+CJM00078384,Owen Roberts Airport Grand (Owen Roberts Airport Grand),Owen Roberts Airport Grand,OWEN ROBERTS AIRPORT GRAND
+CKM00096996,Cocos Island Aero,Cocos Island Aero,COCOS ISLAND AERO
+CMM00064870,Ngaoundere,Ngaoundere,NGAOUNDERE
+CNM00067002,Hahaya Int. Airport (Hahaya Int. Airport),Hahaya Int. Airport,HAHAYA INT. AIRPORT
+COM00080001,San Andres (Isla),San Andres (Isla),SAN ANDRES (ISLA)/SESQUICEN
+COM00080028,Barranquilla,Barranquilla,BARRANQUILLA/ERNESTO CORTIS
+COM00080094,Bucaramanga,Bucaramanga,BUCARAMANGA/PALONEGRO
+COM00080222,Bogota,Bogota,BOGOTA/ELDORADO
+COM00080259,Cali,Cali,CALI/ALFONSO BONILLA ARAGON
+COM00080398,Leticia,Leticia,LETICIA/VASQUEZ COBO
+CSM00078762,Aeropuerto Internacional Ju,Aeropuerto Internacional Ju,AEROPUERTO INTERNACIONAL JU
+CTM00064650,Bangui,Bangui,BANGUI
+CYM00017600,Paphos Ap (Paphos Ap),Paphos Ap,PAPHOS AP
+CYM00017607,Athalassa,Athalassa,ATHALASSA
+CYM00017609,Larnaca Airport (Larnaca Airport),Larnaca Airport,LARNACA AIRPORT
+DAM00006060,Flyvestation Karup,Flyvestation Karup,FLYVESTATION KARUP
+DRM00078486,Santo Domingo (78486-0),Santo Domingo (78486-0),SANTO DOMINGO (78486-0)
+ECM00084203,Guayaquil Aeropuerto,Guayaquil Aeropuerto,GUAYAQUIL AEROPUERTO
+EGM00062306,Mersa Matruh,Mersa Matruh,MERSA MATRUH
+EGM00062337,El Arish,El Arish,EL ARISH
+EGM00062378,Helwan,Helwan,HELWAN
+EGM00062403,South Of Valley University,South Of Valley University,SOUTH OF VALLEY UNIVERSITY
+EGM00062414,Asswan,Asswan,ASSWAN
+EGM00062423,Farafra,Farafra,FARAFRA
+EIM00003953,Valentia Observatory (3953-,Valentia Observatory (3953-,VALENTIA OBSERVATORY (3953-
+ENM00026038,Radar Wrm 200,Radar Wrm 200,RADAR WRM 200
+ETM00063450,Addis Ababa-Bole,Addis Ababa-Bole,ADDIS ABABA-BOLE
+EZM00011520,Praha-Libus,Praha-Libus,PRAHA-LIBUS
+EZM00011747,Prostejov,Prostejov,PROSTEJOV
+FGM00081405,Cayenne Matoury,Cayenne Matoury,CAYENNE MATOURY
+FIM00002836,Sodankyla Arctic Research C,Sodankyla Arctic Research C,SODANKYLA ARCTIC RESEARCH C
+FIM00002963,Jokioinen Observatory,Jokioinen Observatory,JOKIOINEN OBSERVATORY
+FJM00091680,Nadi Airport (Nadi Airport),Nadi Airport,NADI AIRPORT
+FKM00088889,Mount Pleasant Airport (Mount Pleasant Airport),Mount Pleasant Airport,MOUNT PLEASANT AIRPORT
+FMM00091334,Truk,Truk,TRUK/CAROLINE IS.
+FMM00091348,Ponape (Ponape/Caroline Is.),Ponape,PONAPE/CAROLINE IS.
+FMM00091413,Yap (Yap/Caroline Is.),Yap,YAP/CAROLINE IS.
+FOM00006011,Torshavn,Torshavn,TORSHAVN
+FPM00091925,Hiva-Oa,Hiva-Oa,HIVA-OA
+FPM00091938,Tahiti-Faaa,Tahiti-Faaa,TAHITI-FAAA
+FPM00091948,Mangareva,Mangareva,MANGAREVA
+FPM00091958,Rapa (Rapa),Rapa,RAPA
+FRM00007110,Brest-Guipavas,Brest-Guipavas,BREST-GUIPAVAS
+FRM00007145,Trappes (Trappes),Trappes,TRAPPES
+FRM00007510,Bordeaux Merignac,Bordeaux Merignac,BORDEAUX MERIGNAC
+FRM00007645,Nimes-Courbessac,Nimes-Courbessac,NIMES-COURBESSAC
+FRM00007761,Ajaccio,Ajaccio,AJACCIO
+FSM00061998,Port-Aux-Francais,Port-Aux-Francais,PORT-AUX-FRANCAIS
+GBM00064500,Libreville,Libreville,LIBREVILLE
+GLM00004202,Pituffik,Pituffik,PITUFFIK
+GLM00004220,Aasiaat,Aasiaat,AASIAAT
+GLM00004270,Mittarfik Narsarsuaq,Mittarfik Narsarsuaq,MITTARFIK NARSARSUAQ
+GLM00004320,Danmarkshavn,Danmarkshavn,DANMARKSHAVN
+GLM00004339,Ittoqqortoormiit,Ittoqqortoormiit,ITTOQQORTOORMIIT
+GLM00004360,Tasiilaq,Tasiilaq,TASIILAQ
+GLM00004417,Geosummit,Geosummit,GEOSUMMIT
+GMM00010035,Schleswig,Schleswig,SCHLESWIG
+GMM00010113,Norderney,Norderney,NORDERNEY
+GMM00010184,Greifswald,Greifswald,GREIFSWALD
+GMM00010238,Bergen,Bergen,BERGEN
+GMM00010304,Meppen,Meppen,MEPPEN
+GMM00010393,Lindenberg,Lindenberg,LINDENBERG
+GMM00010410,Essen (Aerology),Essen (Aerology),ESSEN (AEROLOGY)
+GMM00010548,Meiningen,Meiningen,MEININGEN
+GMM00010618,Idar-Oberstein,Idar-Oberstein,IDAR-OBERSTEIN
+GMM00010739,Stuttgart (Aerology),Stuttgart (Aerology),STUTTGART (AEROLOGY)
+GMM00010771,Kuemmersbruck,Kuemmersbruck,KUEMMERSBRUCK
+GMM00010868,Oberschleii Heim (Aerology),Oberschleii Heim (Aerology),OBERSCHLEII HEIM (AEROLOGY)
+GMM00010954,Altenstadt,Altenstadt,ALTENSTADT
+GMM00010962,Hohenpeissenberg,Hohenpeissenberg,HOHENPEISSENBERG
+GPM00078897,Le Raizet Aero,Le Raizet Aero,LE RAIZET AERO
+GQM00091212,Weather Forecast Office; Gu,Weather Forecast Office; Gu,WEATHER FORECAST OFFICE; GU
+GRM00016622,Thessaloniki (Airport) (Thessaloniki (Airport)),Thessaloniki (Airport),THESSALONIKI (AIRPORT)
+GRM00016716,Athinai Hellinikon,Athinai Hellinikon,ATHINAI HELLINIKON
+GRM00016754,Herakleion (Airport) (Herakleion (Airport)),Herakleion (Airport),HERAKLEION (AIRPORT)
+HKM00045004,Kowloon (45004-0),Kowloon (45004-0),KOWLOON (45004-0)
+HRM00014240,Zagreb,Zagreb,ZAGREB/MAKSIMIR
+HRM00014430,Zadar Rs,Zadar Rs,ZADAR RS
+HUM00012843,Budapest (Budapest/Pestszentlorinc),Budapest,BUDAPEST/PESTSZENTLORINC
+HUM00012982,Szeged,Szeged,SZEGED
+,,,
+ICM00004089,Egilsstadir,Egilsstadir,EGILSSTADIR
+IDM00096009,Lhokseumawe,Lhokseumawe,LHOKSEUMAWE/MALIKUSSALEH
+IDM00096011,Banda Aceh,Banda Aceh,BANDA ACEH/BLANG BINTANG
+IDM00096015,Meulaboh,Meulaboh,MEULABOH/CUT NYAK DHIEN
+IDM00096035,Kualanamu Medan,Kualanamu Medan,KUALANAMU MEDAN
+IDM00096073,Sibolga,Sibolga,SIBOLGA/PINANGSORI
+IDM00096075,Gunung Sitoli,Gunung Sitoli,GUNUNG SITOLI/BINAKA
+IDM00096091,Tanjung Pinang,Tanjung Pinang,TANJUNG PINANG/KIJANG
+IDM00096109,Pekan Baru,Pekan Baru,PEKAN BARU/SIMPANGTIGA
+IDM00096145,Tarempa,Tarempa,TAREMPA
+IDM00096147,Ranai,Ranai,RANAI
+IDM00096163,Mia Padang,Mia Padang,MIA PADANG
+IDM00096171,Rengat (Rengat/Japura),Rengat,RENGAT/JAPURA
+IDM00096179,Singkep,Singkep,SINGKEP/DABO
+IDM00096195,Jambi,Jambi,JAMBI/SULTAN TAHA
+IDM00096207,Kerinci,Kerinci,KERINCI/DEPATI PARBO
+IDM00096221,Palembang,Palembang,PALEMBANG/ST. M. BADARUDIN
+IDM00096237,Pangkal Pinang,Pangkal Pinang,PANGKAL PINANG
+IDM00096249,Tanjung Pandan,Tanjung Pandan,TANJUNG PANDAN/BULUH TUMBAN
+IDM00096253,Bengkulu,Bengkulu,BENGKULU/PADANG KEMILING
+IDM00096295,Tanjung Karang,Tanjung Karang,TANJUNG KARANG/RADIN INTEN
+IDM00096509,Tarakan,Tarakan,TARAKAN/JUWATA
+IDM00096529,Tanjung Redep,Tanjung Redep,TANJUNG REDEP/KALIMARAU
+IDM00096535,Paloh,Paloh,PALOH
+IDM00096565,Putussibau,Putussibau,PUTUSSIBAU/PAGSUMA
+IDM00096581,Pontianak,Pontianak,PONTIANAK/SUPADIO
+IDM00096595,Muara Teweh,Muara Teweh,MUARA TEWEH/BERINGIN
+IDM00096607,Samarinda,Samarinda,SAMARINDA/TEMINDUNG
+IDM00096633,Balikpapan (Balikpapan/Sepinggan),Balikpapan,BALIKPAPAN/SEPINGGAN
+IDM00096645,Pangkalan Bun,Pangkalan Bun,PANGKALAN BUN/ISKANDAR
+IDM00096655,Palangka Raya,Palangka Raya,PALANGKA RAYA/TJILIK RIWUT
+IDM00096685,Banjarmasin,Banjarmasin,BANJARMASIN/SYAMSUDIN NOOR
+IDM00096737,Serang,Serang,SERANG
+IDM00096739,Curug,Curug,CURUG/BUDIARTO
+IDM00096749,Jakarta,Jakarta,JAKARTA/SOEKARNO-HATTA
+IDM00096791,Cirebon,Cirebon,CIREBON/JATIWANGI
+IDM00096797,Tegal,Tegal,TEGAL
+IDM00096805,Cilacap (Cilacap),Cilacap,CILACAP
+IDM00096839,Semarang,Semarang,SEMARANG/AHMAD YANI
+IDM00096925,Sangkapura (Bawean Is.) (Sangkapura (Bawean Is.)),Sangkapura (Bawean Is.),SANGKAPURA (BAWEAN IS.)
+IDM00096935,Juanda Surabaya,Juanda Surabaya,JUANDA SURABAYA
+IDM00096973,Kalianget (Madura Is),Kalianget (Madura Is),KALIANGET (MADURA IS)
+IDM00096987,Banyuwangi,Banyuwangi,BANYUWANGI
+IDM00097008,Naha,Naha,NAHA/TAHUNA
+IDM00097014,Menado,Menado,MENADO/ SAM RATULANGI
+IDM00097028,Toli-Toli,Toli-Toli,TOLI-TOLI/LALOS
+IDM00097048,Gorontalo,Gorontalo,GORONTALO/JALALUDDIN
+IDM00097072,Palu,Palu,PALU/MUTIARA
+IDM00097086,Luwuk,Luwuk,LUWUK/BUBUNG
+IDM00097096,Poso,Poso,POSO/KASIGUNCU
+IDM00097120,Majene,Majene,MAJENE
+IDM00097180,Ujung Pandang,Ujung Pandang,UJUNG PANDANG/HASANUDDIN
+IDM00097192,Bau-Bau,Bau-Bau,BAU-BAU/BETO AMBARI
+IDM00097230,Denpasar,Denpasar,DENPASAR/NGURAH RAI
+IDM00097240,Praya Lombok,Praya Lombok,PRAYA LOMBOK
+IDM00097260,Sumbawa Besar,Sumbawa Besar,SUMBAWA BESAR/BRANGBIJI
+IDM00097270,Bima,Bima,BIMA/M.SALAHUDDIN
+IDM00097300,Maumere,Maumere,MAUMERE/WAI OTI
+IDM00097340,Waingapu (Waingapu/Mau Hau),Waingapu,WAINGAPU/MAU HAU
+IDM00097372,Kupang,Kupang,KUPANG/ELTARI
+IDM00097430,Ternate,Ternate,TERNATE/BABULLAH
+IDM00097460,Labuha,Labuha,LABUHA/OESMAN SADIK
+IDM00097502,Deo Sorong,Deo Sorong,DEO SORONG
+IDM00097530,Manokwari,Manokwari,MANOKWARI/RENDANI
+IDM00097560,Biak,Biak,BIAK/FRANS KAISIEPO
+IDM00097600,Sanana,Sanana,SANANA
+IDM00097686,Wamena,Wamena,WAMENA
+IDM00097690,Jayapura (Jayapura/Sentani),Jayapura,JAYAPURA/SENTANI
+IDM00097724,Ambon,Ambon,AMBON/PATTIMURA
+IDM00097748,Geser,Geser,GESER
+IDM00097760,Kaimana,Kaimana,KAIMANA/UTAROM
+IDM00097810,Tual,Tual,TUAL/DUMATUBUN
+IDM00097876,Tanah Merah,Tanah Merah,TANAH MERAH
+IDM00097900,Saumlaki,Saumlaki,SAUMLAKI/OLILIT
+IDM00097980,Merauke,Merauke,MERAUKE/MOPAH
+INM00042027,Srinagar (42027-0),Srinagar (42027-0),SRINAGAR (42027-0)
+INM00042056,Jammu,Jammu,JAMMU
+INM00042071,Amritsar,Amritsar,AMRITSAR
+INM00042079,Sundernagar,Sundernagar,SUNDERNAGAR
+INM00042101,Patiala,Patiala,PATIALA
+INM00042103,Ambala,Ambala,AMBALA
+INM00042111,Dehradun,Dehradun,DEHRADUN
+INM00042123,Ganganagar,Ganganagar,GANGANAGAR
+INM00042170,Churu,Churu,CHURU
+INM00042182,New Delhi,New Delhi,NEW DELHI/SAFDARJUNG
+INM00042189,Bareilly,Bareilly,BAREILLY
+INM00042220,Pasighat,Pasighat,PASIGHAT
+INM00042273,Bahraich,Bahraich,BAHRAICH
+INM00042299,Gangtok,Gangtok,GANGTOK
+INM00042314,Dibrugarh ,Dibrugarh ,DIBRUGARH /MOHANBARI
+INM00042328,Jaisalmer,Jaisalmer,JAISALMER
+INM00042339,Jodhpur,Jodhpur,JODHPUR
+INM00042348,Jaipur ,Jaipur ,JAIPUR / SANGANER
+INM00042361,Gwalior,Gwalior,GWALIOR
+INM00042369,Lucknow,Lucknow,LUCKNOW/AMAUSI
+INM00042379,Gorakhpur,Gorakhpur,GORAKHPUR
+INM00042399,Jalpaiguri,Jalpaiguri,JALPAIGURI
+INM00042410,Guwahati,Guwahati,GUWAHATI
+INM00042435,Barmer,Barmer,BARMER
+INM00042452,Kota Aerodrome,Kota Aerodrome,KOTA AERODROME
+INM00042474,Allahabad,Allahabad,ALLAHABAD/GHOORPUR
+INM00042492,Patna,Patna,PATNA
+INM00042498,Bhagalpur,Bhagalpur,BHAGALPUR
+INM00042516,Shillong,Shillong,SHILLONG
+INM00042539,Deesa,Deesa,DEESA
+INM00042542,Udaipur Dabok,Udaipur Dabok,UDAIPUR DABOK
+INM00042591,Gaya (42591-0),Gaya (42591-0),GAYA (42591-0)
+INM00042623,Imphal,Imphal,IMPHAL/TULIHAL
+INM00042634,Bhuj-Rudramata,Bhuj-Rudramata,BHUJ-RUDRAMATA
+INM00042647,Ahmadabad,Ahmadabad,AHMADABAD
+INM00042667,Bhopal (Bhopal/Bairaghar),Bhopal,BHOPAL/BAIRAGHAR
+INM00042675,Jabalpur,Jabalpur,JABALPUR
+INM00042701,M.O. Ranchi,M.O. Ranchi,M.O. RANCHI
+INM00042706,Bankura,Bankura,BANKURA
+INM00042724,Agartala,Agartala,AGARTALA
+INM00042726,Lengpui,Lengpui,LENGPUI
+INM00042798,Jamshedpur (42798-0),Jamshedpur (42798-0),JAMSHEDPUR (42798-0)
+INM00042809,Kolkata,Kolkata,KOLKATA/DUM DUM
+INM00042867,Nagpur Sonegaon,Nagpur Sonegaon,NAGPUR SONEGAON
+INM00042874,Pbo Raipur,Pbo Raipur,PBO RAIPUR
+INM00042886,Jharsiguda,Jharsiguda,JHARSIGUDA
+INM00042971,Bhubaneshwar,Bhubaneshwar,BHUBANESHWAR
+INM00043003,Bombay ,Bombay ,BOMBAY / SANTACRUZ
+INM00043041,Jagdalpur,Jagdalpur,JAGDALPUR
+INM00043049,Gopalpur,Gopalpur,GOPALPUR
+INM00043063,Pune,Pune,PUNE
+INM00043086,Ramgundam,Ramgundam,RAMGUNDAM
+INM00043110,Ratnagiri,Ratnagiri,RATNAGIRI
+INM00043128,Hyderabad Airport (Hyderabad Airport),Hyderabad Airport,HYDERABAD AIRPORT
+INM00043150,Vishakhapatnam (Vishakhapatnam/Waltair),Vishakhapatnam,VISHAKHAPATNAM/WALTAIR
+INM00043185,Machilipatnam,Machilipatnam,MACHILIPATNAM/FRANCHPET
+INM00043192,Goa,Goa,GOA/PANJIM
+INM00043201,Gadag,Gadag,GADAG
+INM00043285,Mangalore,Mangalore,MANGALORE/PANAMBUR
+INM00043295,Bengaluru,Bengaluru,BENGALURU
+INM00043311,Aminidivi,Aminidivi,AMINIDIVI
+INM00043333,Port Blair (Port Blair),Port Blair,PORT BLAIR
+INM00043346,Karaikal,Karaikal,KARAIKAL
+INM00043353,Cochin,Cochin,COCHIN/WILLINGDON
+INM00043369,Minicoy,Minicoy,MINICOY
+INM00043371,Thiruvananthapuram (43371-0 (Thiruvananthapuram (43371-0),Thiruvananthapuram (43371-0,THIRUVANANTHAPURAM (43371-0
+IRM00040706,Tabriz,Tabriz,TABRIZ
+IRM00040738,Gorgan,Gorgan,GORGAN
+IRM00040745,Mashhad,Mashhad,MASHHAD
+IRM00040754,Tehran-Mehrabad,Tehran-Mehrabad,TEHRAN-MEHRABAD
+IRM00040766,Kermanshah,Kermanshah,KERMANSHAH
+IRM00040800,Esfahan,Esfahan,ESFAHAN
+IRM00040809,Birjand,Birjand,BIRJAND
+IRM00040811,Ahwaz,Ahwaz,AHWAZ
+IRM00040841,Kerman,Kerman,KERMAN
+IRM00040848,Shiraz,Shiraz,SHIRAZ
+IRM00040856,Zahedan,Zahedan,ZAHEDAN
+IRM00040875,Bandarabbass,Bandarabbass,BANDARABBASS
+ISM00040186,Ashdod North,Ashdod North,ASHDOD NORTH
+ITM00016045,Udine,Udine,UDINE/RIVOLTO
+ITM00016064,Novara,Novara,NOVARA/CAMERI
+ITM00016080,Milano,Milano,MILANO/LINATE (16080-0)
+ITM00016113,Cuneo-Levaldigi Rds,Cuneo-Levaldigi Rds,CUNEO-LEVALDIGI RDS
+ITM00016144,S. Pietro Capofiume Rds (S. Pietro Capofiume Rds),S. Pietro Capofiume Rds,S. PIETRO CAPOFIUME RDS
+ITM00016245,Pratica Di Mare,Pratica Di Mare,PRATICA DI MARE
+ITM00016320,Brindisi,Brindisi,BRINDISI
+ITM00016332,Lecce (16332-0),Lecce (16332-0),LECCE (16332-0)
+ITM00016429,Trapani Birgi (Trapani Birgi),Trapani Birgi,TRAPANI BIRGI
+ITM00016546,Decimomannu,Decimomannu,DECIMOMANNU
+IVM00065548,Man,Man,MAN
+IVM00065578,Abidjan,Abidjan,ABIDJAN
+IZM00040650,Baghdad Int. Airport (Baghdad Int. Airport),Baghdad Int. Airport,BAGHDAD INT. AIRPORT
+JAM00047401,Wakkanai,Wakkanai,WAKKANAI
+JAM00047412,Sapporo (Sapporo),Sapporo,SAPPORO
+JAM00047418,Kushiro (47418-0),Kushiro (47418-0),KUSHIRO (47418-0)
+JAM00047580,Misawa Ab,Misawa Ab,MISAWA AB
+JAM00047582,Akita (47582-0),Akita (47582-0),AKITA (47582-0)
+JAM00047600,Wajima,Wajima,WAJIMA
+JAM00047646,Tateno,Tateno,TATENO
+JAM00047678,Hachijojima,Hachijojima,HACHIJOJIMA
+JAM00047741,Matsue,Matsue,MATSUE
+JAM00047778,Shionomisaki (47778-0),Shionomisaki (47778-0),SHIONOMISAKI (47778-0)
+JAM00047807,Fukuoka,Fukuoka,FUKUOKA
+JAM00047827,Kagoshima,Kagoshima,KAGOSHIMA
+JAM00047909,Naze,Naze,NAZE
+JAM00047911,Yonaguni Airport (Yonaguni Airport),Yonaguni Airport,YONAGUNI AIRPORT
+JAM00047918,Ishigakijima,Ishigakijima,ISHIGAKIJIMA
+JAM00047945,Minamidaitojima,Minamidaitojima,MINAMIDAITOJIMA
+JAM00047971,Chichijima,Chichijima,CHICHIJIMA
+JAM00047991,Minamitorishima,Minamitorishima,MINAMITORISHIMA
+JMM00078397,Windsor,Windsor,WINDSOR
+JNM00001001,Jan Mayen,Jan Mayen,JAN MAYEN
+JOM00040265,Mafraq,Mafraq,MAFRAQ
+KEM00063612,Lodwar,Lodwar,LODWAR
+KEM00063741,Dagoretti Corner,Dagoretti Corner,DAGORETTI CORNER
+KNM00047058,Pyongyang,Pyongyang,PYONGYANG
+KRM00091610,Tarawa,Tarawa,TARAWA
+KSM00047090,Sokcho,Sokcho,SOKCHO
+KSM00047098,Dongducheon,Dongducheon,DONGDUCHEON
+KSM00047113,Incheon Int'L Airport (Incheon Int'L Airport),Incheon Int'L Airport,INCHEON INT'L AIRPORT
+KSM00047122,Osan Ab,Osan Ab,OSAN AB
+KSM00047132,Anmyeondo,Anmyeondo,ANMYEONDO
+KSM00047135,Chupungnyeong,Chupungnyeong,CHUPUNGNYEONG
+KSM00047138,Pohang,Pohang,POHANG
+KSM00047155,Changwon,Changwon,CHANGWON
+KSM00047158,Gwangju Ab,Gwangju Ab,GWANGJU AB
+KSM00047169,Heuksando,Heuksando,HEUKSANDO
+KSM00047186,National Typhoon Center,National Typhoon Center,NATIONAL TYPHOON CENTER
+KSM00047230,Deokjeokbukri,Deokjeokbukri,DEOKJEOKBUKRI
+KUM00040582,Kuwait International Airpor (Kuwait International Airpor),Kuwait International Airpor,KUWAIT INTERNATIONAL AIRPOR
+KZM00028951,Kostanai As,Kostanai As,KOSTANAI AS
+KZM00035229,Aktobe,Aktobe,AKTOBE
+KZM00035394,Karaganda,Karaganda,KARAGANDA
+KZM00035671,Zhezkazgan,Zhezkazgan,ZHEZKAZGAN
+KZM00035700,Atyrau,Atyrau,ATYRAU
+KZM00036003,Pavlodar,Pavlodar,PAVLODAR
+KZM00036872,Almaty As,Almaty As,ALMATY AS
+KZM00038064,Ams Tasboget,Ams Tasboget,AMS TASBOGET/KYZYLORDA AS
+KZM00038341,Taraz,Taraz,TARAZ
+KZM00073110,"Shearwater Ua, Ns","Shearwater Ua, Ns","SHEARWATER UA, NS"
+LGM00026435,Skriveri,Skriveri,SKRIVERI
+LHM00026629,Kaunas (26629-0),Kaunas (26629-0),KAUNAS (26629-0)
+LOM00011952,Poprad-Ganovce,Poprad-Ganovce,POPRAD-GANOVCE
+MAM00067027,Mahajanga,Mahajanga,MAHAJANGA
+MAM00067083,Antananarivo,Antananarivo,ANTANANARIVO/IVATO
+MAM00067095,Toamasina,Toamasina,TOAMASINA
+MAM00067197,Taolagnaro,Taolagnaro,TAOLAGNARO
+MGM00044212,Ulaangom,Ulaangom,ULAANGOM
+MGM00044231,Muren,Muren,MUREN
+MGM00044292,Ulaanbaatar,Ulaanbaatar,ULAANBAATAR
+MGM00044373,Dalanzadgad,Dalanzadgad,DALANZADGAD
+MLM00048811,Dien Bien,Dien Bien,DIEN BIEN
+MLM00061265,Mopti,Mopti,MOPTI
+MLM00061291,Bamako,Bamako,BAMAKO/SENOU
+MOM00060155,Casablanca,Casablanca,CASABLANCA
+MOM00060191,Beni Mellal Sidi Jaber,Beni Mellal Sidi Jaber,BENI MELLAL SIDI JABER
+MOM00060253,Taroudant,Taroudant,TAROUDANT
+MPM00061995,Vacoas (Mauritius),Vacoas (Mauritius),VACOAS (MAURITIUS)
+MRM00061415,Nouadhibou,Nouadhibou,NOUADHIBOU
+MRM00061442,Nouakchott ,Nouakchott ,NOUAKCHOTT / OUMTOUNSY
+MUM00041256,Muscat Int'L Airport (Muscat Int'L Airport),Muscat Int'L Airport,MUSCAT INT'L AIRPORT
+MUM00041316,Salalah Airport (Salalah Airport),Salalah Airport,SALALAH AIRPORT
+MVM00043599,Gan,Gan,GAN
+MXM00076225,Chihuahua; Chih.,Chihuahua; Chih.,CHIHUAHUA; CHIH.
+MXM00076256,Empalme; Son.,Empalme; Son.,EMPALME; SON.
+MXM00076394,Aerop.Internacional Monterr,Aerop.Internacional Monterr,AEROP.INTERNACIONAL MONTERR
+MXM00076405,La Paz; Bcs,La Paz; Bcs,LA PAZ; BCS
+MXM00076458,Colonia Juan Carrasco Mazat,Colonia Juan Carrasco Mazat,COLONIA JUAN CARRASCO MAZAT
+MXM00076526,Zacatecas Sondeo,Zacatecas Sondeo,ZACATECAS SONDEO
+MXM00076595,Cancun,Cancun,CANCUN
+MXM00076612,Guadalajara; Jal.,Guadalajara; Jal.,GUADALAJARA; JAL.
+MXM00076644,Aerop.Internacional Merida;,Aerop.Internacional Merida;,AEROP.INTERNACIONAL MERIDA;
+MXM00076654,Manzanillo; Col.,Manzanillo; Col.,MANZANILLO; COL.
+MXM00076679,Aerop. Internacional Mexico,Aerop. Internacional Mexico,AEROP. INTERNACIONAL MEXICO
+MXM00076692,Hacienda Ylang Ylang Veracr,Hacienda Ylang Ylang Veracr,HACIENDA YLANG YLANG VERACR
+MXM00076743,Villahermosa; Tab.,Villahermosa; Tab.,VILLAHERMOSA; TAB.
+MXM00076805,Acapulco; Gro. (Acapulco; Gro.),Acapulco; Gro.,ACAPULCO; GRO.
+MXM00076903,Tapachula; Chis (Tapachula; Chis),Tapachula; Chis,TAPACHULA; CHIS
+MYM00048601,Penang,Penang,PENANG/BAYAN LEPAS
+MYM00048615,Kota Bharu,Kota Bharu,KOTA BHARU
+MYM00048650,Kuala Lumpur International (Kuala Lumpur International),Kuala Lumpur International,KUALA LUMPUR INTERNATIONAL
+MYM00048657,Kuantan,Kuantan,KUANTAN
+MYM00096413,Kuching,Kuching,KUCHING
+MYM00096441,Bintulu,Bintulu,BINTULU
+MYM00096471,Kota Kinabalu,Kota Kinabalu,KOTA KINABALU
+MYM00096481,Tawau,Tawau,TAWAU
+NCM00091592,Noumea (Nlle-Caledonie),Noumea (Nlle-Caledonie),NOUMEA (NLLE-CALEDONIE)
+NFM00094996,Norfolk Island Aero,Norfolk Island Aero,NORFOLK ISLAND AERO
+NGM00061024,Agadez,Agadez,AGADEZ
+NGM00061052,Niamey-Aero,Niamey-Aero,NIAMEY-AERO
+NHM00091557,Bauerfield (Efate),Bauerfield (Efate),BAUERFIELD (EFATE)
+NIM00065046,Kano,Kano,KANO
+NIM00065202,Lagos,Lagos,LAGOS/OSHODI
+NIM00065257,Enugu,Enugu,ENUGU
+NLM00006260,Radar 6260 [181] [Nl],Radar 6260 [181] [Nl],RADAR 6260 [181] [NL]
+NNM00078866,Juliana Airport; St. Maarte (Juliana Airport; St. Maarte),Juliana Airport; St. Maarte,JULIANA AIRPORT; ST. MAARTE
+NOM00001010,Andoya,Andoya,ANDOYA
+NOM00001241,Orland Iii,Orland Iii,ORLAND III
+NOM00001400,Ekofisk,Ekofisk,EKOFISK
+NOM00001415,Stavanger,Stavanger,STAVANGER/SOLA
+NOM00001492,Oslo-Blindern,Oslo-Blindern,OSLO-BLINDERN
+NZM00093112,Whenuapai (Whenuapai),Whenuapai,WHENUAPAI
+NZM00093417,Paraparaumu Aerodrome (Paraparaumu Aerodrome),Paraparaumu Aerodrome,PARAPARAUMU AERODROME
+NZM00093817,Lauder Observatory,Lauder Observatory,LAUDER OBSERVATORY
+NZM00093844,Invercargill Airport (Invercargill Airport),Invercargill Airport,INVERCARGILL AIRPORT
+NZM00093997,Raoul Island,Raoul Island,RAOUL ISLAND
+PAM00086218,Aeropuerto Silvio Pettiross,Aeropuerto Silvio Pettiross,AEROPUERTO SILVIO PETTIROSS
+PEM00084628,Lima,Lima,LIMA/CALLAO
+PFM00059981,Xisha Dao,Xisha Dao,XISHA DAO
+PKM00041506,Chitral,Chitral,CHITRAL
+PKM00041515,Drosh,Drosh,DROSH
+PKM00041516,Gilgit,Gilgit,GILGIT
+PKM00041529,Peshawar,Peshawar,PESHAWAR
+PKM00041598,Jhelum,Jhelum,JHELUM
+PKM00041600,Sialkot,Sialkot,SIALKOT
+PKM00041624,Dera Ismail Khan,Dera Ismail Khan,DERA ISMAIL KHAN
+PKM00041640,Lahore City,Lahore City,LAHORE CITY
+PKM00041675,Multan,Multan,MULTAN
+PKM00041678,Bahawalnagar,Bahawalnagar,BAHAWALNAGAR
+PKM00041715,Jacobabad,Jacobabad,JACOBABAD
+PKM00041718,Khanpur,Khanpur,KHANPUR
+PKM00041749,Nawabshah,Nawabshah,NAWABSHAH
+PKM00041764,Hyderabad,Hyderabad,HYDERABAD
+PKM00041768,Chhor,Chhor,CHHOR
+PKM00041780,Karachi Airport (Karachi Airport),Karachi Airport,KARACHI AIRPORT
+PLM00012120,Leba,Leba,LEBA
+PLM00012374,Legionowo,Legionowo,LEGIONOWO
+PLM00012425,Wroclaw-Starachowice,Wroclaw-Starachowice,WROCLAW-STARACHOWICE
+PLM00012575,Tarnow,Tarnow,TARNOW
+PMM00078807,Corozal Oeste,Corozal Oeste,COROZAL OESTE
+POM00008508,Lajes (Acores) (8508-0),Lajes (Acores) (8508-0),LAJES (ACORES) (8508-0)
+POM00008522,Funchal,Funchal,FUNCHAL
+POM00008536,Lisboa,Lisboa,LISBOA/PORTELA
+PSM00091408,Koror,Koror,KOROR/CAROLINE IS.
+QAM00041169,Hamad International Airport (Hamad International Airport),Hamad International Airport,HAMAD INTERNATIONAL AIRPORT
+REM00061980,Saint-Denis,Saint-Denis,SAINT-DENIS/GILLOT (REUNION
+RIM00013275,Beograd,Beograd,BEOGRAD/KOSUTNJAK
+RIM00013295,Negotin,Negotin,NEGOTIN
+RIM00013369,Sjenica,Sjenica,SJENICA
+RIM00013388,Nis,Nis,NIS
+RMM00091366,Kwajalein,Kwajalein,KWAJALEIN/BUCHOLZ AAF; MARS
+RMM00091376,Majuro,Majuro,MAJURO/MARSHALL IS. INTNL.
+ROM00015420,Bucuresti Baneasa,Bucuresti Baneasa,BUCURESTI BANEASA
+RPM00098223,Laoag,Laoag,LAOAG
+RPM00098233,Tuguegarao,Tuguegarao,TUGUEGARAO
+RPM00098328,Baguio,Baguio,BAGUIO
+RPM00098433,Tanay,Tanay,TANAY
+RPM00098444,Legaspi,Legaspi,LEGASPI
+RPM00098558,Guiuan,Guiuan,GUIUAN
+RPM00098618,Puerto Princesa,Puerto Princesa,PUERTO PRINCESA
+RPM00098646,Mactan,Mactan,MACTAN
+RPM00098747,Lumbia Airport (Lumbia Airport),Lumbia Airport,LUMBIA AIRPORT
+RPM00098753,Davao Airport (Davao Airport),Davao Airport,DAVAO AIRPORT
+RQM00078526,Pr San Juan,Pr San Juan,PR SAN JUAN/INT.; PUERTO RICO
+RSM00020046,Polargmo Im. E.T. Krenkelja,Polargmo Im. E.T. Krenkelja,POLARGMO IM. E.T. KRENKELJA
+RSM00020292,Gmo Im.E.K. Fedorova,Gmo Im.E.K. Fedorova,GMO IM.E.K. FEDOROVA
+RSM00020674,Ostrov Dikson,Ostrov Dikson,OSTROV DIKSON
+RSM00020744,Malye Karmakuly (20744-0),Malye Karmakuly (20744-0),MALYE KARMAKULY (20744-0)
+RSM00021824,Tiksi,Tiksi,TIKSI
+RSM00021946,Chokurdah,Chokurdah,CHOKURDAH
+RSM00022008,Murmansk (Rs),Murmansk (Rs),MURMANSK (RS)
+RSM00022217,Kandalaksha,Kandalaksha,KANDALAKSHA
+RSM00022271,Shojna,Shojna,SHOJNA
+RSM00022522,Kem,Kem,KEM
+RSM00022543,Arhangel'Sk (22543-0),Arhangel'Sk (22543-0),ARHANGEL'SK (22543-0)
+RSM00022820,Petrozavodsk,Petrozavodsk,PETROZAVODSK
+RSM00022845,Kargopol,Kargopol,KARGOPOL
+RSM00023078,Noril'Sk,Noril'Sk,NORIL'SK
+RSM00023205,Nar'Jan-Mar,Nar'Jan-Mar,NAR'JAN-MAR
+RSM00023330,Salehard,Salehard,SALEHARD
+RSM00023415,Pechora (23415-0),Pechora (23415-0),PECHORA (23415-0)
+RSM00023472,Turuhansk,Turuhansk,TURUHANSK
+RSM00023802,Syktyvkar (23802-0),Syktyvkar (23802-0),SYKTYVKAR (23802-0)
+RSM00023884,Bor,Bor,BOR
+RSM00023921,Ivdel,Ivdel,IVDEL
+RSM00023933,Hanty-Mansijsk,Hanty-Mansijsk,HANTY-MANSIJSK
+RSM00023955,Aleksandrovskoe,Aleksandrovskoe,ALEKSANDROVSKOE
+RSM00024122,Olenek (Rs),Olenek (Rs),OLENEK (RS)
+RSM00024266,Verhojansk,Verhojansk,VERHOJANSK
+RSM00024343,Zhigansk,Zhigansk,ZHIGANSK
+RSM00024507,Tura (24507-0),Tura (24507-0),TURA (24507-0)
+RSM00024641,Viljujsk,Viljujsk,VILJUJSK
+RSM00024688,Ojmjakon,Ojmjakon,OJMJAKON
+RSM00024726,Mirnvy,Mirnvy,MIRNVY
+RSM00024908,Vanavara,Vanavara,VANAVARA
+RSM00024947,Olekminsk (Rs),Olekminsk (Rs),OLEKMINSK (RS)
+RSM00024959,Jakutsk,Jakutsk,JAKUTSK
+RSM00025123,Cherskij,Cherskij,CHERSKIJ
+RSM00025403,Zyryanka (Rs),Zyryanka (Rs),ZYRYANKA (RS)
+RSM00025428,Omolon,Omolon,OMOLON
+RSM00025703,Sejmchan,Sejmchan,SEJMCHAN
+RSM00025913,Magadan,Magadan,MAGADAN
+RSM00026075,St.Petersburg (Voejkovo) (R,St.Petersburg (Voejkovo) (R,ST.PETERSBURG (VOEJKOVO) (R
+RSM00026298,Bologoe,Bologoe,BOLOGOE
+RSM00026477,Velikie Luki,Velikie Luki,VELIKIE LUKI
+RSM00026702,Kaliningrad,Kaliningrad,KALININGRAD
+RSM00026708,Kaliningrad (Nizov'E),Kaliningrad (Nizov'E),KALININGRAD (NIZOV'E)
+RSM00026781,Smolensk,Smolensk,SMOLENSK
+RSM00027038,Vologda (27038-0),Vologda (27038-0),VOLOGDA (27038-0)
+RSM00027199,Kirov (27199-0),Kirov (27199-0),KIROV (27199-0)
+RSM00027594,Kazan'(Vyazovye),Kazan'(Vyazovye),KAZAN'(VYAZOVYE)
+RSM00027707,Suhinichi,Suhinichi,SUHINICHI
+RSM00027713,Moskva (Dolgoprudnyj) (Rs),Moskva (Dolgoprudnyj) (Rs),MOSKVA (DOLGOPRUDNYJ) (RS)
+RSM00027730,Ryazan,Ryazan,RYAZAN
+RSM00027962,Penza,Penza,PENZA
+RSM00027995,Samara (Bezenchuk),Samara (Bezenchuk),SAMARA (BEZENCHUK)
+RSM00028225,Perm' (28225-1),Perm' (28225-1),PERM' (28225-1)
+RSM00028275,Tobol'Sk,Tobol'Sk,TOBOL'SK
+RSM00028445,Ekaterinburg (Verhnee Dubro,Ekaterinburg (Verhnee Dubro,EKATERINBURG (VERHNEE DUBRO
+RSM00028661,Kurgan,Kurgan,KURGAN
+RSM00028695,Omsk (Rs),Omsk (Rs),OMSK (RS)
+RSM00028722,Ufa-Dioma,Ufa-Dioma,UFA-DIOMA
+RSM00029231,Kolpasevo,Kolpasevo,KOLPASEVO
+RSM00029263,Enisejsk,Enisejsk,ENISEJSK
+RSM00029282,Bogucany,Bogucany,BOGUCANY
+RSM00029572,Emel' Yanovo,Emel' Yanovo,EMEL' YANOVO
+RSM00029612,Barabinsk,Barabinsk,BARABINSK
+RSM00029634,Novosibirsk,Novosibirsk,NOVOSIBIRSK
+RSM00029698,Nizhneudinsk,Nizhneudinsk,NIZHNEUDINSK
+RSM00029839,Barnaul (29839-0),Barnaul (29839-0),BARNAUL (29839-0)
+RSM00029862,Abakan,Abakan,ABAKAN
+RSM00030054,Vitim,Vitim,VITIM
+RSM00030230,Kirensk,Kirensk,KIRENSK
+RSM00030309,Bratsk,Bratsk,BRATSK
+RSM00030372,Chara,Chara,CHARA
+RSM00030557,Bagdarin (Rs),Bagdarin (Rs),BAGDARIN (RS)
+RSM00030635,Ust'-Barguzin,Ust'-Barguzin,UST'-BARGUZIN
+RSM00030673,Mogocha,Mogocha,MOGOCHA
+RSM00030715,Angarsk,Angarsk,ANGARSK
+RSM00030758,Chita,Chita,CHITA
+RSM00030935,Krasnyj Chikoj,Krasnyj Chikoj,KRASNYJ CHIKOJ
+RSM00030965,Borzya,Borzya,BORZYA
+RSM00031004,Aldan,Aldan,ALDAN
+RSM00031088,Ohotsk,Ohotsk,OHOTSK
+RSM00031168,Ayan,Ayan,AYAN
+RSM00031300,Zeja,Zeja,ZEJA
+RSM00031369,Nikolaevsk-Na-Amure,Nikolaevsk-Na-Amure,NIKOLAEVSK-NA-AMURE
+RSM00031510,Blagovescetnsk,Blagovescetnsk,BLAGOVESCETNSK
+RSM00031538,Sutur,Sutur,SUTUR
+RSM00031736,Habarovsk (31736-0),Habarovsk (31736-0),HABAROVSK (31736-0)
+RSM00031770,Sovetskaya Gavan,Sovetskaya Gavan,SOVETSKAYA GAVAN
+RSM00031873,Dal'Nerechensk,Dal'Nerechensk,DAL'NERECHENSK
+RSM00031977,Vladivostok (Sad Gorod),Vladivostok (Sad Gorod),VLADIVOSTOK (SAD GOROD)
+RSM00032061,Aleksandrovsk-Sahalinskij,Aleksandrovsk-Sahalinskij,ALEKSANDROVSK-SAHALINSKIJ
+RSM00032098,Poronajsk,Poronajsk,PORONAJSK
+RSM00032150,Juzhno-Sahalinsk,Juzhno-Sahalinsk,JUZHNO-SAHALINSK
+RSM00032215,Severo-Kuril'Sk,Severo-Kuril'Sk,SEVERO-KURIL'SK
+RSM00032389,Kljuchi,Kljuchi,KLJUCHI
+RSM00032477,Sobolevo,Sobolevo,SOBOLEVO
+RSM00032540,Petropavlovsk-Kamchatskij,Petropavlovsk-Kamchatskij,PETROPAVLOVSK-KAMCHATSKIJ
+RSM00032618,Ostrov Beringa,Ostrov Beringa,OSTROV BERINGA
+RSM00034009,Kursk,Kursk,KURSK
+RSM00034122,Voronez (34122-0),Voronez (34122-0),VORONEZ (34122-0)
+RSM00034172,Saratov (34170-1),Saratov (34170-1),SARATOV (34170-1)
+RSM00034247,Kalach,Kalach,KALACH
+RSM00034467,Volgograd (34467-1),Volgograd (34467-1),VOLGOGRAD (34467-1)
+RSM00034731,Rostov-Na-Donu (34731-1),Rostov-Na-Donu (34731-1),ROSTOV-NA-DONU (34731-1)
+RSM00034858,Divnoe,Divnoe,DIVNOE
+RSM00034882,Astrahan' (34882-1),Astrahan' (34882-1),ASTRAHAN' (34882-1)
+RSM00035121,Orenburg,Orenburg,ORENBURG
+RSM00036096,Kyzyl,Kyzyl,KYZYL
+RSM00037011,Tuapse (37011-1) (Tuapse (37011-1)),Tuapse (37011-1),TUAPSE (37011-1)
+RSM00037055,Mineral'Nye Vody (37055-1),Mineral'Nye Vody (37055-1),MINERAL'NYE VODY (37055-1)
+SAM00040373,Al Qaisumah Airport (Al Qaisumah Airport),Al Qaisumah Airport,AL QAISUMAH AIRPORT
+SAM00040375,Tabuk Airport (Tabuk Airport),Tabuk Airport,TABUK AIRPORT
+SAM00040394,Hail Airport (Hail Airport),Hail Airport,HAIL AIRPORT
+SAM00040417,King Fahd Airport (King Fahd Airport),King Fahd Airport,KING FAHD AIRPORT
+SAM00040430,Al Madina Airport (Al Madina Airport),Al Madina Airport,AL MADINA AIRPORT
+SAM00041024,King Abdulaziz Airport (King Abdulaziz Airport),King Abdulaziz Airport,KING ABDULAZIZ AIRPORT
+SAM00041112,Abha,Abha,ABHA
+SEM00063985,Seychelles Inter. Airport (Seychelles Inter. Airport),Seychelles Inter. Airport,SEYCHELLES INTER. AIRPORT
+SFM00068263,Pretoria (Irene),Pretoria (Irene),PRETORIA (IRENE)
+SFM00068424,Upington,Upington,UPINGTON
+SFM00068442,Bloemfontein Airport (Bloemfontein Airport),Bloemfontein Airport,BLOEMFONTEIN AIRPORT
+SFM00068512,Springbok,Springbok,SPRINGBOK
+SFM00068538,De Aar,De Aar,DE AAR
+SFM00068592,King Shaka Int'L Airport (King Shaka Int'L Airport),King Shaka Int'L Airport,KING SHAKA INT'L AIRPORT
+SFM00068816,Cape Town Intnl. Airport (Cape Town Intnl. Airport),Cape Town Intnl. Airport,CAPE TOWN INTNL. AIRPORT
+SFM00068842,Port Elizabeth,Port Elizabeth,PORT ELIZABETH
+SFM00068994,Marion Island,Marion Island,MARION ISLAND
+SGM00061660,Dakar-Diass-Aibd,Dakar-Diass-Aibd,DAKAR-DIASS-AIBD
+SGM00061687,Tambacounda,Tambacounda,TAMBACOUNDA
+SHM00061901,St. Helena Is.,St. Helena Is.,ST. HELENA IS.
+SHM00068906,Gough Island,Gough Island,GOUGH ISLAND
+SIM00014015,Ljubljana,Ljubljana,LJUBLJANA/BEZIGRAD
+SNM00048698,Singapore (Singapore/Changi Airport),Singapore,SINGAPORE/CHANGI AIRPORT
+SPM00008001,La Coruna,La Coruna,LA CORUNA
+SPM00008023,Santander,Santander,SANTANDER
+SPM00008190,Barcelona Servei,Barcelona Servei,BARCELONA SERVEI
+SPM00008221,Madrid,Madrid,MADRID/BARAJAS
+SPM00008302,Mallorca-Son Bonet,Mallorca-Son Bonet,MALLORCA-SON BONET
+SPM00008383,Huelva,Huelva,HUELVA
+SPM00008430,Murcia,Murcia,MURCIA
+SPM00060018,Tenerife-Guimar,Tenerife-Guimar,TENERIFE-GUIMAR
+SVM00001004,Ny-Alesund Ii,Ny-Alesund Ii,NY-ALESUND II
+SVM00001028,Bjornoya,Bjornoya,BJORNOYA
+SWM00002185,Lulea-Kallax (2185-0),Lulea-Kallax (2185-0),LULEA-KALLAX (2185-0)
+SWM00002365,Sundsvall Harnosand (2365-0,Sundsvall Harnosand (2365-0,SUNDSVALL HARNOSAND (2365-0
+SWM00002527,Goteborg,Goteborg,GOTEBORG/LANDVETTER
+SWM00002591,Visby Aerologiska Station,Visby Aerologiska Station,VISBY AEROLOGISKA STATION
+SZM00006610,Payerne (6610-0),Payerne (6610-0),PAYERNE (6610-0)
+TDM00078970,Piarco Int. Airport; Trinid (Piarco Int. Airport; Trinid),Piarco Int. Airport; Trinid,PIARCO INT. AIRPORT; TRINID
+THM00048327,Chiang Mai,Chiang Mai,CHIANG MAI
+THM00048378,Phitsanulok,Phitsanulok,PHITSANULOK
+THM00048381,Khon Kaen,Khon Kaen,KHON KAEN
+THM00048407,Ubon Ratchathani,Ubon Ratchathani,UBON RATCHATHANI
+THM00048431,Nakhon Ratchasima,Nakhon Ratchasima,NAKHON RATCHASIMA
+THM00048453,Bangna Agromet,Bangna Agromet,BANGNA AGROMET
+THM00048477,Sattahip,Sattahip,SATTAHIP
+THM00048480,Chantha Buri,Chantha Buri,CHANTHA BURI
+THM00048500,Prachuap Khirikhan (Prachuap Khirikhan),Prachuap Khirikhan,PRACHUAP KHIRIKHAN
+THM00048551,Surat Thani,Surat Thani,SURAT THANI
+THM00048565,Phuket Airport (Phuket Airport),Phuket Airport,PHUKET AIRPORT
+THM00048568,Songkhla,Songkhla,SONGKHLA
+TOM00065387,Lome,Lome,LOME
+TSM00060715,Tunis-Carthage,Tunis-Carthage,TUNIS-CARTHAGE
+TSM00060760,Tozeur,Tozeur,TOZEUR
+TUM00017030,Samsun,Samsun,SAMSUN
+TUM00017064,Istanbul Bolge (Kartal),Istanbul Bolge (Kartal),ISTANBUL BOLGE (KARTAL)
+TUM00017095,Erzurum Bolge,Erzurum Bolge,ERZURUM BOLGE
+,,,
+TUM00017196,Kayseri Balge,Kayseri Balge,KAYSERI BALGE
+TUM00017220,Izmir,Izmir,IZMIR/GUZELYALI
+TUM00017240,Isparta,Isparta,ISPARTA
+TUM00017281,Diyarbakir-Bolge,Diyarbakir-Bolge,DIYARBAKIR-BOLGE
+TUM00017351,Adana,Adana,ADANA/BOLGE
+TVM00091643,Funafuti (91643-0),Funafuti (91643-0),FUNAFUTI (91643-0)
+TWM00046757,Hsinchu City,Hsinchu City,HSINCHU CITY
+TWM00058968,Taibei,Taibei,TAIBEI
+TWM00058974,Pengjia Yu,Pengjia Yu,PENGJIA YU
+TWM00059362,Hualian,Hualian,HUALIAN
+TZM00063894,Dar Es Salaam Int,Dar Es Salaam Int,DAR ES SALAAM INT
+UCM00078988,Hato Airport; Curacao (Hato Airport; Curacao),Hato Airport; Curacao,HATO AIRPORT; CURACAO
+UKM00003005,Lerwick,Lerwick,LERWICK
+UKM00003023,South Uist Range,South Uist Range,SOUTH UIST RANGE
+UKM00003238,Albemarle,Albemarle,ALBEMARLE
+UKM00003354,Nottingham; Watnall,Nottingham; Watnall,NOTTINGHAM; WATNALL
+UKM00003502,Aberporth,Aberporth,ABERPORTH
+UKM00003559,Cardington,Cardington,CARDINGTON
+UKM00003693,Shoeburyness; Landwick,Shoeburyness; Landwick,SHOEBURYNESS; LANDWICK
+UKM00003743,Larkhill,Larkhill,LARKHILL
+UKM00003808,Camborne,Camborne,CAMBORNE
+UKM00003882,Herstmonceux,Herstmonceux,HERSTMONCEUX
+UKM00003918,Castor Bay,Castor Bay,CASTOR BAY
+UPM00033317,Shepetivka,Shepetivka,SHEPETIVKA
+UPM00033345,Kyiv,Kyiv,KYIV
+UPM00033393,Lviv,Lviv,LVIV
+UPM00033791,Kryvyi Rih,Kryvyi Rih,KRYVYI RIH
+UPM00033837,Odesa,Odesa,ODESA
+UPM00034300,Kharkiv,Kharkiv,KHARKIV
+USM00070026,Ak Barrow,Ak Barrow,AK BARROW/W. POST W. ROGERS
+USM00070133,Ak Kotzebue; Ralph Wien,Ak Kotzebue; Ralph Wien,AK KOTZEBUE; RALPH WIEN
+USM00070200,Ak Nome; Ak,Ak Nome; Ak,AK NOME; AK
+USM00070219,Ak Bethel (Ak Bethel/Bethel Airport; Ak),Ak Bethel,AK BETHEL/BETHEL AIRPORT; AK
+USM00070231,Ak Mcgrath; Ak,Ak Mcgrath; Ak,AK MCGRATH; AK
+USM00070261,Ak Fairbanks (Ak Fairbanks/Int.; Ak),Ak Fairbanks,AK FAIRBANKS/INT.; AK
+USM00070273,Ak Anchorage,Ak Anchorage,AK ANCHORAGE/INT.; AK
+USM00070308,Ak St. Paul Islands; Ak,Ak St. Paul Islands; Ak,AK ST. PAUL ISLANDS; AK
+USM00070316,Ak Cold Bay; Ak,Ak Cold Bay; Ak,AK COLD BAY; AK
+USM00070326,Ak King Salmon; Ak,Ak King Salmon; Ak,AK KING SALMON; AK
+USM00070350,Ak Kodiak; Ak,Ak Kodiak; Ak,AK KODIAK; AK
+USM00070361,Ak Yakutat; Ak,Ak Yakutat; Ak,AK YAKUTAT; AK
+USM00070398,Ak Annette Island; Ak,Ak Annette Island; Ak,AK ANNETTE ISLAND; AK
+USM00070414,Ak Shemya Afb (Ak Shemya Afb),Ak Shemya Afb,AK SHEMYA AFB
+USM00072201,Fl Key West,Fl Key West,FL KEY WEST/INT.; FL
+USM00072202,Fl Miami; Fl (72202-0),Fl Miami; Fl (72202-0),FL MIAMI; FL (72202-0)
+USM00072206,Fl Jacksonville,Fl Jacksonville,FL JACKSONVILLE/INTNL.; FL.
+USM00072208,Sc Charleston,Sc Charleston,SC CHARLESTON/MUN.; SC.
+USM00072210,Fl Tampa Bay Area; Fl.,Fl Tampa Bay Area; Fl.,FL TAMPA BAY AREA; FL.
+USM00072214,Fl Tallahassee,Fl Tallahassee,FL TALLAHASSEE/MUN.; FL.
+USM00072215,Ga Peachtree City; Ga.,Ga Peachtree City; Ga.,GA PEACHTREE CITY; GA.
+USM00072221,Fl Valparaiso (Fl Valparaiso/Eglin Afb; Fl.),Fl Valparaiso,FL VALPARAISO/EGLIN AFB; FL.
+USM00072230,Al Birmingham; Al,Al Birmingham; Al,AL BIRMINGHAM; AL
+USM00072233,La Slidell,La Slidell,LA SLIDELL/MUN. LA
+USM00072235,Ms Jackson,Ms Jackson,MS JACKSON/ALLEN C. THOMPSON F
+USM00072240,La Lake Charles,La Lake Charles,LA LAKE CHARLES/MUN.; LA.
+USM00072248,La Shreveport,La Shreveport,LA SHREVEPORT/REG.; LA.
+USM00072249,Tx Fort Worth; Tx.,Tx Fort Worth; Tx.,TX FORT WORTH; TX.
+USM00072250,Tx Brownsville,Tx Brownsville,TX BROWNSVILLE/INT.; TX
+USM00072251,Tx Corpus Christi,Tx Corpus Christi,TX CORPUS CHRISTI/INT.; TX.
+USM00072261,Tx Del Rio,Tx Del Rio,TX DEL RIO/INT.; TX.
+USM00072265,Tx Midland (Tx Midland/Midland Reg. Airter),Tx Midland,TX MIDLAND/MIDLAND REG. AIRTER
+USM00072274,Az Tucson; Az,Az Tucson; Az,AZ TUCSON; AZ
+USM00072293,Ca San Diego,Ca San Diego,CA SAN DIEGO/MIRAMAR; NAS; CA.
+USM00072305,Nc Newport; Nc.,Nc Newport; Nc.,NC NEWPORT; NC.
+USM00072317,Nc Greensboro,Nc Greensboro,NC GREENSBORO/G.-HIGH PT.; NC.
+USM00072318,Va Blacksburg; Va.,Va Blacksburg; Va.,VA BLACKSBURG; VA.
+USM00072327,Tn Nashville,Tn Nashville,TN NASHVILLE/METROPOLITAN; TN.
+USM00072340,Ar Little Rock,Ar Little Rock,AR LITTLE ROCK/ADAMS FLD; AR.
+USM00072357,Ok Norman,Ok Norman,OK NORMAN/MAX WESTHEIMER A; OK
+USM00072363,Tx Amarillo (Tx Amarillo/Intl.; Tx.),Tx Amarillo,TX AMARILLO/INTL.; TX.
+USM00072364,Tx Santa Teresa; Nm.,Tx Santa Teresa; Nm.,TX SANTA TERESA; NM.
+USM00072365,Nm Albuquerque,Nm Albuquerque,NM ALBUQUERQUE/INT.; NM.
+USM00072376,Az Flagstaff; Az,Az Flagstaff; Az,AZ FLAGSTAFF; AZ
+USM00072381,Ca Edwards Afb; Ca. (Ca Edwards Afb; Ca.),Ca Edwards Afb; Ca.,CA EDWARDS AFB; CA.
+USM00072388,Nv Las Vegas,Nv Las Vegas,NV LAS VEGAS
+USM00072391,Ca Point Mugu,Ca Point Mugu,CA POINT MUGU/NAS
+USM00072393,Ca Vandenberg Afb; Ca. (72393- (Ca Vandenberg Afb; Ca. (72393-),Ca Vandenberg Afb; Ca. (72393-,CA VANDENBERG AFB; CA. (72393-
+USM00072402,Va Wallops Island; Va.,Va Wallops Island; Va.,VA WALLOPS ISLAND; VA.
+USM00072403,Va Sterling; Va.,Va Sterling; Va.,VA STERLING; VA.
+USM00072426,Oh Wilmington; Oh.,Oh Wilmington; Oh.,OH WILMINGTON; OH.
+USM00072440,Mo Springfield,Mo Springfield,MO SPRINGFIELD/MUN.; MO.
+USM00072451,Ks Dodge City,Ks Dodge City,KS DODGE CITY/MUN.; KS.
+USM00072456,Ks Topeka,Ks Topeka,KS TOPEKA/MUN.; KS.
+USM00072469,Co Denver (Co Denver/Stapleton Int.; Co.),Co Denver,CO DENVER/STAPLETON INT.; CO.
+USM00072476,Co Grand Junction,Co Grand Junction,CO GRAND JUNCTION/WALKER FIELD
+USM00072489,Nv Reno; Nv.,Nv Reno; Nv.,NV RENO; NV.
+USM00072493,Ca Oakland,Ca Oakland,CA OAKLAND/METROP. OAKLAND INT
+USM00072501,Ny Upton; Ny.,Ny Upton; Ny.,NY UPTON; NY.
+USM00072518,Ny Albany County Airport; Ny. (Ny Albany County Airport; Ny.),Ny Albany County Airport; Ny.,NY ALBANY COUNTY AIRPORT; NY.
+USM00072520,Pa Pittsburgh; Pa.,Pa Pittsburgh; Pa.,PA PITTSBURGH; PA.
+USM00072528,Ny Buffalo,Ny Buffalo,NY BUFFALO/GREATER BUFFALO INT
+USM00072558,Ne Valley; Ne.,Ne Valley; Ne.,NE VALLEY; NE.
+USM00072562,Ne North Platte,Ne North Platte,NE NORTH PLATTE/LEE BIRD; NE.
+USM00072572,Ut Salt Lake City,Ut Salt Lake City,UT SALT LAKE CITY/INTNL UT.
+USM00072582,Nv Elko; Nv.,Nv Elko; Nv.,NV ELKO; NV.
+USM00072597,Or Medford,Or Medford,OR MEDFORD/MEDFORD-JACKSON COU
+USM00072632,Mi White Lake; Mi.,Mi White Lake; Mi.,MI WHITE LAKE; MI.
+USM00072634,Mi Gaylord; Mi.,Mi Gaylord; Mi.,MI GAYLORD; MI.
+USM00072645,Wi Green Bay,Wi Green Bay,WI GREEN BAY/A.-STRAUBEL; WI.
+USM00072649,Mn Chanhassen; Mn.,Mn Chanhassen; Mn.,MN CHANHASSEN; MN.
+USM00072659,Sd Aberdeen,Sd Aberdeen,SD ABERDEEN/REG.; SD.
+USM00072662,Sd Rapid City Wfo; Sd. (Sd Rapid City Wfo; Sd.),Sd Rapid City Wfo; Sd.,SD RAPID CITY WFO; SD.
+USM00072672,Wy Riverton; Wy.,Wy Riverton; Wy.,WY RIVERTON; WY.
+USM00072681,Id Boise,Id Boise,ID BOISE/MUN.; ID.
+USM00072694,Or Salem,Or Salem,OR SALEM/MCNARY; OR.
+USM00072712,Me Caribou,Me Caribou,ME CARIBOU/MUN.; ME.
+USM00072747,Mn Int.Falls,Mn Int.Falls,MN INT.FALLS/FALLS INT. MN.
+USM00072764,Nd Bismarck,Nd Bismarck,ND BISMARCK/MUN.; ND.
+USM00072768,Mt Glasgow,Mt Glasgow,MT GLASGOW/INT.; MT.
+USM00072776,Mt Great Falls; Mt.,Mt Great Falls; Mt.,MT GREAT FALLS; MT.
+USM00072786,Wa Spokane; Wa.,Wa Spokane; Wa.,WA SPOKANE; WA.
+USM00072797,Wa Quillayute; Wa.,Wa Quillayute; Wa.,WA QUILLAYUTE; WA.
+USM00074003,Ut Dugway Prvgr,Ut Dugway Prvgr,UT DUGWAY PRVGR
+USM00074004,Az Yuma Proving Grounds Az,Az Yuma Proving Grounds Az,AZ YUMA PROVING GROUNDS AZ
+USM00074005,Az Yuma Prvgr,Az Yuma Prvgr,AZ YUMA PRVGR
+USM00074389,Me Gray; Me.,Me Gray; Me.,ME GRAY; ME.
+USM00074455,Ia Quad City; Ia.,Ia Quad City; Ia.,IA QUAD CITY; IA.
+USM00074494,Ma Chatham; Ma.,Ma Chatham; Ma.,MA CHATHAM; MA.
+USM00074560,Il Lincoln; Il.,Il Lincoln; Il.,IL LINCOLN; IL.
+USM00074612,Ca China Lake; Naf; Ca.,Ca China Lake; Naf; Ca.,CA CHINA LAKE; NAF; CA.
+USM00074626,Az Wfo Phoenix;,Az Wfo Phoenix;,AZ WFO PHOENIX;
+USM00074646,Ok Lamont,Ok Lamont,OK LAMONT
+USM00074794,Fl Cape Kennedy (Fl Cape Kennedy),Fl Cape Kennedy,FL CAPE KENNEDY
+USM00091165,Hi Lihue; Kauai; Hawaii,Hi Lihue; Kauai; Hawaii,HI LIHUE; KAUAI; HAWAII
+USM00091285,Hi Hilo Hi; Hawaii,Hi Hilo Hi; Hawaii,HI HILO HI; HAWAII
+UVM00043243,Kavali,Kavali,KAVALI
+UVM00065503,Ouagadougou,Ouagadougou,OUAGADOUGOU
+UVM00065510,Bobo-Dioulasso,Bobo-Dioulasso,BOBO-DIOULASSO
+VMM00048820,Ha Noi,Ha Noi,HA NOI
+VMM00048839,Bach Long Vi (Radiosonde),Bach Long Vi (Radiosonde),BACH LONG VI (RADIOSONDE)
+VMM00048845,Vinh,Vinh,VINH
+VMM00048855,Da Nang,Da Nang,DA NANG
+VMM00048870,Quy Nhon,Quy Nhon,QUY NHON
+VMM00048877,Nha Trang,Nha Trang,NHA TRANG
+VMM00048887,Phan Thiet,Phan Thiet,PHAN THIET
+VMM00048900,Tan Son Hoa,Tan Son Hoa,TAN SON HOA
+VMM00048914,Ca Mau,Ca Mau,CA MAU
+WAM00068110,Windhoek,Windhoek,WINDHOEK
+WIM00060096,Dakhla,Dakhla,DAKHLA
+ZZV0000DBLK,Polarstern,Polarstern,POLARSTERN
+ZZV0000JGQH,Ryofu Maru,Ryofu Maru,RYOFU MARU
+ZZV0000JNSR,Mirai,Mirai,MIRAI
+ZZV0000JPBN,Keifu Maru,Keifu Maru,KEIFU MARU
+ZZV0000SMLQ,Oden,Oden,ODEN
+ZZV0000WTEC,Ronald H. Brown (Aws),Ronald H. Brown (Aws),RONALD H. BROWN (AWS)
+ZZV00ASDE09,Asde09,Asde09,ASDE09
