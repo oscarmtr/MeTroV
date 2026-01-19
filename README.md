@@ -32,7 +32,7 @@ The app allows users to search stations by city or airport name, select date and
 MeTroV/
 │
 ├── data/
-│   └── igra_stations_active.csv      # Station catalog (auto-generated)
+│   └── igra_stations_active.csv   # Station catalog (auto-generated)
 │
 ├── scripts/
 │   └── build_igra_station_list.py # Script to generate station catalog
