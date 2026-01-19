@@ -129,6 +129,9 @@ if st.button("Generate Sounding"):
             lfc_p, _ = mpcalc.lfc(p, T, Td, parcel_prof, which='bottom')
             el_p,  _ = mpcalc.el (p, T, Td, parcel_prof, which='bottom')
             cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
+            # Ensure CAPE is not negative
+            if cape.magnitude < 0:
+                cape = 0 * cape.units
             
             # Formulate source URL for storage
             source_url = ""
@@ -190,7 +193,7 @@ if 'sounding_data' in st.session_state:
     tab_static, tab_interactive = st.tabs(["🖼️ Static (MetPy)", "🔍 Interactive (Plotly)"])
     
     with tab_static:
-        fig = plt.figure(figsize=(9, 12), dpi=1200)
+        fig = plt.figure(figsize=(9, 12), dpi=900)
         skew = SkewT(fig, rotation=45)
         
         # Add title: Place, Station Code, Date
