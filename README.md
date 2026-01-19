@@ -56,22 +56,22 @@ MeTroV/
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/oscarmtr/MeTroV.git
-cd MeTroV
-```
+   ```bash
+   git clone https://github.com/oscarmtr/MeTroV.git
+   cd MeTroV
+   ```
 
-1. Install dependencies:
+2. Install dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-1. Launch the app:
+3. Launch the app:
 
-```bash
-streamlit run src/app.py
-```
+   ```bash
+   streamlit run src/app.py
+   ```
 
 ---
 
