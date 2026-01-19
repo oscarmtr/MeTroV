@@ -99,10 +99,8 @@ The generated content, visualizations, and website presentation are licensed und
 ## 📚 References
 
 - Durre, I., Yin, X., Vose, R. S., Applequist, S., Arnfield, J., Korzeniewski, B., & Hundermark, B. (2016). *Integrated Global Radiosonde Archive (IGRA), Version 2*. NOAA National Centers for Environmental Information. <https://doi.org/10.7289/V5X63K0Q>
-- Harris, C. R., et al. (2020). Array programming with NumPy. *Nature*, *585*(7825), 357–362. <https://doi.org/10.1038/s41586-020-2649-2>
 - Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. *Computing in Science & Engineering*, *9*(3), 90–95.
 - May, R. M., Goebbert, K. H., Thielen, J. E., Leeman, J. R., Camron, M. D., Bruick, Z., Bruning, E. C., Manser, R. P., Arms, S. C., & Marsh, P. T. (2022). MetPy: A Meteorological Python Library for Data Analysis and Visualization. *Bulletin of the American Meteorological Society*, *103*(10), E2273–E2284. <https://doi.org/10.1175/BAMS-D-21-0125.1>
-- McKinney, W. (2010). Data structures for statistical computing in python. In S. van der Walt & J. Millman (Eds.), *Proceedings of the 9th Python in Science Conference* (pp. 56–61).
 - Plotly Technologies Inc. (2024). *Plotly.PY* [Computer software]. Retrieved from <https://plotly.com/python/>
 - Streamlit Inc. (n.d.). *Streamlit* [Computer software]. Retrieved from <https://streamlit.io>
 - The pandas development team. (2020). *pandas-dev/pandas: Pandas* [Computer software]. Zenodo. <https://doi.org/10.5281/zenodo.3509134>
