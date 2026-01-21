@@ -190,7 +190,7 @@ if 'sounding_data' in st.session_state:
 
 
     # ── Plot Skew-T ────────────────────────────────
-    tab_static, tab_interactive = st.tabs(["🖼️ Static (MetPy)", "🔍 Interactive (Plotly)"])
+    tab_static, tab_interactive, tab_interpretation = st.tabs(["🖼️ Static (MetPy)", "🔍 Interactive (Plotly)", "❓ Interpretation"])
     
     with tab_static:
         fig = plt.figure(figsize=(9, 12), dpi=900)
@@ -286,6 +286,55 @@ if 'sounding_data' in st.session_state:
         st.info("💡 Experimental interactive chart (manually transformed axes to simulate Skew-T) should not be used for quantitative interpretation.")
         fig_plotly = create_skewt_plotly(p, T, Td, station_name, f"{yr}-{mn}-{dy} {hr}Z")
         st.plotly_chart(fig_plotly, width="stretch")
+
+    with tab_interpretation:
+        st.markdown("""
+       ### 1. LCL: Lifting Condensation Level
+
+        *   It is the height at which the air, upon rising and cooling, becomes saturated (reaches 100% humidity) and water vapor begins to condense into droplets.
+        *   It marks the **cloud base** (usually cumulus).
+        *   **What happens here?** Below this level, the air is "dry" (unsaturated); right at this level, the cloud forms (Yau & Rogers, 1996; Lohmann et al., 2016).
+
+        ### 2. CIN: Convective Inhibition
+
+        *   It is the "negative energy" or barrier that prevents air from rising on its own. It is usually caused by a thermal inversion (warm air over cold air) acting as a lid.
+        *   It represents the amount of external energy we need to apply (push) to the air parcel so it can cross that stable zone and reach the point where it can rise on its own (Lohmann et al., 2016; Houze, 2014).
+        *   **Thresholds** (Houze, 2014):
+            *   **Low:** < 15 J/kg (Easy to break, storms form early).
+            *   **High:** > 100 J/kg (It is very difficult for storms to form unless there is a very strong external forcing, like a cold front).
+
+        ### 3. LFC: Level of Free Convection
+
+        *   It is the exact height where the air parcel becomes warmer (and less dense) than the surrounding air.
+        *   It is the "release point". Once the parcel exceeds this height, it no longer needs to be pushed; it starts rising spontaneously like a hot air balloon due to its positive buoyancy (Iribarne & Godson, 1981).
+        *   If the CIN is not broken, the parcel never reaches the LFC and there is no storm.
+
+        ### 4. CAPE: Convective Available Potential Energy
+
+        *   It is the storm's "fuel". It measures the total amount of energy the parcel accumulates while rising freely (from the LFC upwards) being warmer than the environment.
+        *   The higher the CAPE, the faster the ascent velocity (updraft) and the more intense the storm can be (Lohmann et al., 2016; Houze, 2014).
+        *   **Thresholds** (Lohmann et al., 2016; Wallace & Hobbs, 2006):
+            *   **0 J/kg:** Stable (no convection).
+            *   **< 1000 J/kg:** Marginal instability (weak convection).
+            *   **1000 - 2500 J/kg:** Moderate instability (ordinary storms).
+            *   **2500 - 4000 J/kg:** Very unstable (severe storms, possible large hail or tornadoes).
+            *   **> 4000 J/kg:** Extremely unstable.
+
+        ### 5. EL: Equilibrium Level (or LNB)
+        *(Level of Neutral Buoyancy)*
+
+        *   It is the height where the air parcel stops being warmer than the environment. Its temperature equalizes with the ambient temperature and it loses its buoyancy.
+        *   It marks the **cloud top** (the anvil of the cumulonimbus). Although inertia may cause the cloud to rise a bit more ("overshooting top"), this is where the cloud stops growing actively (Lohmann et al., 2016; Houze, 2014).
+
+        ---
+
+        ### References
+        *   Lohmann, U., Lüönd, F., & Mahrt, F. (2016). *An introduction to clouds: From the microscale to climate*. Cambridge University Press.
+        *   Houze, R. A., Jr. (2014). *Cloud dynamics* (2nd ed., Vol. 104). Academic Press. https://doi.org/10.1016/C2010-0-66412-6
+        *   Wallace, J. M., & Hobbs, P. V. (2006). *Atmospheric science: An introductory survey* (2nd ed.). Academic Press.
+        *   Iribarne, J. V., & Godson, W. L. (1981). *Atmospheric thermodynamics*. D. Reidel Publishing Company.
+        *   Yau, M. K., & Rogers, R. R. (1996). *A short course in cloud physics* (3rd ed.). Pergamon.
+        """)
 
 st.markdown(
     f"""<hr style="margin-top: 3rem; margin-bottom: 1rem;">
