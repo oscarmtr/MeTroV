@@ -17,6 +17,7 @@ from metpy.plots import SkewT
 from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
 import metpy.calc as mpcalc
+from metpy.units import units
 
 st.set_page_config(page_title="MeTroV", layout="centered")
 
@@ -209,10 +210,39 @@ if 'sounding_data' in st.session_state:
         # Add patches for CAPE/CIN
         patch_cape = Patch(color='orangered', alpha=0.3, label=f"CAPE")
         patch_cin  = Patch(color='cornflowerblue', alpha=0.3, label=f"CIN")
-        
-        handles.extend([patch_cape, patch_cin])
+        # Add patches for CAPE/CIN
+        patch_cape = Patch(color='orangered', alpha=0.3, label=f"CAPE")
+        patch_cin  = Patch(color='cornflowerblue', alpha=0.3, label=f"CIN")
+        patch_clouds = Patch(color='gray', alpha=0.4, label='Cloud layer')
+
+        handles.extend([patch_cape, patch_cin, patch_clouds])
         
         skew.ax.legend(handles=handles, loc='upper left')
+
+        # ── Cloud Layer Indicator ───────────────────────
+        # Estimate clouds where Dewpoint Depression is low (< 3-5 C)
+        # Using 3 degC as a threshold for "cloudy"
+        try:
+            # Calculate depression.
+            # Convert to numpy magnitudes to avoid issues with fill_betweenx and transforms
+            t_vals = T.to(units.degC).magnitude
+            td_vals = Td.to(units.degC).magnitude
+            p_vals = p.to(units.hPa).magnitude
+            
+            dd = t_vals - td_vals
+            
+            # Threshold: 3 degrees C
+            # We treat NaNs as False (no cloud)
+            is_cloud = (dd < 3.0) & (~np.isnan(dd))
+            
+            # Plot vertical strip
+            # Using simple values for p and x limits
+            # x values in axes coordinates (0-1), y values in data coordinates (pressure)
+            skew.ax.fill_betweenx(p_vals, 0, 0.03, where=is_cloud, color='gray', alpha=0.4, transform=skew.ax.get_yaxis_transform())
+            
+        except Exception as e:
+            # Fallback
+            print(f"Could not plot cloud layers: {e}")
 
         # Plot Wind Barbs (Decimated)
         if not np.isnan(u).all() and not np.isnan(v).all():
@@ -325,6 +355,26 @@ if 'sounding_data' in st.session_state:
 
         *   It is the height where the air parcel stops being warmer than the environment. Its temperature equalizes with the ambient temperature and it loses its buoyancy.
         *   It marks the **cloud top** (the anvil of the cumulonimbus). Although inertia may cause the cloud to rise a bit more ("overshooting top"), this is where the cloud stops growing actively (Lohmann et al., 2016; Houze, 2014).
+
+        ### 6. Cloud Layers & Formation Analysis
+        
+        To identify potential cloud layers from a sounding, we analyze the proximity of Temperature ($T$) and Dewpoint ($T_d$) curves and parcel ascent paths.
+
+        #### A. Stratiform Clouds (Layered)
+        For stable cloud layers (Stratus, Altostratus), we look for high relative humidity:
+        *   **Proximity of curves:** Clouds likely exist where the $T$ and $T_d$ lines are very close or touching.
+        *   **Dewpoint Depression:** In practice, a depression ($T - T_d$) of **< 3°C to 5°C** usually indicates cloud formation.
+        *   **Thickness:** The cloud layer extends vertically as long as these lines remain close. A sudden separation indicates dry air and the cloud top/base.
+
+        #### B. Convective Clouds (Cumulus)
+        For clouds formed by rising air currents:
+        *   **Cloud Base:** Marked by the **LCL** (forced ascent) or **CCL** (Convective Condensation Level, from surface heating).
+        *   **Vertical Development:** Occurs along the saturated adiabat as long as the parcel is warmer than the environment ($T_{parcel} > T_{env}$), indicated by positive **CAPE**.
+        *   **Cloud Top:** Theoretically at the **EL/LNB**, where buoyancy becomes neutral. Strong updrafts may penetrate higher (overshooting tops).
+
+        #### C. Boundary Layer & Fog
+        *   **Stratocumulus:** Often found at the top of the planetary boundary layer, capped by a temperature inversion (T increases with height) and a sharp drying (lines separate).
+        *   **Fog:** Essentially a cloud on the ground. Indicated when $T \approx T_d$ at the surface pressure level.
 
         ---
 
