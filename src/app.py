@@ -10,16 +10,24 @@ from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
 import pathlib
-from stations import find_station
+from stations import find_station, update_station_list
 from sondeo import get_sounding
 from sondeo_plotly import create_skewt_plotly
-from metpy.plots import SkewT
+from metpy.plots import SkewT, Hodograph
 from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
 import metpy.calc as mpcalc
 from metpy.units import units
+from interpretation_text import get_interpretation_text
 
 st.set_page_config(page_title="MeTroV", layout="centered")
+
+# Update station list on session start
+if 'station_list_updated' not in st.session_state:
+     with st.spinner("Actualizando lista de estaciones (descargando de IGRA)..."):
+         update_station_list(force=True)
+         pass # Se actualiza la variable global dentro de stations.py
+     st.session_state['station_list_updated'] = True
 
 st.title("Meteorological Sounding Viewer")
 
@@ -88,6 +96,9 @@ else:
     # Use selected hour
     hours_to_try = [f"{datetime.strptime(hora_str, '%H:%M').hour:02}"]
 
+# ── Display Mode Selection ──────────────────────────────
+display_mode = st.radio("Display Mode", ["Simple", "Advanced"], index=1, horizontal=True)
+
 # ── Generate sounding button ──────────────────────────────
 if st.button("Generate Sounding"):
     try:
@@ -128,11 +139,95 @@ if st.button("Generate Sounding"):
             lcl_p, lcl_T = mpcalc.lcl(p[0], T[0], Td[0])
             parcel_prof = mpcalc.parcel_profile(p, T[0], Td[0])
             lfc_p, _ = mpcalc.lfc(p, T, Td, parcel_prof, which='bottom')
+            ccl_p, ccl_T, ccl_Tc = mpcalc.ccl(p, T, Td, which='bottom')
             el_p,  _ = mpcalc.el (p, T, Td, parcel_prof, which='bottom')
+            
+            # Revert to using explicit parcel profile for CAPE/CIN to match plot exactly.
             cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
-            # Ensure CAPE is not negative
+            
+            # CUSTOM ROBUST CIN CALCULATION
+            # Sometimes mpcalc.cape_cin stops at first EL or handles multiple layers restrictively.
+            # We want TOTAL inhibition below the highest EL.
+            try:
+                # Find all ELs to get the top one
+                # el_pressure, _ = mpcalc.el(p, T, Td, parcel_prof) # This returns just one.
+                # Let's integrate manually for robustness.
+                # B = (Tv_parcel - Tv_env) / Tv_env * g
+                # But simple approximation: Area between T_parcel and T_env on Skew-T (Rd * (T_p - T_e) dlnp)
+                
+                # We need Virtual Temp for accurate buoyancy
+                # Tv = T * (1 + 0.61 * q) - approximated by T if we don't have mixing ratio handy easily, 
+                # but let's use the profile arrays directly since parcel_prof is T_virtual normally? 
+                # MetPy parcel_profile returns Temperature, not Virtual Temperature usually, unless configured?
+                # Actually mpcalc.parcel_profile returns T of parcel.
+                # CAPE/CIN use Virtual Temperature correction.
+                
+                # Let's stick to using the arrays provided.
+                # Identify negative buoyancy layers below the EL (EL is already calculated as el_p)
+                
+                if not pd.isna(el_p) and len(p) > 1:
+                    # Mask profile from surface to EL
+                    mask_layer = (p <= p[0]) & (p >= el_p)
+                    
+                    if np.any(mask_layer):
+                        p_layer = p[mask_layer]
+                        T_layer = T[mask_layer]
+                        prof_layer = parcel_prof[mask_layer]
+                        
+                        # Calculate difference (Parcel - Env). Negative = Inhibition
+                        # Note: This is T, not Tv, so it's approx. but consistent with visual Skew-T T-lines.
+                        diff = prof_layer - T_layer
+                        
+                        # Identify negative areas
+                        neg_mask = diff < 0 * diff.units
+                        
+                        if np.any(neg_mask):
+                            # Integrate using trapezoidal rule
+                            # Energy = - Rd * Integral( (Tp - Te) / p * dp ) ??? 
+                            # Standard Skew-T Area: Rd * integral ( (Tp - Te) d (ln p) )
+                            # CIN is positive integral of negative buoyancy, or negative integral. 
+                            # MetPy returns negative J/kg.
+                            
+                            # Let's use metpy.calc.apparent_temperature or just simple integration
+                            # CIN ~ Rd * integral( (T_par - T_env) * d(ln p) ) for T_par < T_env
+                            
+                            x = np.log(p_layer.magnitude)
+                            y = diff.magnitude
+                            
+                            # Integrate only where y < 0
+                            y_neg = y.copy()
+                            y_neg[y > 0] = 0
+                            
+                            # Trapz integration (x is decreasing because p is decreasing)
+                            # Area = integral y dx
+                            # Rd_dry approx 287 J/(kg K)
+                            Rd = 287.05
+                            area = np.trapz(y_neg, x) * Rd
+                            
+                            # Area will be positive because x is decreasing (log(p) goes down) and y_neg is negative?
+                            # x: log(1000) -> log(200). Decreasing. dx < 0.
+                            # y_neg: < 0.
+                            # y*dx > 0.
+                            # So Area is positive J/kg representing the "energy" (CIN is usually negative).
+                            # MetPy convention: CIN is negative.
+                            
+                            cin_manual = -1 * abs(area) * units('J/kg')
+                            
+                            # Use this if it's "more negative" (more inhibition) than standard calculation,
+                            # or if standard is 0 but this is not.
+                            if cin_manual.magnitude < cin.magnitude:
+                                cin = cin_manual
+
+            except Exception as e:
+                print(f"Error in manual CIN calc: {e}")
+
+            # Ensure CAPE is not negative (floating point noise)
             if cape.magnitude < 0:
                 cape = 0 * cape.units
+            
+            # Ensure CIN is negative or zero
+            if cin.magnitude > 0:
+                cin = 0 * cin.units
             
             # Formulate source URL for storage
             source_url = ""
@@ -150,7 +245,7 @@ if st.button("Generate Sounding"):
             st.session_state['sounding_data'] = {
                 'p': p, 'T': T, 'Td': Td, 'u': u, 'v': v,
                 'lcl_p': lcl_p, 'lcl_T': lcl_T, 'parcel_prof': parcel_prof,
-                'lfc_p': lfc_p, 'el_p': el_p, 'cape': cape, 'cin': cin,
+                'lfc_p': lfc_p, 'ccl_p': ccl_p, 'el_p': el_p, 'cape': cape, 'cin': cin,
                 'station_name': station_name, 'CodEst': CodEst,
                 'yr': yr, 'mn': mn, 'dy': dy, 'hr': hr,
                 'source_used': source_used, 'source_display': source_display, 'source_url': source_url
@@ -166,7 +261,7 @@ if 'sounding_data' in st.session_state:
     # Unpack variables for convenience
     p, T, Td, u, v = data['p'], data['T'], data['Td'], data['u'], data['v']
     lcl_p, lcl_T, parcel_prof = data['lcl_p'], data['lcl_T'], data['parcel_prof']
-    lfc_p, el_p, cape, cin = data['lfc_p'], data['el_p'], data['cape'], data['cin']
+    lfc_p, ccl_p, el_p, cape, cin = data['lfc_p'], data['ccl_p'], data['el_p'], data['cape'], data['cin']
     station_name, CodEst = data['station_name'], data['CodEst']
     yr, mn, dy, hr = data['yr'], data['mn'], data['dy'], data['hr']
     source_used, source_display, source_url = data['source_used'], data['source_display'], data['source_url']
@@ -180,11 +275,12 @@ if 'sounding_data' in st.session_state:
     # ── Show results in columns ─────────────────
     st.markdown("### 📊 Indices and Levels")
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     col1.metric("LCL", f"{lcl_p.magnitude:.1f} hPa")
-    col2.metric("LFC", f"{lfc_p.magnitude:.1f} hPa" if not pd.isna(lfc_p.magnitude) else "N/A")
-    col3.metric("EL", f"{el_p.magnitude:.1f} hPa" if not pd.isna(el_p.magnitude) else "N/A")
-
+    col2.metric("CCL", f"{ccl_p.magnitude:.1f} hPa" if not pd.isna(ccl_p.magnitude) else "N/A")
+    col3.metric("LFC", f"{lfc_p.magnitude:.1f} hPa" if not pd.isna(lfc_p.magnitude) else "N/A")
+    col4.metric("EL", f"{el_p.magnitude:.1f} hPa" if not pd.isna(el_p.magnitude) else "N/A")
+    
     colA, colB = st.columns(2)
     colA.metric("CAPE", f"{cape.magnitude:.0f} J/kg")
     colB.metric("CIN", f"{cin.magnitude:.0f} J/kg")
@@ -194,11 +290,30 @@ if 'sounding_data' in st.session_state:
     tab_static, tab_interactive, tab_interpretation = st.tabs(["🖼️ Static (MetPy)", "🔍 Interactive (Plotly)", "❓ Interpretation"])
     
     with tab_static:
-        fig = plt.figure(figsize=(9, 12), dpi=900)
-        skew = SkewT(fig, rotation=45)
+        import matplotlib.gridspec as gridspec
+        
+        # Create figure
+        fig = plt.figure(figsize=(17, 12), dpi=900)
+        
+        # Define GridSpec based on display mode
+        if display_mode == "Advanced":
+            # Left (SkewT) vs Right (Hodo + Stats)
+            gs = gridspec.GridSpec(1, 2, figure=fig, width_ratios=[1.4, 0.6], wspace=0.01)
+            
+            # Right column sub-grid: 2 Rows (Hodograph top, Stats bottom)
+            gs_right = gridspec.GridSpecFromSubplotSpec(2, 1, subplot_spec=gs[1], height_ratios=[0.9, 1.1], hspace=0.1)
+        else:
+            # Simple Mode: Single Panel for SkewT using full width
+            gs = gridspec.GridSpec(1, 1, figure=fig)
+            gs_right = None
+
+        # ── Skew-T Axis ─────────────────────────────────
+        # Place SkewT in the first column
+        skew = SkewT(fig, rotation=45, subplot=gs[0])
         
         # Add title: Place, Station Code, Date
-        plt.title(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=12)
+        # Centered on the entire figure as requested
+        fig.suptitle(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=16, fontweight='bold', x=0.5, y=0.95)
 
         skew.plot(p, T, 'r', label='T')
         skew.plot(p, Td, 'g', label='Td')
@@ -210,21 +325,15 @@ if 'sounding_data' in st.session_state:
         # Add patches for CAPE/CIN
         patch_cape = Patch(color='orangered', alpha=0.3, label=f"CAPE")
         patch_cin  = Patch(color='cornflowerblue', alpha=0.3, label=f"CIN")
-        # Add patches for CAPE/CIN
-        patch_cape = Patch(color='orangered', alpha=0.3, label=f"CAPE")
-        patch_cin  = Patch(color='cornflowerblue', alpha=0.3, label=f"CIN")
         patch_clouds = Patch(color='gray', alpha=0.4, label='Cloud layer')
 
         handles.extend([patch_cape, patch_cin, patch_clouds])
         
-        skew.ax.legend(handles=handles, loc='upper left')
+        skew.ax.legend(handles=handles, loc='upper left', framealpha=1)
 
         # ── Cloud Layer Indicator ───────────────────────
-        # Estimate clouds where Dewpoint Depression is low (< 3-5 C)
-        # Using 3 degC as a threshold for "cloudy"
         try:
             # Calculate depression.
-            # Convert to numpy magnitudes to avoid issues with fill_betweenx and transforms
             t_vals = T.to(units.degC).magnitude
             td_vals = Td.to(units.degC).magnitude
             p_vals = p.to(units.hPa).magnitude
@@ -232,16 +341,11 @@ if 'sounding_data' in st.session_state:
             dd = t_vals - td_vals
             
             # Threshold: 3 degrees C
-            # We treat NaNs as False (no cloud)
             is_cloud = (dd < 3.0) & (~np.isnan(dd))
             
-            # Plot vertical strip
-            # Using simple values for p and x limits
-            # x values in axes coordinates (0-1), y values in data coordinates (pressure)
             skew.ax.fill_betweenx(p_vals, 0, 0.03, where=is_cloud, color='gray', alpha=0.4, transform=skew.ax.get_yaxis_transform())
             
         except Exception as e:
-            # Fallback
             print(f"Could not plot cloud layers: {e}")
 
         # Plot Wind Barbs (Decimated)
@@ -261,7 +365,6 @@ if 'sounding_data' in st.session_state:
         if not pd.isna(lfc_p.magnitude):
             mask_cin = p >= lfc_p
             skew.shade_cin(p[mask_cin], T[mask_cin], parcel_prof[mask_cin])
-        # else: do not paint CIN if no LFC (stable profile)
 
         skew.ax.set_ylim(1050, 75)
         skew.ax.set_xlim(-40, 40)
@@ -273,10 +376,11 @@ if 'sounding_data' in st.session_state:
         skew.plot_dry_adiabats()
         skew.plot_moist_adiabats()
         skew.plot_mixing_lines()
-
+        
         # Reference lines & Labels
         level_config = [
             (lcl_p, 'LCL', 'sienna'),
+            (ccl_p, 'CCL', 'darkorange'),
             (lfc_p, 'LFC', 'blue'),
             (el_p,  'EL',  'darkorchid')
         ]
@@ -284,7 +388,259 @@ if 'sounding_data' in st.session_state:
         for p_level, label, color in level_config:
             if not pd.isna(p_level.magnitude) and 75 <= p_level.magnitude <= 1050:
                 skew.ax.axhline(p_level.magnitude, linestyle='--', color=color, linewidth=1.5)
+                # Keep text inside SkewT limits
                 skew.ax.text(-38, p_level.magnitude - 5, label, color=color, fontsize=10, fontweight='bold')
+
+
+        # ── Hodograph Axis ──────────────────────────────
+        # Use top-right cell
+        if display_mode == "Advanced":
+            try:
+                ax_hod = fig.add_subplot(gs_right[0])
+                
+                h = Hodograph(ax_hod, component_range=80.)
+                # Add two separate grid increments (SPC Style)
+                h.add_grid(increment=20, ls='-', lw=1.5, alpha=0.5)
+                h.add_grid(increment=10, ls='--', lw=1, alpha=0.2)
+                
+                # Hide standard labels
+                h.ax.set_yticklabels([])
+                h.ax.set_xticklabels([])
+                h.ax.set_xticks([])
+                h.ax.set_yticks([])
+                h.ax.set_xlabel(' ')
+                h.ax.set_ylabel(' ')
+
+                # Custom internal labels (SPC Style)
+                for i in range(10, 90, 20):
+                    h.ax.annotate(str(i), (i, 0), xytext=(0, 2), textcoords='offset pixels',
+                                clip_on=True, fontsize=8, weight='bold', alpha=0.5, zorder=0)
+                for i in range(10, 90, 20):
+                    h.ax.annotate(str(i), (0, i), xytext=(0, 2), textcoords='offset pixels',
+                                clip_on=True, fontsize=8, weight='bold', alpha=0.5, zorder=0)
+                
+                # Calculate wind speed for coloring
+                wind_speed = mpcalc.wind_speed(u, v)
+                
+                # Plot
+                lc = h.plot_colormapped(u, v, wind_speed)
+                
+                # Add Colorbar (Inset in Hodograph axis or separate?)
+                # Let's verify alignement within the logic.
+                # Using inset axes to lock it to ax_hod
+                ax_cbar = ax_hod.inset_axes([1.02, 0.25, 0.05, 0.5]) # relative to Hodo axes
+                cbar = plt.colorbar(lc, cax=ax_cbar)
+                cbar.set_label('Wind Speed (knots)', fontsize=10)
+                cbar.ax.tick_params(labelsize=8)
+                
+            except Exception as e:
+                print(f"Error plotting hodograph: {e}")
+
+        # ── Advanced Parameters & Layout ────────────────
+        if display_mode == "Advanced":
+            try:
+                # 1. Thermodynamic Indices
+                sbcape, sbcin = mpcalc.surface_based_cape_cin(p, T, Td)
+                ml_cape, ml_cin = mpcalc.mixed_layer_cape_cin(p, T, Td, depth=50 * units.hPa)
+                mu_cape, mu_cin = mpcalc.most_unstable_cape_cin(p, T, Td, depth=50 * units.hPa)
+                tt_idx = mpcalc.total_totals_index(p, T, Td)
+                k_idx = mpcalc.k_index(p, T, Td)
+                
+                # 2. Kinematic Indices & Storm Motion
+                # Drop NaNs from wind for calculations to avoid errors
+                # (MetPy functions often handle this, but being safe)
+                
+                # Calculate geometric height (z) using hydrostatic assumption if not present
+                # We need height for SRH and Bunkers
+                # Calculate height above ground (AGL) approximation
+                z = mpcalc.pressure_to_height_std(p)
+                z = z - z[0] # AGL
+                
+                # Bunkers Storm Motion (Right Mover, Left Mover, Mean Wind)
+                # Need to ensure no NaNs in the profile used
+                mask = ~np.isnan(u) & ~np.isnan(v) & ~np.isnan(p)
+                u_masked, v_masked, z_masked = u[mask], v[mask], z[mask]
+                
+                # Bunkers
+                RM, LM, MW = mpcalc.bunkers_storm_motion(p[mask], u[mask], v[mask], z[mask])
+                
+                # Helper for SRH
+                def calc_srh(depth_m):
+                    try:
+                        srh = mpcalc.storm_relative_helicity(z[mask], u[mask], v[mask], depth=depth_m * units.m,
+                                                            storm_u=RM[0], storm_v=RM[1])[0]
+                        return srh
+                    except: return np.nan * units.m**2/units.s**2
+
+                srh_1km = calc_srh(1000)
+                srh_3km = calc_srh(3000)
+                
+                # Bulk Shear
+                def calc_shear(depth_m):
+                    try:
+                        sh_u, sh_v = mpcalc.bulk_shear(p[mask], u[mask], v[mask], height=z[mask], depth=depth_m * units.m)
+                        return mpcalc.wind_speed(sh_u, sh_v)
+                    except: return np.nan * units.kt
+
+                shear_1km = calc_shear(1000)
+                shear_3km = calc_shear(3000)
+                shear_6km = calc_shear(6000)
+
+                # 3. Composite Indices
+                # Significant Tornado Parameter (fixed layer)
+                # Requires LCL height
+                lcl_pressure, lcl_temperature = mpcalc.lcl(p[0], T[0], Td[0])
+                # Approx LCL height AGL
+                lcl_z = mpcalc.pressure_to_height_std(lcl_pressure) - mpcalc.pressure_to_height_std(p[0])
+                
+                sig_tor = mpcalc.significant_tornado(sbcape, lcl_z, srh_1km, shear_6km)
+                
+                # Supercell Composite
+                # SCP = (MUCAPE / 1000) * (SRH3km / 150) * (Shear6km / 40)
+                sup_comp = mpcalc.supercell_composite(mu_cape, srh_3km, shear_6km)
+                
+                # ── Draw Storm Motion on Hodograph ────────────────
+                # Plot Bunkers RM, LM, MW
+                # RM
+                h.ax.text(RM[0].magnitude, RM[1].magnitude, 'RM', weight='bold', ha='left', fontsize=8, color='black', clip_on=True)
+                h.ax.plot(RM[0].magnitude, RM[1].magnitude, 'ko', markersize=4)
+                # LM
+                h.ax.text(LM[0].magnitude, LM[1].magnitude, 'LM', weight='bold', ha='left', fontsize=8, color='black', clip_on=True)
+                h.ax.plot(LM[0].magnitude, LM[1].magnitude, 'ko', markersize=4)
+                
+                # Arrow from origin to RM (optional, can clutter)
+                
+            except Exception as e:
+                print(f"Error calculating advanced indices: {e}")
+                sbcape, sbcin, ml_cape, ml_cin, mu_cape, mu_cin = [0*units.J/units.kg]*6
+                tt_idx, k_idx = 0, 0
+                srh_1km, srh_3km = 0*units.m**2/units.s**2, 0*units.m**2/units.s**2
+                shear_1km, shear_3km, shear_6km = 0*units.kt, 0*units.kt, 0*units.kt
+                sig_tor, sup_comp = [0], [0]
+
+
+        # ── Statistics Panel (Dual Column) ────────────────
+        if display_mode == "Advanced":
+            # Use bottom-right cell
+            ax_stats = fig.add_subplot(gs_right[1])
+            ax_stats.axis('off') # Hide axis, we just use it for text
+            
+            # Border for stats (using plot on axes instead of fig rectangle)
+            rect = plt.Rectangle((0, 0), 1, 1, fill=False, color='black', lw=1, transform=ax_stats.transAxes)
+            ax_stats.add_patch(rect)
+            
+            # Helper
+            def fmt(val, precision=0):
+                try:
+                    # Handle MetPy Quantity
+                    if hasattr(val, 'magnitude'):
+                        v = val.magnitude
+                    else:
+                        v = val
+                    
+                    # Handle numpy array (0-d or singleton)
+                    if hasattr(v, 'item'):
+                        v = v.item()
+                        
+                    if pd.isna(v):
+                        return "-"
+                    
+                    return f"{v:.{precision}f}"
+                except:
+                    return "-"
+
+            # Text Layout using AXES coordinates (0-1 relative to stat box)
+            
+            # Cols center
+            c1_center = 0.25
+            c2_center = 0.75
+            
+            # Headers
+            ax_stats.text(c1_center, 0.92, "THERMODYNAMIC", weight='bold', fontsize=9, ha='center', color='black', transform=ax_stats.transAxes)
+            ax_stats.text(c2_center, 0.92, "KINEMATIC", weight='bold', fontsize=9, ha='center', color='black', transform=ax_stats.transAxes)
+            
+            # Separators
+            ax_stats.plot([0, 1], [0.88, 0.88], color='black', lw=0.5, transform=ax_stats.transAxes) # Horizontal below header
+            ax_stats.plot([0.5, 0.5], [0, 1], color='black', lw=0.5, transform=ax_stats.transAxes) # Vertical middle
+
+            # Lines data
+            y_start = 0.80
+            y_step = 0.10
+            
+            # Columns X positions for labels and values
+            # Col 1
+            x1_lbl = 0.05
+            x1_val = 0.45
+            # Col 2
+            x2_lbl = 0.55
+            x2_val = 0.95
+
+            y_curr = y_start
+
+            # Row 1: SBCAPE | Shear 0-1km
+            ax_stats.text(x1_lbl, y_curr, "SBCAPE", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(sbcape), fontsize=9, weight='bold', color='orangered', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "Sfc-1km", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x2_val, y_curr, fmt(shear_1km) + " kt", fontsize=9, weight='bold', color='blue', ha='right', transform=ax_stats.transAxes)
+            
+            y_curr -= y_step
+            # Row 2: SBCIN | Shear 0-3km
+            ax_stats.text(x1_lbl, y_curr, "SBCIN", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(sbcin), fontsize=9, weight='bold', color='cornflowerblue', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "Sfc-3km", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x2_val, y_curr, fmt(shear_3km) + " kt", fontsize=9, weight='bold', color='blue', ha='right', transform=ax_stats.transAxes)
+
+            y_curr -= y_step
+            # Row 3: MLCAPE | Shear 0-6km
+            ax_stats.text(x1_lbl, y_curr, "MLCAPE", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(ml_cape), fontsize=9, weight='bold', color='orangered', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "Sfc-6km", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x2_val, y_curr, fmt(shear_6km) + " kt", fontsize=9, weight='bold', color='blue', ha='right', transform=ax_stats.transAxes)
+            
+            y_curr -= y_step
+            # Row 4: MLCIN | SRH 0-1km
+            ax_stats.text(x1_lbl, y_curr, "MLCIN", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(ml_cin), fontsize=9, weight='bold', color='cornflowerblue', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "SRH 1km", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x2_val, y_curr, fmt(srh_1km), fontsize=9, weight='bold', color='navy', ha='right', transform=ax_stats.transAxes)
+
+            y_curr -= y_step
+            # Row 5: MUCAPE | SRH 0-3km
+            ax_stats.text(x1_lbl, y_curr, "MUCAPE", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(mu_cape), fontsize=9, weight='bold', color='orangered', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "SRH 3km", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x2_val, y_curr, fmt(srh_3km), fontsize=9, weight='bold', color='navy', ha='right', transform=ax_stats.transAxes)
+
+            y_curr -= y_step
+            # Row 6: MUCIN | EMPTY
+            ax_stats.text(x1_lbl, y_curr, "MUCIN", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(mu_cin), fontsize=9, weight='bold', color='cornflowerblue', ha='right', transform=ax_stats.transAxes)
+
+            y_curr -= 1.5*y_step # Space
+            
+            # Row 7: TT Index | Sig Tornado
+            ax_stats.text(x1_lbl, y_curr, "TT Index", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(tt_idx), fontsize=9, weight='bold', color='black', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "SIGTOR", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            # sig_tor is dimensionless quantity usually
+            stpv = sig_tor[0] if isinstance(sig_tor, list) else sig_tor
+            ax_stats.text(x2_val, y_curr, fmt(stpv, 1), fontsize=9, weight='bold', color='orangered', ha='right', transform=ax_stats.transAxes)
+
+            y_curr -= y_step
+            # Row 8: K Index | Supercell
+            ax_stats.text(x1_lbl, y_curr, "K Index", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            ax_stats.text(x1_val, y_curr, fmt(k_idx), fontsize=9, weight='bold', color='black', ha='right', transform=ax_stats.transAxes)
+            
+            ax_stats.text(x2_lbl, y_curr, "SUPCELL", fontsize=9, weight='bold', transform=ax_stats.transAxes)
+            scpv = sup_comp[0] if isinstance(sup_comp, list) else sup_comp
+            ax_stats.text(x2_val, y_curr, fmt(scpv, 1), fontsize=9, weight='bold', color='orangered', ha='right', transform=ax_stats.transAxes)
+
 
         # Add copyright text to the bottom of the figure
         license_text = (
@@ -318,78 +674,12 @@ if 'sounding_data' in st.session_state:
         st.plotly_chart(fig_plotly, width="stretch")
 
     with tab_interpretation:
-        st.markdown("""
-       ### 1. LCL: Lifting Condensation Level
-
-        *   It is the height at which the air, upon rising and cooling, becomes saturated (reaches 100% humidity) and water vapor begins to condense into droplets.
-        *   It marks the **cloud base** (usually cumulus).
-        *   **What happens here?** Below this level, the air is "dry" (unsaturated); right at this level, the cloud forms (Yau & Rogers, 1996; Lohmann et al., 2016).
-
-        ### 2. CIN: Convective Inhibition
-
-        *   It is the "negative energy" or barrier that prevents air from rising on its own. It is usually caused by a thermal inversion (warm air over cold air) acting as a lid.
-        *   It represents the amount of external energy we need to apply (push) to the air parcel so it can cross that stable zone and reach the point where it can rise on its own (Lohmann et al., 2016; Houze, 2014).
-        *   **Thresholds** (Houze, 2014):
-            *   **Low:** < 15 J/kg (Easy to break, storms form early).
-            *   **High:** > 100 J/kg (It is very difficult for storms to form unless there is a very strong external forcing, like a cold front).
-
-        ### 3. LFC: Level of Free Convection
-
-        *   It is the exact height where the air parcel becomes warmer (and less dense) than the surrounding air.
-        *   It is the "release point". Once the parcel exceeds this height, it no longer needs to be pushed; it starts rising spontaneously like a hot air balloon due to its positive buoyancy (Iribarne & Godson, 1981).
-        *   If the CIN is not broken, the parcel never reaches the LFC and there is no storm.
-
-        ### 4. CAPE: Convective Available Potential Energy
-
-        *   It is the storm's "fuel". It measures the total amount of energy the parcel accumulates while rising freely (from the LFC upwards) being warmer than the environment.
-        *   The higher the CAPE, the faster the ascent velocity (updraft) and the more intense the storm can be (Lohmann et al., 2016; Houze, 2014).
-        *   **Thresholds** (Lohmann et al., 2016; Wallace & Hobbs, 2006):
-            *   **0 J/kg:** Stable (no convection).
-            *   **< 1000 J/kg:** Marginal instability (weak convection).
-            *   **1000 - 2500 J/kg:** Moderate instability (ordinary storms).
-            *   **2500 - 4000 J/kg:** Very unstable (severe storms, possible large hail or tornadoes).
-            *   **> 4000 J/kg:** Extremely unstable.
-
-        ### 5. EL: Equilibrium Level (or LNB)
-        *(Level of Neutral Buoyancy)*
-
-        *   It is the height where the air parcel stops being warmer than the environment. Its temperature equalizes with the ambient temperature and it loses its buoyancy.
-        *   It marks the **cloud top** (the anvil of the cumulonimbus). Although inertia may cause the cloud to rise a bit more ("overshooting top"), this is where the cloud stops growing actively (Lohmann et al., 2016; Houze, 2014).
-
-        ### 6. Cloud Layers & Formation Analysis
-        
-        To identify potential cloud layers from a sounding, we analyze the proximity of Temperature ($T$) and Dewpoint ($T_d$) curves and parcel ascent paths.
-
-        #### A. Stratiform Clouds (Layered)
-        For stable cloud layers (Stratus, Altostratus), we look for high relative humidity:
-        *   **Proximity of curves:** Clouds likely exist where the $T$ and $T_d$ lines are very close or touching.
-        *   **Dewpoint Depression:** In practice, a depression ($T - T_d$) of **< 3°C to 5°C** usually indicates cloud formation.
-        *   **Thickness:** The cloud layer extends vertically as long as these lines remain close. A sudden separation indicates dry air and the cloud top/base.
-
-        #### B. Convective Clouds (Cumulus)
-        For clouds formed by rising air currents:
-        *   **Cloud Base:** Marked by the **LCL** (forced ascent) or **CCL** (Convective Condensation Level, from surface heating).
-        *   **Vertical Development:** Occurs along the saturated adiabat as long as the parcel is warmer than the environment ($T_{parcel} > T_{env}$), indicated by positive **CAPE**.
-        *   **Cloud Top:** Theoretically at the **EL/LNB**, where buoyancy becomes neutral. Strong updrafts may penetrate higher (overshooting tops).
-
-        #### C. Boundary Layer & Fog
-        *   **Stratocumulus:** Often found at the top of the planetary boundary layer, capped by a temperature inversion (T increases with height) and a sharp drying (lines separate).
-        *   **Fog:** Essentially a cloud on the ground. Indicated when $T \approx T_d$ at the surface pressure level.
-
-        ---
-
-        ### References
-        *   Lohmann, U., Lüönd, F., & Mahrt, F. (2016). *An introduction to clouds: From the microscale to climate*. Cambridge University Press.
-        *   Houze, R. A., Jr. (2014). *Cloud dynamics* (2nd ed., Vol. 104). Academic Press. https://doi.org/10.1016/C2010-0-66412-6
-        *   Wallace, J. M., & Hobbs, P. V. (2006). *Atmospheric science: An introductory survey* (2nd ed.). Academic Press.
-        *   Iribarne, J. V., & Godson, W. L. (1981). *Atmospheric thermodynamics*. D. Reidel Publishing Company.
-        *   Yau, M. K., & Rogers, R. R. (1996). *A short course in cloud physics* (3rd ed.). Pergamon.
-        """)
+        st.markdown(get_interpretation_text())
 
 st.markdown(
     f"""<hr style="margin-top: 3rem; margin-bottom: 1rem;">
 <div style="text-align: center; font-size: 0.85em; color: gray;">
-<div style="margin-bottom: 5px;">MeTroV (v1.0.0) — Data: NOAA IGRA & University of Wyoming</div>
+<div style="margin-bottom: 5px;">MeTroV (v1.1.0) — Data: NOAA IGRA & University of Wyoming</div>
 <div xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
 <a property="dct:title" rel="cc:attributionURL" href="https://metrovgit.streamlit.app/" style="color: inherit; text-decoration: none;">MeTroV</a> © <span id="copyrightYear">{datetime.now().year}</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://sites.google.com/view/oscarmr-en">Óscar Mata-Romero</a>.
 <br>
@@ -403,4 +693,43 @@ if (copyrightYear) {{ copyrightYear.textContent = new Date().getFullYear(); }}
 </script>""",
     unsafe_allow_html=True
 )
+
+
+# ── DEBUGGING ───────────────────────────────────
+if display_mode == "Advanced":
+    with st.expander("🛠️ Debug Calculations"):
+        st.write("### Raw Calculation Comparison")
+        
+        try:
+            # 1. Explicit Profile (Used in App)
+            c1, cin1 = mpcalc.cape_cin(p, T, Td, parcel_prof)
+            st.write(f"**Method 1 (Current - Explicit Profile):** CAPE={c1.magnitude:.2f}, CIN={cin1.magnitude:.2f}")
+            
+            # 2. Surface Based Helper
+            c2, cin2 = mpcalc.surface_based_cape_cin(p, T, Td)
+            st.write(f"**Method 2 (Surface Based Helper):** CAPE={c2.magnitude:.2f}, CIN={cin2.magnitude:.2f}")
+
+            # 3. Mixed Layer Helper
+            c3, cin3 = mpcalc.mixed_layer_cape_cin(p, T, Td)
+            st.write(f"**Method 3 (Mixed Layer Helper):** CAPE={c3.magnitude:.2f}, CIN={cin3.magnitude:.2f}")
+            
+            # 4. Check Integration below LFC
+            lfc_val = lfc_p.magnitude
+            if not pd.isna(lfc_val):
+                # Mask: Between Surface and LFC
+                mask_inhibition = (p.magnitude >= lfc_val) & (p.magnitude <= p[0].magnitude)
+                if np.any(mask_inhibition):
+                    p_sub = p[mask_inhibition]
+                    T_sub = T[mask_inhibition]
+                    prof_sub = parcel_prof[mask_inhibition]
+                    
+                    # Calculate negative Buoyancy
+                    # B = g * (Tv_parcel - Tv_env) / Tv_env 
+                    # Approx: B ~ g * (T_parcel - T_env) / T_env
+                    diff = prof_sub - T_sub
+                    st.write(f"**Max Negative Diff (Parcel - Env):** {np.min(diff.magnitude):.2f} C")
+                    st.write(f"**Diff array sample:** {diff.magnitude[:10]}")
+            
+        except Exception as e:
+            st.error(f"Error in debug calc: {e}")
 
