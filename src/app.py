@@ -313,7 +313,7 @@ if 'sounding_data' in st.session_state:
         
         # Add title: Place, Station Code, Date
         # Centered on the entire figure as requested
-        fig.suptitle(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=16, fontweight='bold', x=0.5, y=0.95)
+        fig.suptitle(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=16, fontweight='bold', y=0.98, va='top')
 
         skew.plot(p, T, 'r', label='T')
         skew.plot(p, Td, 'g', label='Td')
