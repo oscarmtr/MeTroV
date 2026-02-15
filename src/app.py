@@ -695,41 +695,4 @@ if (copyrightYear) {{ copyrightYear.textContent = new Date().getFullYear(); }}
 )
 
 
-# ── DEBUGGING ───────────────────────────────────
-if display_mode == "Advanced":
-    with st.expander("🛠️ Debug Calculations"):
-        st.write("### Raw Calculation Comparison")
-        
-        try:
-            # 1. Explicit Profile (Used in App)
-            c1, cin1 = mpcalc.cape_cin(p, T, Td, parcel_prof)
-            st.write(f"**Method 1 (Current - Explicit Profile):** CAPE={c1.magnitude:.2f}, CIN={cin1.magnitude:.2f}")
-            
-            # 2. Surface Based Helper
-            c2, cin2 = mpcalc.surface_based_cape_cin(p, T, Td)
-            st.write(f"**Method 2 (Surface Based Helper):** CAPE={c2.magnitude:.2f}, CIN={cin2.magnitude:.2f}")
-
-            # 3. Mixed Layer Helper
-            c3, cin3 = mpcalc.mixed_layer_cape_cin(p, T, Td)
-            st.write(f"**Method 3 (Mixed Layer Helper):** CAPE={c3.magnitude:.2f}, CIN={cin3.magnitude:.2f}")
-            
-            # 4. Check Integration below LFC
-            lfc_val = lfc_p.magnitude
-            if not pd.isna(lfc_val):
-                # Mask: Between Surface and LFC
-                mask_inhibition = (p.magnitude >= lfc_val) & (p.magnitude <= p[0].magnitude)
-                if np.any(mask_inhibition):
-                    p_sub = p[mask_inhibition]
-                    T_sub = T[mask_inhibition]
-                    prof_sub = parcel_prof[mask_inhibition]
-                    
-                    # Calculate negative Buoyancy
-                    # B = g * (Tv_parcel - Tv_env) / Tv_env 
-                    # Approx: B ~ g * (T_parcel - T_env) / T_env
-                    diff = prof_sub - T_sub
-                    st.write(f"**Max Negative Diff (Parcel - Env):** {np.min(diff.magnitude):.2f} C")
-                    st.write(f"**Diff array sample:** {diff.magnitude[:10]}")
-            
-        except Exception as e:
-            st.error(f"Error in debug calc: {e}")
 
