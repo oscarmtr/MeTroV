@@ -61,7 +61,7 @@ def get_interpretation_text():
 
         #### C. Boundary Layer & Fog
         *   **Stratocumulus:** Often found at the top of the planetary boundary layer, capped by a temperature inversion (T increases with height) and a sharp drying (lines separate) (Wallace & Hobbs, 2006).
-        *   **Fog:** Essentially a cloud on the ground. Indicated when $T \approx T_d$ at the surface pressure level (Yau & Rogers, 1996; Lohmann et al., 2016).
+        *   **Fog:** Essentially a cloud on the ground. Indicated when $T \\approx T_d$ at the surface pressure level (Yau & Rogers, 1996; Lohmann et al., 2016).
 
         ---
 
