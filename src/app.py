@@ -23,7 +23,7 @@ st.set_page_config(page_title="MeTroV", layout="centered")
 
 # Update station list on session start
 if 'station_list_updated' not in st.session_state:
-     with st.spinner("Actualizando lista de estaciones (descargando de IGRA)..."):
+     with st.spinner("Updating station list (downloading from IGRA)..."):
          update_station_list(force=True)
          pass # La variable global se actualiza dentro de stations.py
      st.session_state['station_list_updated'] = True
@@ -345,7 +345,7 @@ if st.button("Generate Sounding"):
             
             # CUSTOM ROBUST CIN CALCULATION
             # A veces mpcalc.cape_cin se detiene en el primer EL o maneja múltiples capas de forma restrictiva.
-            # Se requiere la inhibición TOTAL por debajo del nivel EL más alto.
+            # Se requiere la inhibición total por debajo del nivel EL más alto.
             try:
                 # Encontrar todos los ELs para obtener el superior
                 # el_pressure, _ = mpcalc.el(p, T, Td, parcel_prof) # Esto devuelve solo uno.
