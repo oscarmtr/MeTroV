@@ -1,4 +1,4 @@
-from sondeo import lecturaSondeoIGRA, lecturaSondeoUWyo
+from sounding import lecturaSondeoIGRA, lecturaSondeoUWyo
 
 def get_sounding(CodEst, yr, mn, dy, hr, source_mode="IGRA"):
     """

@@ -5,14 +5,14 @@ import time
 import os
 import os
 
-# FIX: Usar ruta absoluta relativa al script y nombre de archivo actualizado
+# FIX: Utilizar ruta absoluta relativa al script y nombre de archivo actualizado
 script_dir = pathlib.Path(__file__).parent.absolute()
 STATION_FILE = script_dir.parent / "data" / "igra_stations_all.csv"
 COUNTRY_FILE = script_dir.parent / "data" / "igra_countries.csv"
 
 def get_country_map():
     """
-    Returns a dictionary mapping 2-letter country code -> Country Name
+    Devuelve un diccionario que mapea el código de país de 2 letras -> Nombre del País
     """
     if COUNTRY_FILE.exists():
         try:
@@ -24,74 +24,37 @@ def get_country_map():
 
 def prettify_name(raw, country_name=""):
     raw = raw.strip()
-    # Usually format is "CITY/AIRPORT_NAME" or just "CITY"
-    parts = raw.split("/")
-    city = parts[0].strip().title()
+    # Petición del usuario: "estación, país de la estación" independientemente del tipo.
+    # Se utiliza el nombre original en formato título.
     
-    extra = ""
-    if len(parts) > 1:
-        extra = parts[1].strip().title()
-
-    # Keywords to detect if it's an airport/base
-    keywords = [
-        "airport", "air", "ap", "afb",
-        "base", "naval", "intl", "international"
-    ]
-
-    is_airport = False
-    if extra and any(k in extra.lower() for k in keywords):
-        is_airport = True
-    elif any(k in city.lower() for k in keywords):
-        is_airport = True
-        
-    # Construct display name
-    # Case 1: Airport (or base)
-    if is_airport:
-        # If extra info exists, use it as main name if it looks like an airport name
-        # e.g. "MADRID/BARAJAS" -> "Barajas (Madrid, Spain)" ??
-        # Or "ABU DHABI/INTL" -> "Abu Dhabi Intl (Abu Dhabi, UAE)"
-        
-        main_name = extra if extra else city
-        
-        # Avoid redundancy: if main name contains city, don't repeat city inside parens
-        if city.lower() in main_name.lower():
-            # e.g. "Abu Dhabi Intl" contains "Abu Dhabi"
-            # Result: "Abu Dhabi Intl (Spain)"
-             display = f"{main_name} ({country_name})"
-        else:
-            # e.g. "Barajas" (Madrid)
-            display = f"{main_name} ({city}, {country_name})"
-            
+    name_display = raw.title()
+    
+    # Construir nombre para mostrar
+    # "HUELVA" -> "Huelva, Spain"
+    # "MADRID/BARAJAS" -> "Madrid/Barajas, Spain"
+    
+    if country_name:
+        display = f"{name_display}, {country_name}"
     else:
-        # Case 2: Just a city/station
-        # "HUELVA" -> "Huelva, Spain"
-        if extra:
-             # e.g. "XXX/YYY" where YYY is not clearly an airport
-             display = f"{city}/{extra}, {country_name}"
-        else:
-             display = f"{city}, {country_name}"
+        display = name_display
 
-    # Cleanup double spaces or trailing commas
-    display = display.replace(", )", ")").replace("()", "").strip()
-    if display.endswith(", "): display = display[:-2]
-    
-    return display, city
+    return display, name_display.split("/")[0]
 
 def update_station_list(force=False):
     """
-    Checks if station list is older than 24h. If so, attempts to download and update it.
-    Returns True if updated, False otherwise.
+    Comprueba si la lista de estaciones tiene más de 24h. Si es así, intenta descargarla y actualizarla.
+    Devuelve True si se ha actualizado, False en caso contrario.
     """
-    # Check if files exist and age
+    # Comprobar si los archivos existen y su antigüedad
     if not force and STATION_FILE.exists() and COUNTRY_FILE.exists():
         file_age = time.time() - STATION_FILE.stat().st_mtime
-        if file_age < 86400: # 24 hours
-            return False # Fresh enough
+        if file_age < 86400: # 24 horas
+            return False # Suficientemente reciente
     
-    # Needs update
-    print("Updating station and country lists...")
+    # Requiere actualización
+    print("Actualizando listas de estaciones y países...")
     try:
-        # 1. Update Country List
+        # 1. Actualizar lista de países
         URL_CTRY = "https://www.ncei.noaa.gov/pub/data/igra/igra2-country-list.txt"
         resp_c = requests.get(URL_CTRY, timeout=30)
         resp_c.raise_for_status()
@@ -109,7 +72,7 @@ def update_station_list(force=False):
         
         country_map = dict(zip(df_c['code'], df_c['name']))
 
-        # 2. Update Station List
+        # 2. Actualizar lista de estaciones
         URL = "https://www.ncei.noaa.gov/pub/data/igra/igra2-station-list.txt"
         response = requests.get(URL, timeout=30)
         response.raise_for_status()
@@ -117,7 +80,7 @@ def update_station_list(force=False):
 
         records = []
         for line in txt:
-             # Aumentar el límite de longitud para asegurar que existe el año final
+             # Incrementar el límite de longitud para asegurar que el año final existe
             if len(line) < 81:
                 continue
 
@@ -147,22 +110,22 @@ def update_station_list(force=False):
             STATION_FILE.parent.mkdir(parents=True, exist_ok=True)
             df.to_csv(STATION_FILE, index=False)
             
-            # Update global variable if it exists/reload it
+            # Actualizar la variable global si existe/recargarla
             global stations
             stations = df
             return True
             
     except Exception as e:
-        print(f"Failed to update station list: {e}")
+        print(f"Error al actualizar la lista de estaciones: {e}")
         return False
     
     return False
 
-# Load initially (might be stale if update hasn't run yet, but fine for imports)
+# Carga inicial (puede estar obsoleta si la actualización no se ha ejecutado, pero es suficiente para importaciones)
 if STATION_FILE.exists():
     stations = pd.read_csv(STATION_FILE)
 else:
-    # Create empty DF or handle error, though update sshould fix this
+    # Crear un DataFrame vacío o manejar el error, aunque la actualización debería solucionar esto
     stations = pd.DataFrame(columns=["code", "display_name", "city", "raw_name"])
 
 def find_station(city_query):
@@ -176,7 +139,7 @@ def find_station(city_query):
         raise ValueError("No se encontró ninguna estación")
 
     if len(matches) > 1:
-        print("Varias estaciones encontradas:")
+        print("Múltiples estaciones encontradas:")
         print(matches[["display_name", "code"]])
         raise ValueError("Búsqueda ambigua")
 
