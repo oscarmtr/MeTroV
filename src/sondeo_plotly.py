@@ -9,12 +9,13 @@ from metpy.units import units
 # Add current directory to path to allow imports if running from src or root
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from sondeo import get_sounding, find_station
+from sounding import get_sounding
+from stations import find_station
 
 def create_skewt_plotly(p, T, Td, station_name, date_str):
     """
-    Creates a simple Skew-T diagram using Plotly.
-    We manually skew the temperature data to fit the rectangular plot area of Plotly.
+    Crea un diagrama de Skew-T simple usando Plotly.
+    Los datos de temperatura se sesgan manualmente para que encajen en el área de trazado rectangular de Plotly.
     
     Transformation:
     x = T + skew_factor * ln(P_ref / P)
@@ -58,12 +59,12 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
         text=Td_vals
     )
     
-    # Isobars (horizontal lines) - Log scale handles this naturally on Y, 
-    # but we can add grid lines
+    # Isobaras (líneas horizontales) - La escala logarítmica lo maneja naturalmente en Y, 
+    # pero se pueden añadir líneas de cuadrícula
     
-    # Isotherms (diagonal lines in this skewed system)
-    # T = constant -> x = C + skew * log(1000/P)
-    # We can plot some reference isotherms
+    # Isotermas (líneas diagonales en este sistema sesgado)
+    # T = constante -> x = C + skew * log(1000/P)
+    # Se pueden trazar algunas isotermas de referencia
     isotherm_traces = []
     ref_temps = range(-100, 50, 10)
     ref_pressures = np.linspace(1050, 1, 100)
@@ -89,10 +90,10 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
         yaxis=dict(
             title="Pressure (hPa)",
             type="log",
-            range=[np.log10(1050), np.log10(1)], # Log range inverted visually? No, Plotly log axis direction.
-            # Usually Skew-T has high pressure at bottom.
-            # Plotly log axis: standard is increasing up. We want decreasing up (1000 -> 100).
-            # We can rely on 'autorange="reversed"' or explicit range
+            range=[np.log10(1050), np.log10(1)], # ¿Rango logarítmico invertido visualmente? No, dirección del eje logarítmico de Plotly.
+            # Normalmente el Skew-T tiene la presión alta en la parte inferior.
+            # Eje logarítmico de Plotly: el estándar es creciente hacia arriba. Se requiere decreciente hacia arriba (1000 -> 100).
+            # Se puede utilizar 'autorange="reversed"' o un rango explícito
             autorange="reversed"
         ),
         height=800,
@@ -106,12 +107,12 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
 if __name__ == "__main__":
     # Settings similar to main script, or simplified for test
     city = "Huelva"
-    # Testing with a known date or the one user tried (if valid)
-    # User tried 2026-01-14 -> LFC=NaN (Stable). Good for simple plot.
+    # Probando con una fecha conocida o la intentada (si es válida)
+    # Intentada 2026-01-14 -> LFC=NaN (Estable). Buena para un gráfico simple.
     yr, mn, dy, hr = "2026", "01", "14", "00"
     
-    # Using explicit known working station/date if Huelva fails, but let's try Huelva first 
-    # as we know it works from previous step (ignoring missing LFC shading).
+    # Se utiliza una estación/fecha conocida que funciona si Huelva falla, pero primero se prueba Huelva
+    # ya que funciona en el paso anterior (ignorando el sombreado LFC faltante).
     
     try:
         CodEst, station_name = find_station(city)

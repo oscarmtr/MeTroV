@@ -11,7 +11,6 @@ Image.MAX_IMAGE_PIXELS = None
 
 import pathlib
 from stations import find_station, update_station_list
-from sondeo import get_sounding
 from sondeo_plotly import create_skewt_plotly
 from metpy.plots import SkewT, Hodograph
 from matplotlib.patches import Patch
@@ -26,7 +25,7 @@ st.set_page_config(page_title="MeTroV", layout="centered")
 if 'station_list_updated' not in st.session_state:
      with st.spinner("Actualizando lista de estaciones (descargando de IGRA)..."):
          update_station_list(force=True)
-         pass # Se actualiza la variable global dentro de stations.py
+         pass # La variable global se actualiza dentro de stations.py
      st.session_state['station_list_updated'] = True
 
 st.title("Meteorological Sounding Viewer")
@@ -55,6 +54,205 @@ with st.sidebar:
     #     "Radiosonde data from NOAA IGRA & University of Wyoming."
     # )
 
+import requests
+import zipfile
+from io import StringIO
+
+# =====================================
+# LECTURA SONDEO IGRA
+# =====================================
+def lecturaSondeoIGRA(CodEst, yr, mn, dy, hr):
+    url = (
+        "https://www.ncei.noaa.gov/data/"
+        "integrated-global-radiosonde-archive/access/data-por/"
+        f"{CodEst}-data.txt.zip"
+    )
+
+    r = requests.get(url, timeout=30)
+    r.raise_for_status()
+
+    with zipfile.ZipFile(io.BytesIO(r.content)) as z:
+        fname = z.namelist()[0]
+        lines = z.read(fname).decode("utf-8").splitlines()
+
+    target_time = f"{yr} {mn} {dy} {hr}"
+
+    p_list, T_list, Td_list = [], [], []
+    wdir_list, wspd_list = [], []
+    
+    reading = False
+    n_expected = 0
+    n_read = 0
+
+    for line in lines:
+        if line.startswith("#"):
+            time = line[13:26]
+            nlines = int(line[32:36])
+            reading = (time == target_time)
+            n_expected = nlines if reading else 0
+            n_read = 0
+            continue
+
+        if not reading or n_read >= n_expected:
+            continue
+
+        try:
+            pres = int(line[9:15])
+            temp = int(line[22:27])
+            dtd  = int(line[34:39])
+            wdir = int(line[40:45])
+            wspd = int(line[46:51])
+        except ValueError:
+            n_read += 1
+            continue
+
+        if pres < 0 or temp < -900:
+            n_read += 1
+            continue
+
+        pres_val = pres / 100.0
+        temp_val = temp / 10.0
+        
+        if dtd < -900:
+            td_val = np.nan
+        else:
+            td_val = (temp - dtd) / 10.0
+
+        if wdir < -900 or wspd < -900:
+            wdir_val = np.nan
+            wspd_val = np.nan
+        else:
+            wdir_val = float(wdir)
+            wspd_val = float(wspd) / 10.0
+            
+        p_list.append(pres_val)
+        T_list.append(temp_val)
+        Td_list.append(td_val)
+        wdir_list.append(wdir_val)
+        wspd_list.append(wspd_val)
+
+        n_read += 1
+
+    if len(p_list) < 10:
+        raise ValueError("IGRA sounding not available")
+
+    p = np.array(p_list) * units.hPa
+    T = np.array(T_list) * units.degC
+    Td = np.array(Td_list) * units.degC
+    
+    wdir = np.array(wdir_list) * units.degrees
+    wspd = np.array(wspd_list) * units('m/s')
+    
+    u, v = mpcalc.wind_components(wspd, wdir)
+
+    idx = np.argsort(p.magnitude)[::-1]
+    
+    return p[idx], T[idx], Td[idx], u[idx], v[idx]
+
+
+# =====================================
+# LECTURA SONDEO UWYO
+# =====================================
+def lecturaSondeoUWyo(CodEst_WMO, yr, mn, dy, hr):
+    sources = ["FM35", "BUFR"]
+    last_exception = None
+
+    for src in sources:
+        try:
+            url = (
+                "https://weather.uwyo.edu/wsgi/sounding?"
+                f"datetime={yr}-{mn}-{dy}%20{hr}:00:00&id={CodEst_WMO}&type=TEXT:CSV&src={src}"
+            )
+
+            r = requests.get(url, timeout=30)
+            r.raise_for_status()
+            csv_text = r.text
+
+            df = pd.read_csv(StringIO(csv_text))
+
+            if df.empty or "pressure" not in str(df.columns).lower():
+                 raise ValueError(f"Invalid or empty response with src={src}")
+
+            def get_col(candidates):
+                for c in candidates:
+                    if c in df.columns:
+                        return df[c], c
+                raise KeyError(f"Ninguna de las columnas {candidates} encontrada")
+
+            try:
+                p_col, _ = get_col(['pressure', 'pressure_hPa', 'pres'])
+                p = pd.to_numeric(p_col, errors='coerce')
+                
+                T_col, _ = get_col(['temperature', 'temperature_C', 'temp'])
+                T = pd.to_numeric(T_col, errors='coerce')
+
+                Td_col, _ = get_col(['dew point', 'dew point temperature_C', 'dwpt'])
+                Td = pd.to_numeric(Td_col, errors='coerce')
+
+                wdir_col, _ = get_col(['direction', 'wind direction_degree', 'drct'])
+                wdir = pd.to_numeric(wdir_col, errors='coerce')
+
+                wspd_raw_col, wspd_col_name = get_col(['speed', 'wind speed_m/s', 'sknt', 'wind speed_kn'])
+                wspd = pd.to_numeric(wspd_raw_col, errors='coerce')
+                
+                if 'm/s' in wspd_col_name:
+                    wind_units = units('m/s')
+                elif 'kn' in wspd_col_name or 'sknt' in wspd_col_name:
+                    wind_units = units.knots
+                else:
+                    wind_units = units.knots
+
+            except KeyError as e:
+                 cols_found = df.columns.tolist()
+                 snippet = csv_text[:200].replace('\n', ' ')
+                 raise ValueError(f"Formato UWyo inesperado o columna faltante ({e}). Columnas encontradas: {cols_found}. Inicio contenido: {snippet}")
+
+            mask = (~p.isna()) & (~T.isna())
+            
+            p_clean = p[mask].to_numpy() * units.hPa
+            T_clean = T[mask].to_numpy() * units.degC
+            Td_clean = Td[mask].to_numpy() * units.degC
+            
+            wdir_clean = wdir[mask].to_numpy() * units.degrees
+            wspd_clean = wspd[mask].to_numpy() * wind_units
+            
+            u, v = mpcalc.wind_components(wspd_clean, wdir_clean)
+
+            if len(p_clean) == 0:
+                raise ValueError("Sondeo UWyo no disponible o vacío después de filtrar")
+
+            idx = np.argsort(p_clean.magnitude)[::-1]
+            return p_clean[idx], T_clean[idx], Td_clean[idx], u[idx], v[idx], f"UWYO-{src}"
+
+        except Exception as e:
+            last_exception = e
+            continue
+
+    raise ValueError(f"Could not download UWyo sounding with any source. Last error: {last_exception}")
+
+# =====================================
+# GESTOR DE FUENTES
+# =====================================
+def get_sounding(CodEst, yr, mn, dy, hr, source_mode="IGRA"):
+    source_mode = source_mode.upper()
+    if source_mode not in ("IGRA", "UWYO", "AUTO"):
+        raise ValueError("source_mode debe ser IGRA, UWYO o AUTO")
+
+    if source_mode == "IGRA":
+        return lecturaSondeoIGRA(CodEst, yr, mn, dy, hr), "IGRA"
+
+    if source_mode == "UWYO":
+        wmo = CodEst[-5:]
+        data_tuple = lecturaSondeoUWyo(wmo, yr, mn, dy, hr)
+        return data_tuple[:5], data_tuple[5]
+
+    try:
+        return lecturaSondeoIGRA(CodEst, yr, mn, dy, hr), "IGRA"
+    except Exception:
+        wmo = CodEst[-5:]
+        data_tuple = lecturaSondeoUWyo(wmo, yr, mn, dy, hr)
+        return data_tuple[:5], data_tuple[5]
+
 
 
 
@@ -64,9 +262,9 @@ STATION_FILE = script_dir.parent / "data" / "igra_stations_all.csv"
 
 # Automatically update station list if needed
 with st.spinner("Checking for station updates..."):
-    # Reuse the update logic from stations module
-    # We need to import it. Since 'from stations import find_station' is at top, 
-    # we can import the module or function here.
+    # Reutilizar lógica de actualización del módulo stations
+    # Debe ser importado. Dado que 'from stations import find_station' está en la parte superior,
+    # el módulo o la función pueden importarse aquí.
     import stations as st_module
     st_module.update_station_list()
 
@@ -103,7 +301,7 @@ display_mode = st.radio("Display Mode", ["Simple", "Advanced"], index=1, horizon
 if st.button("Generate Sounding"):
     try:
         with st.spinner("Downloading and processing data..."):
-            # BUGFIX: Usar búsqueda exacta en el DF en lugar de find_station (que es difusa)
+            # BUGFIX: Se usa la búsqueda exacta en el DF en lugar de find_station (búsqueda difusa)
             selected_row = stations_df[stations_df['display_name'] == city].iloc[0]
             CodEst = selected_row['code']
             station_name = selected_row['display_name']
@@ -146,24 +344,24 @@ if st.button("Generate Sounding"):
             cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
             
             # CUSTOM ROBUST CIN CALCULATION
-            # Sometimes mpcalc.cape_cin stops at first EL or handles multiple layers restrictively.
-            # We want TOTAL inhibition below the highest EL.
+            # A veces mpcalc.cape_cin se detiene en el primer EL o maneja múltiples capas de forma restrictiva.
+            # Se requiere la inhibición TOTAL por debajo del nivel EL más alto.
             try:
-                # Find all ELs to get the top one
-                # el_pressure, _ = mpcalc.el(p, T, Td, parcel_prof) # This returns just one.
-                # Let's integrate manually for robustness.
+                # Encontrar todos los ELs para obtener el superior
+                # el_pressure, _ = mpcalc.el(p, T, Td, parcel_prof) # Esto devuelve solo uno.
+                # Se realiza integración manual para mayor robustez.
                 # B = (Tv_parcel - Tv_env) / Tv_env * g
-                # But simple approximation: Area between T_parcel and T_env on Skew-T (Rd * (T_p - T_e) dlnp)
+                # Pero aproximación simple: Área entre T_parcel y T_env en el Skew-T (Rd * (T_p - T_e) dlnp)
                 
-                # We need Virtual Temp for accurate buoyancy
-                # Tv = T * (1 + 0.61 * q) - approximated by T if we don't have mixing ratio handy easily, 
-                # but let's use the profile arrays directly since parcel_prof is T_virtual normally? 
-                # MetPy parcel_profile returns Temperature, not Virtual Temperature usually, unless configured?
-                # Actually mpcalc.parcel_profile returns T of parcel.
-                # CAPE/CIN use Virtual Temperature correction.
+                # Se requiere Temp. Virtual para una flotabilidad precisa
+                # Tv = T * (1 + 0.61 * q) - aproximado por T si no se dispone fácilmente de la relación de mezcla, 
+                # pero se usan los arrays del perfil directamente ya que parcel_prof suele ser T_virtual. 
+                # ¿MetPy parcel_profile devuelve Temperatura, no Temperatura Virtual usualmente, a menos que se configure?
+                # En realidad mpcalc.parcel_profile devuelve T de la parcela.
+                # CAPE/CIN usan corrección de Temperatura Virtual.
                 
-                # Let's stick to using the arrays provided.
-                # Identify negative buoyancy layers below the EL (EL is already calculated as el_p)
+                # Se utilizan los arrays proporcionados.
+                # Identificar capas de flotabilidad negativa por debajo del EL (EL ya calculado como el_p)
                 
                 if not pd.isna(el_p) and len(p) > 1:
                     # Mask profile from surface to EL
@@ -188,7 +386,7 @@ if st.button("Generate Sounding"):
                             # CIN is positive integral of negative buoyancy, or negative integral. 
                             # MetPy returns negative J/kg.
                             
-                            # Let's use metpy.calc.apparent_temperature or just simple integration
+                            # Simple integration or metpy.calc.apparent_temperature can be used
                             # CIN ~ Rd * integral( (T_par - T_env) * d(ln p) ) for T_par < T_env
                             
                             x = np.log(p_layer.magnitude)
@@ -213,7 +411,7 @@ if st.button("Generate Sounding"):
                             
                             cin_manual = -1 * abs(area) * units('J/kg')
                             
-                            # Use this if it's "more negative" (more inhibition) than standard calculation,
+                            # This is used if it is "more negative" (more inhibition) than the standard calculation,
                             # or if standard is 0 but this is not.
                             if cin_manual.magnitude < cin.magnitude:
                                 cin = cin_manual
@@ -234,7 +432,7 @@ if st.button("Generate Sounding"):
             if source_used == "IGRA":
                 source_url = f"https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/data-por/{CodEst}-data.txt.zip"
             elif source_used.startswith("UWYO"):
-                 # Get if BUFR or FM35
+                 # Determinar si es BUFR o FM35
                 src_param = source_used.split("-")[1] if "-" in source_used else "BUFR"
                 wmo_code = CodEst[-5:]
                 # Use WSGI endpoint
@@ -313,7 +511,10 @@ if 'sounding_data' in st.session_state:
         
         # Add title: Place, Station Code, Date
         # Centered on the entire figure as requested
-        fig.suptitle(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=16, fontweight='bold', y=0.98, va='top')
+        if display_mode == "Advanced":
+            fig.suptitle(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=16, fontweight='bold', x=0.53, y=0.925)
+        else:
+            fig.suptitle(f"{station_name} ({CodEst}) — {yr}-{mn}-{dy} {hr}Z", fontsize=16, fontweight='bold', x=0.515, y=0.925)
 
         skew.plot(p, T, 'r', label='T')
         skew.plot(p, Td, 'g', label='Td')
@@ -425,9 +626,9 @@ if 'sounding_data' in st.session_state:
                 # Plot
                 lc = h.plot_colormapped(u, v, wind_speed)
                 
-                # Add Colorbar (Inset in Hodograph axis or separate?)
-                # Let's verify alignement within the logic.
-                # Using inset axes to lock it to ax_hod
+                # Añadir barra de color (¿Inserta en el eje del hodógrafo o separada?)
+                # Se debe verificar la alineación con la lógica.
+                # Usando ejes insertados para anclarla a ax_hod
                 ax_cbar = ax_hod.inset_axes([1.02, 0.25, 0.05, 0.5]) # relative to Hodo axes
                 cbar = plt.colorbar(lc, cax=ax_cbar)
                 cbar.set_label('Wind Speed (knots)', fontsize=10)
@@ -450,14 +651,14 @@ if 'sounding_data' in st.session_state:
                 # Drop NaNs from wind for calculations to avoid errors
                 # (MetPy functions often handle this, but being safe)
                 
-                # Calculate geometric height (z) using hydrostatic assumption if not present
-                # We need height for SRH and Bunkers
-                # Calculate height above ground (AGL) approximation
+                # Calcular altura geométrica (z) usando suposición hidrostática si no está presente
+                # Se requiere la altura para SRH y Bunkers
+                # Calcular aproximación de altura sobre el nivel del suelo (AGL)
                 z = mpcalc.pressure_to_height_std(p)
                 z = z - z[0] # AGL
                 
                 # Bunkers Storm Motion (Right Mover, Left Mover, Mean Wind)
-                # Need to ensure no NaNs in the profile used
+                # Asegurar que no hay NaNs en el perfil usado
                 mask = ~np.isnan(u) & ~np.isnan(v) & ~np.isnan(p)
                 u_masked, v_masked, z_masked = u[mask], v[mask], z[mask]
                 
@@ -523,7 +724,7 @@ if 'sounding_data' in st.session_state:
         if display_mode == "Advanced":
             # Use bottom-right cell
             ax_stats = fig.add_subplot(gs_right[1])
-            ax_stats.axis('off') # Hide axis, we just use it for text
+            ax_stats.axis('off') # Ocultar eje, se usa solo para texto
             
             # Border for stats (using plot on axes instead of fig rectangle)
             rect = plt.Rectangle((0, 0), 1, 1, fill=False, color='black', lw=1, transform=ax_stats.transAxes)
@@ -679,7 +880,7 @@ if 'sounding_data' in st.session_state:
 st.markdown(
     f"""<hr style="margin-top: 3rem; margin-bottom: 1rem;">
 <div style="text-align: center; font-size: 0.85em; color: gray;">
-<div style="margin-bottom: 5px;">MeTroV (v1.1.0) — Data: NOAA IGRA & University of Wyoming</div>
+<div style="margin-bottom: 5px;">MeTroV (v1.1.1) — Data: NOAA IGRA & University of Wyoming</div>
 <div xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
 <a property="dct:title" rel="cc:attributionURL" href="https://metrovgit.streamlit.app/" style="color: inherit; text-decoration: none;">MeTroV</a> © <span id="copyrightYear">{datetime.now().year}</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://sites.google.com/view/oscarmr-en">Óscar Mata-Romero</a>.
 <br>
