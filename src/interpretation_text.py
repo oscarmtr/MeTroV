@@ -1,71 +1,71 @@
 def get_interpretation_text():
     return """
-        ### 1. LCL: Nivel de Condensación por Ascenso (Lifting Condensation Level)
+        ### 1. LCL: Lifting Condensation Level
 
-        *   Es la altura a la que el aire, al ascender y enfriarse, se satura (alcanza el 100% de humedad) y el vapor de agua comienza a condensarse en gotitas.
-        *   Marca la **base de las nubes** (generalmente cúmulos).
-        *   **¿Qué sucede aquí?** Por debajo de este nivel, el aire es "seco" (no saturado); justo en este nivel, se forma la nube (Yau & Rogers, 1996; Lohmann et al., 2016).
+        *   It is the height at which the air, upon rising and cooling, becomes saturated (reaches 100% humidity) and water vapor begins to condense into droplets.
+        *   It marks the **cloud base** (usually cumulus).
+        *   **What happens here?** Below this level, the air is "dry" (unsaturated); right at this level, the cloud forms (Yau & Rogers, 1996; Lohmann et al., 2016).
 
-        ### 2. CCL: Nivel de Condensación Convectiva (Convective Condensation Level)
+        ### 2. CCL: Convective Condensation Level
         
-        *   El CCL es la altura donde una parcela de aire que asciende, calentada por el sol en la superficie, alcanza el 100% de humedad y el vapor de agua comienza a condensarse (Yau & Rogers, 1996).
-        *   **Aspecto visual:** Marca la base plana de las nubes cúmulo (las nubes esponjosas, parecidas al algodón) que típicamente se forman en un día cálido y soleado (Yau & Rogers, 1996).
-        *   **Funcionamiento:** El sol calienta el suelo, lo que a su vez calienta el aire directamente por encima. Este aire cálido se vuelve más ligero y flota hacia arriba por sí solo, como un globo aerostático. A medida que asciende, se enfría. Una vez que alcanza la altura exacta del CCL, la humedad invisible en el aire se condensa en gotas de agua visibles, creando una nube (Yau & Rogers, 1996).
+        *   The CCL (Convective Condensation Level) is the height where a rising parcel of air, heated by the sun at the surface, reaches 100% humidity and water vapor begins to condense (Yau & Rogers, 1996).
+        *   **What it looks like:** It marks the flat base of cumulus clouds (the fluffy, cotton-like clouds) that you typically see forming on a warm, sunny day (Yau & Rogers, 1996).
+        *   **How it works:** The sun heats the ground, which in turn heats the air directly above it. This warm air becomes lighter and floats upward on its own, just like a hot air balloon. As it rises, it cools down. Once it reaches the exact height of the CCL, the invisible moisture in the air condenses into visible water droplets, creating a cloud (Yau & Rogers, 1996).
 
-        ### 3. CIN: Inhibición Convectiva (Convective Inhibition)
+        ### 3. CIN: Convective Inhibition
 
-        *   Es la "energía negativa" o barrera que impide que el aire ascienda por sí solo. Usualmente es causada por una inversión térmica (aire cálido sobre aire frío) que actúa como tapa.
-        *   Representa la cantidad de energía externa requerida para aplicar (empujar) a la parcela de aire para que cruce esa zona estable y alcance el punto donde pueda ascender por sí sola (Lohmann et al., 2016; Houze, 2014).
-        *   **Umbrales** (Houze, 2014):
-            *   **Baja:** < 15 J/kg (Fácil de romper, las tormentas se forman temprano).
-            *   **Alta:** > 100 J/kg (Es muy difícil que se formen tormentas al menos que haya un forzamiento externo muy fuerte, como un frente frío).
+        *   It is the "negative energy" or barrier that prevents air from rising on its own. It is usually caused by a thermal inversion (warm air over cold air) acting as a lid.
+        *   It represents the amount of external energy required to apply (push) to the air parcel so it can cross that stable zone and reach the point where it can rise on its own (Lohmann et al., 2016; Houze, 2014).
+        *   **Thresholds** (Houze, 2014):
+            *   **Low:** < 15 J/kg (Easy to break, storms form early).
+            *   **High:** > 100 J/kg (It is very difficult for storms to form unless there is a very strong external forcing, like a cold front).
 
-        ### 4. LFC: Nivel de Convección Libre (Level of Free Convection)
+        ### 4. LFC: Level of Free Convection
 
-        *   Es la altura exacta donde la parcela de aire se vuelve más cálida (y menos densa) que el aire circundante.
-        *   Es el "punto de liberación". Una vez que la parcela supera esta altura, ya no necesita ser empujada; comienza a ascender espontáneamente como un globo aerostático debido a su flotabilidad positiva (Iribarne & Godson, 1981).
-        *   Si no se rompe la CIN, la parcela nunca alcanza el LFC y no hay tormenta.
+        *   It is the exact height where the air parcel becomes warmer (and less dense) than the surrounding air.
+        *   It is the "release point". Once the parcel exceeds this height, it no longer needs to be pushed; it starts rising spontaneously like a hot air balloon due to its positive buoyancy (Iribarne & Godson, 1981).
+        *   If the CIN is not broken, the parcel never reaches the LFC and there is no storm.
 
-        ### 5. CAPE: Energía Potencial Convectiva Disponible (Convective Available Potential Energy)
+        ### 5. CAPE: Convective Available Potential Energy
 
-        *   Es el "combustible" de la tormenta. Mide la cantidad total de energía que la parcela acumula mientras asciende libremente (desde el LFC hacia arriba) siendo más cálida que el entorno.
-        *   A mayor CAPE, mayor será la velocidad de ascenso (corriente ascendente) y más intensa podrá ser la tormenta (Lohmann et al., 2016; Houze, 2014).
-        *   **Umbrales** (Lohmann et al., 2016; Wallace & Hobbs, 2006):
-            *   **0 J/kg:** Estable (sin convección).
-            *   **< 1000 J/kg:** Inestabilidad marginal (convección débil).
-            *   **1000 - 2500 J/kg:** Inestabilidad moderada (tormentas ordinarias).
-            *   **2500 - 4000 J/kg:** Muy inestable (tormentas severas, posible granizo grande o tornados).
-            *   **> 4000 J/kg:** Extremadamente inestable.
+        *   It is the storm's "fuel". It measures the total amount of energy the parcel accumulates while rising freely (from the LFC upwards) being warmer than the environment.
+        *   The higher the CAPE, the faster the ascent velocity (updraft) and the more intense the storm can be (Lohmann et al., 2016; Houze, 2014).
+        *   **Thresholds** (Lohmann et al., 2016; Wallace & Hobbs, 2006):
+            *   **0 J/kg:** Stable (no convection).
+            *   **< 1000 J/kg:** Marginal instability (weak convection).
+            *   **1000 - 2500 J/kg:** Moderate instability (ordinary storms).
+            *   **2500 - 4000 J/kg:** Very unstable (severe storms, possible large hail or tornadoes).
+            *   **> 4000 J/kg:** Extremely unstable.
 
-        ### 6. EL: Nivel de Equilibrio o LNB (Equilibrium Level)
-        *(Nivel de Flotabilidad Neutra)*
+        ### 6. EL: Equilibrium Level (or LNB)
+        *(Level of Neutral Buoyancy)*
 
-        *   Es la altura donde la parcela de aire deja de ser más cálida que el entorno. Su temperatura se iguala con la temperatura ambiente y pierde su flotabilidad.
-        *   Marca la **cima de la nube** (el yunque del cumulonimbo). Aunque la inercia puede hacer que la nube ascienda un poco más (overshooting top), aquí es donde la nube deja de crecer activamente (Lohmann et al., 2016; Houze, 2014).
+        *   It is the height where the air parcel stops being warmer than the environment. Its temperature equalizes with the ambient temperature and it loses its buoyancy.
+        *   It marks the **cloud top** (the anvil of the cumulonimbus). Although inertia may cause the cloud to rise a bit more ("overshooting top"), this is where the cloud stops growing actively (Lohmann et al., 2016; Houze, 2014).
 
-        ### 7. Análisis de Capas de Nubes y Formación
+        ### 7. Cloud Layers & Formation Analysis
         
-        Para identificar posibles capas de nubes a partir de un sondeo, se analiza la proximidad de las curvas de Temperatura ($T$) y Punto de Rocío ($T_d$) y las rutas de ascenso de la parcela (Lohmann et al., 2016; Wallace & Hobbs, 2006).
+        To identify potential cloud layers from a sounding, the proximity of Temperature ($T$) and Dewpoint ($T_d$) curves and parcel ascent paths is analyzed (Lohmann et al., 2016; Wallace & Hobbs, 2006).
 
-        #### A. Nubes Estratiformes (En capas)
-        Para capas de nubes estables (Estratos, Altoestratos), se evalúa la humedad relativa alta:
-        *   **Proximidad de curvas:** Es probable que existan nubes donde las líneas de $T$ y $T_d$ están muy cerca o se tocan (Lohmann et al., 2016; Iribarne & Godson, 1981).
-        *   **Depresión del punto de rocío:** En la práctica, una depresión ($T - T_d$) de **< 3°C a 5°C** indica usualmente la formación de nubes (Wallace & Hobbs, 2006).
-        *   **Grosor:** La capa de nubes se extiende verticalmente mientras estas líneas permanezcan cercanas. Una separación repentina indica aire seco y la cima/base de la nube (Wallace & Hobbs, 2006).
+        #### A. Stratiform Clouds (Layered)
+        For stable cloud layers (Stratus, Altostratus), high relative humidity is assessed:
+        *   **Proximity of curves:** Clouds likely exist where the $T$ and $T_d$ lines are very close or touching (Lohmann et al., 2016; Iribarne & Godson, 1981).
+        *   **Dewpoint Depression:** In practice, a depression ($T - T_d$) of **< 3°C to 5°C** usually indicates cloud formation (Wallace & Hobbs, 2006).
+        *   **Thickness:** The cloud layer extends vertically as long as these lines remain close. A sudden separation indicates dry air and the cloud top/base (Wallace & Hobbs, 2006).
 
-        #### B. Nubes Convectivas (Cúmulos)
-        Para nubes formadas por corrientes de aire ascendentes:
-        *   **Base de la Nube:** Marcada por el **LCL** (ascenso forzado) o **CCL** (Nivel de Condensación Convectiva, por calentamiento de superficie) (Yau & Rogers, 1996).
-        *   **Desarrollo Vertical:** Ocurre a lo largo de la adiabática saturada mientras la parcela sea más cálida que el entorno ($T_{parcela} > T_{entorno}$), lo cual es indicado por un **CAPE** positivo (Lohmann et al., 2016).
-        *   **Cima de la Nube:** Teóricamente en el **EL/LNB**, donde la flotabilidad se vuelve neutra. Corrientes ascendentes fuertes pueden penetrar más alto (topes sobrepasados) (Lohmann et al., 2016; Houze, 2014).
+        #### B. Convective Clouds (Cumulus)
+        For clouds formed by rising air currents:
+        *   **Cloud Base:** Marked by the **LCL** (forced ascent) or **CCL** (Convective Condensation Level, from surface heating) (Yau & Rogers, 1996).
+        *   **Vertical Development:** Occurs along the saturated adiabat as long as the parcel is warmer than the environment ($T_{parcel} > T_{env}$), indicated by positive **CAPE** (Lohmann et al., 2016).
+        *   **Cloud Top:** Theoretically at the **EL/LNB**, where buoyancy becomes neutral. Strong updrafts may penetrate higher (overshooting tops) (Lohmann et al., 2016; Houze, 2014).
 
-        #### C. Capa Límite y Niebla
-        *   **Estratocúmulos:** Se encuentran a menudo en la cima de la capa límite planetaria, coronados por una inversión térmica (T aumenta con la altura) y un secado agudo (las líneas se separan) (Wallace & Hobbs, 2006).
-        *   **Niebla:** Esencialmente una nube en el suelo. Se indica cuando $T \approx T_d$ en el nivel de presión de superficie (Yau & Rogers, 1996; Lohmann et al., 2016).
+        #### C. Boundary Layer & Fog
+        *   **Stratocumulus:** Often found at the top of the planetary boundary layer, capped by a temperature inversion (T increases with height) and a sharp drying (lines separate) (Wallace & Hobbs, 2006).
+        *   **Fog:** Essentially a cloud on the ground. Indicated when $T \approx T_d$ at the surface pressure level (Yau & Rogers, 1996; Lohmann et al., 2016).
 
         ---
 
-        ### Referencias
+        ### References
         *   Lohmann, U., Lüönd, F., & Mahrt, F. (2016). *An introduction to clouds: From the microscale to climate*. Cambridge University Press.
         *   Houze, R. A., Jr. (2014). *Cloud dynamics* (2nd ed., Vol. 104). Academic Press. https://doi.org/10.1016/C2010-0-66412-6
         *   Wallace, J. M., & Hobbs, P. V. (2006). *Atmospheric science: An introductory survey* (2nd ed.). Academic Press.

@@ -295,7 +295,7 @@ else:
     hours_to_try = [f"{datetime.strptime(hora_str, '%H:%M').hour:02}"]
 
 # ── Display Mode Selection ──────────────────────────────
-display_mode = st.radio("Display Mode", ["Simple", "Advanced"], index=1, horizontal=True)
+display_mode = st.radio("Display Mode", ["Simple", "Advanced"], index=0, horizontal=True)
 
 # ── Generate sounding button ──────────────────────────────
 if st.button("Generate Sounding"):
