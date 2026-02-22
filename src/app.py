@@ -863,7 +863,7 @@ if 'sounding_data' in st.session_state:
         
         # Save high-res version to another buffer for the download button
         buf_high = io.BytesIO()
-        fig.savefig(buf_high, format='png', bbox_inches='tight', dpi=600)
+        fig.savefig(buf_high, format='png', bbox_inches='tight', dpi=900)
         buf_high.seek(0)
         
         # Add download button for full quality
