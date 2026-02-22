@@ -54,9 +54,9 @@ def update_station_list(force=False):
     # Requiere actualización
     print("Actualizando listas de estaciones y países...")
     try:
-        # 1. Actualizar lista de países
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
         URL_CTRY = "https://www.ncei.noaa.gov/pub/data/igra/igra2-country-list.txt"
-        resp_c = requests.get(URL_CTRY, timeout=30)
+        resp_c = requests.get(URL_CTRY, headers=headers, timeout=30)
         resp_c.raise_for_status()
         
         c_records = []
@@ -74,7 +74,7 @@ def update_station_list(force=False):
 
         # 2. Actualizar lista de estaciones
         URL = "https://www.ncei.noaa.gov/pub/data/igra/igra2-station-list.txt"
-        response = requests.get(URL, timeout=30)
+        response = requests.get(URL, headers=headers, timeout=30)
         response.raise_for_status()
         txt = response.text.splitlines()
 

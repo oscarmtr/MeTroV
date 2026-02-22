@@ -9,6 +9,9 @@ from PIL import Image
 # Suppress DecompressionBombWarning for high-res plots requested by user
 Image.MAX_IMAGE_PIXELS = None
 
+import warnings
+warnings.filterwarnings('ignore', message='.*Duplicate pressure.*')
+
 import pathlib
 from stations import find_station, update_station_list
 from sondeo_plotly import create_skewt_plotly
