@@ -493,8 +493,8 @@ if 'sounding_data' in st.session_state:
     with tab_static:
         import matplotlib.gridspec as gridspec
         
-        # Create figure
-        fig = plt.figure(figsize=(17, 12), dpi=900)
+        # Create figure (reduced dpi to prevent memory crashes on Streamlit Cloud)
+        fig = plt.figure(figsize=(17, 12), dpi=300)
         
         # Define GridSpec based on display mode
         if display_mode == "Advanced":
@@ -853,23 +853,28 @@ if 'sounding_data' in st.session_state:
         )
         plt.figtext(0.5, 0.01, license_text, ha="center", va="bottom", fontsize=8, color='gray')
 
-        # Save high-res image to buffer
+        # Save standard-res image to buffer for UI display
         buf = io.BytesIO()
-        fig.savefig(buf, format='png', bbox_inches='tight')
+        fig.savefig(buf, format='png', bbox_inches='tight')  # uses fig's dpi=150
         buf.seek(0)
         
         # Display image directly
         st.image(buf, output_format="PNG")
         
+        # Save high-res version to another buffer for the download button
+        buf_high = io.BytesIO()
+        fig.savefig(buf_high, format='png', bbox_inches='tight', dpi=600)
+        buf_high.seek(0)
+        
         # Add download button for full quality
         st.download_button(
             label="💾 Download High-Res Image",
-            data=buf,
+            data=buf_high,
             file_name=f"skewt_{station_name}_{yr}{mn}{dy}_{hr}.png",
             mime="image/png"
         )
         
-        # Close figure
+        # Close figure to free memory
         plt.close(fig)
         
     with tab_interactive:

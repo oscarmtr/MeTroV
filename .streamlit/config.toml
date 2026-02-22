@@ -1,5 +1,3 @@
 [server]
 enableCORS = false
-[server]
-fileWatcherType = "none" 
-
+fileWatcherType = "none"
