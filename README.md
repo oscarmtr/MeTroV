@@ -19,6 +19,7 @@ The app allows users to search stations by city or airport name, select date and
   - Interactive plots using **Plotly**
 - Thermodynamic diagnostics:
   - LCL (Lifted Condensation Level)
+  - CCL (Convective Condensation Level)
   - LFC (Level of Free Convection)
   - EL (Equilibrium Level)
   - CAPE and CIN
@@ -32,6 +33,7 @@ The app allows users to search stations by city or airport name, select date and
 MeTroV/
 │
 ├── data/
+│   ├── igra_countries.csv         # Auto-updated catalog
 │   └── igra_stations_active.csv   # Station catalog (auto-generated)
 │
 ├── scripts/
@@ -39,8 +41,9 @@ MeTroV/
 │
 ├── src/
 │   ├── app.py                     # Streamlit application
+│   ├── interpretation_text.py     # Graphic interpretation
 │   ├── stations.py                # Station search and automatic list updates
-│   ├── sondeo.py                  # Sounding retrieval logic (IGRA / UWYO)
+│   ├── sonding.py                 # Sounding retrieval logic to local(IGRA / UWYO)
 │   ├── sondeo_plotly.py           # Interactive Skew-T (Plotly)
 │   └── sounding_sources.py        # Data source definitions
 │
