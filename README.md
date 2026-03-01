@@ -6,7 +6,7 @@ The app allows users to search stations by city or airport name, select date and
 
 ---
 
-## 🚀 Features
+## Features
 
 - Global radiosonde station catalog with city/airport-based search
 - Multiple data sources:
@@ -24,7 +24,7 @@ The app allows users to search stations by city or airport name, select date and
   - EL (Equilibrium Level)
   - CAPE and CIN
 - Direct links to the original data source used for each sounding
-
+- Change the web app workflow to a local workflow or scripts
 ---
 
 ## 📂 Project Structure
@@ -43,8 +43,8 @@ MeTroV/
 │   ├── app.py                     # Streamlit application
 │   ├── interpretation_text.py     # Graphic interpretation
 │   ├── stations.py                # Station search and automatic list updates
-│   ├── sonding.py                 # Sounding retrieval logic to local(IGRA / UWYO)
-│   ├── sondeo_plotly.py           # Interactive Skew-T (Plotly)
+│   ├── sounding.py                # Sounding script
+│   ├── sounding_plotly.py           # Interactive Skew-T (Plotly)
 │   └── sounding_sources.py        # Data source definitions
 │
 ├── .gitignore                     # Git exclusion rules
@@ -52,10 +52,9 @@ MeTroV/
 ├── requirements.txt               # Python dependencies
 └── README.md                      # Project documentation
 ```
-
 ---
 
-## ▶️ Run the App Locally
+## ▶️ Run locally (Web App or Python Script)
 
 1. Clone the repository:
 
@@ -67,15 +66,22 @@ MeTroV/
 2. Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   conda create --name metrov_env python=3.13 -y
+   conda install -n metrov_env --file requirements.txt -c conda-forge -y
    ```
 
 3. Launch the app:
 
-   ```bash
-   streamlit run src/app.py
-   ```
+   3.1  App local
 
+     ```bash
+     conda run -n metrov_env streamlit run src/app.py
+     ```
+   3.2  Script
+  
+     ```bash
+     conda run -n metrov_env python src/sounding.py
+     ```
 ---
 
 ## 📄 License
