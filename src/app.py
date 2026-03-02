@@ -409,6 +409,8 @@ if st.button("Generate Sounding"):
                     y_pos[y < 0] = 0
                     if not pd.isna(lfc_p.magnitude):
                         mask_cape_graphic = p_calc <= lfc_p
+                        if not pd.isna(el_p.magnitude):
+                            mask_cape_graphic &= (p_calc >= el_p)
                         y_pos[~mask_cape_graphic] = 0
                     else:
                         y_pos[:] = 0
@@ -557,15 +559,15 @@ if 'sounding_data' in st.session_state:
         # Restrict CIN to area below LFC and EL
         if not pd.isna(lfc_p.magnitude):
             mask_cin = (p >= lfc_p)
-            if el_p_top is not None and not pd.isna(el_p_top):
-                mask_cin = mask_cin & (p >= el_p_top)
+            if not pd.isna(el_p.magnitude):
+                mask_cin = mask_cin & (p >= el_p)
             skew.shade_cin(p[mask_cin], T[mask_cin], parcel_prof[mask_cin])
 
         # Shade CAPE
         if not pd.isna(lfc_p):
             mask_cape = p <= lfc_p
-            if el_p_top is not None and not pd.isna(el_p_top):
-                mask_cape = mask_cape & (p >= el_p_top)
+            if not pd.isna(el_p.magnitude):
+                mask_cape = mask_cape & (p >= el_p)
             skew.shade_cape(p[mask_cape], T[mask_cape], parcel_prof[mask_cape])
 
         skew.ax.set_ylim(1050, 75)
