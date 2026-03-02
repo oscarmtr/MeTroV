@@ -271,8 +271,13 @@ with st.spinner("Checking for station updates..."):
     import stations as st_module
     st_module.update_station_list()
 
-stations_df = pd.read_csv(STATION_FILE)
-cities = stations_df['display_name'].tolist()
+if STATION_FILE.exists():
+    stations_df = pd.read_csv(STATION_FILE)
+    cities = stations_df['display_name'].tolist()
+else:
+    # Graceful fallback if NOAA is unresponsive in the cloud environment
+    stations_df = pd.DataFrame(columns=["code", "display_name", "city", "raw_name"])
+    cities = ["Download Failed - NOAA IGRA Unreachable"]
 
 # ── Select city and source ───────────────────────────
 city = st.selectbox("Select City/Airport", cities)
