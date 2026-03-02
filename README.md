@@ -6,7 +6,7 @@ The app allows users to search stations by city or airport name, select date and
 
 ---
 
-## 🚀 Features
+## Features
 
 - Global radiosonde station catalog with city/airport-based search
 - Multiple data sources:
@@ -17,12 +17,20 @@ The app allows users to search stations by city or airport name, select date and
 - Skew-T Log-P diagrams:
   - Static plots using **MetPy**
   - Interactive plots using **Plotly**
+- Advanced panel:
+  - **Hodograph** visualization with Bunkers storm motion
+  - **Kinematic parameters** (0-1km/0-3km/0-6km Shear, SRH)
+  - **Advanced thermodynamic indices** (SBCAPE, MUCAPE, MLCAPE, TT, K-Index)
+  - **Composite indices** (Significant Tornado Parameter, Supercell Composite)
 - Thermodynamic diagnostics:
-  - LCL (Lifted Condensation Level)
-  - LFC (Level of Free Convection)
-  - EL (Equilibrium Level)
-  - CAPE and CIN
+  - **LCL** (Lifted Condensation Level)
+  - **CCL** (Convective Condensation Level)
+  - **LFC** (Level of Free Convection)
+  - **EL** (Equilibrium Level)
+  - **CAPE** and **CIN**
 - Direct links to the original data source used for each sounding
+- Change the web app workflow to a local workflow or scripts
+
 
 ---
 
@@ -32,6 +40,7 @@ The app allows users to search stations by city or airport name, select date and
 MeTroV/
 │
 ├── data/
+│   ├── igra_countries.csv         # Auto-updated catalog
 │   └── igra_stations_active.csv   # Station catalog (auto-generated)
 │
 ├── scripts/
@@ -39,10 +48,10 @@ MeTroV/
 │
 ├── src/
 │   ├── app.py                     # Streamlit application
+│   ├── interpretation_text.py     # Graphic interpretation
 │   ├── stations.py                # Station search and automatic list updates
-│   ├── sondeo.py                  # Sounding retrieval logic (IGRA / UWYO)
+│   ├── sounding.py                # Sounding script
 │   ├── sounding_plotly.py         # Interactive Skew-T (Plotly)
-│   ├── interpretation_text.py     # Atmospheric Interpretation Guidelines
 │   └── sounding_sources.py        # Data source definitions
 │
 ├── .gitignore                     # Git exclusion rules
@@ -50,10 +59,9 @@ MeTroV/
 ├── requirements.txt               # Python dependencies
 └── README.md                      # Project documentation
 ```
-
 ---
 
-## ▶️ Run the App Locally
+## ▶️ Run locally (Web App or Python Script)
 
 1. Clone the repository:
 
@@ -65,15 +73,22 @@ MeTroV/
 2. Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   conda create --name metrov_env python=3.13 -y
+   conda install -n metrov_env --file requirements.txt -c conda-forge -y
    ```
 
 3. Launch the app:
 
-   ```bash
-   streamlit run src/app.py
-   ```
+   3.1  App local
 
+     ```bash
+     conda run -n metrov_env streamlit run src/app.py
+     ```
+   3.2  Script
+  
+     ```bash
+     conda run -n metrov_env python src/sounding.py
+     ```
 ---
 
 ## 📄 License
