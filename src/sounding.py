@@ -20,7 +20,7 @@ import matplotlib.gridspec as gridspec
 # =====================================
 # USER CONFIGURATION
 # =====================================
-STATION_CODE = "AAA00001111"  # "AAA00001111" (ID used to download data)
+STATION_CODE = "AAA00001111"  # "AAA00001111" (ID used to download data) check "/data/igra_stations.csv"
 CITY = "City"               # String to display in the plot title
 DATE_YEAR = "2026"
 DATE_MONTH = "01"
@@ -389,12 +389,19 @@ if __name__ == "__main__":
         step = 45 if source_used.startswith("UWYO") else 3
         skew.plot_barbs(p[::step], u[::step], v[::step])
 
-    if cape > 0:
-        skew.shade_cape(p, T, parcel_prof)
-    
+    # Restrict CIN to area below LFC and EL
     if not pd.isna(lfc_p.magnitude):
-        mask_cin = p >= lfc_p
+        mask_cin = (p >= lfc_p)
+        if el_p_top is not None and not pd.isna(el_p_top):
+            mask_cin = mask_cin & (p >= el_p_top)
         skew.shade_cin(p[mask_cin], T[mask_cin], parcel_prof[mask_cin])
+
+    # Shade CAPE
+    if not pd.isna(lfc_p):
+        mask_cape = p <= lfc_p
+        if el_p_top is not None and not pd.isna(el_p_top):
+            mask_cape = mask_cape & (p >= el_p_top)
+        skew.shade_cape(p[mask_cape], T[mask_cape], parcel_prof[mask_cape])
 
     skew.ax.set_ylim(1050, 75)
     skew.ax.set_xlim(-40, 40)
