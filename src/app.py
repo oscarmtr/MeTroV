@@ -427,7 +427,7 @@ if st.button("Generate Sounding"):
             st.session_state['sounding_data'] = {
                 'p': p, 'T': T, 'Td': Td, 'u': u, 'v': v,
                 'lcl_p': lcl_p, 'lcl_T': lcl_T, 'parcel_prof': parcel_prof,
-                'lfc_p': lfc_p, 'ccl_p': ccl_p, 'el_p': el_p, 'cape': cape, 'cin': cin,
+                'lfc_p': lfc_p, 'ccl_p': ccl_p, 'el_p': el_p, 'el_p_top': el_p_top, 'cape': cape, 'cin': cin,
                 'station_name': station_name, 'CodEst': CodEst,
                 'yr': yr, 'mn': mn, 'dy': dy, 'hr': hr,
                 'source_used': source_used, 'source_display': source_display, 'source_url': source_url
@@ -443,7 +443,7 @@ if 'sounding_data' in st.session_state:
     # Unpack variables for convenience
     p, T, Td, u, v = data['p'], data['T'], data['Td'], data['u'], data['v']
     lcl_p, lcl_T, parcel_prof = data['lcl_p'], data['lcl_T'], data['parcel_prof']
-    lfc_p, ccl_p, el_p, cape, cin = data['lfc_p'], data['ccl_p'], data['el_p'], data['cape'], data['cin']
+    lfc_p, ccl_p, el_p, el_p_top, cape, cin = data['lfc_p'], data['ccl_p'], data['el_p'], data.get('el_p_top', None), data['cape'], data['cin']
     station_name, CodEst = data['station_name'], data['CodEst']
     yr, mn, dy, hr = data['yr'], data['mn'], data['dy'], data['hr']
     source_used, source_display, source_url = data['source_used'], data['source_display'], data['source_url']
