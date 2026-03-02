@@ -360,91 +360,43 @@ if st.button("Generate Sounding"):
                 p_calc, T_calc, Td_calc, prof_calc = p, T, Td, parcel_prof
 
             # Revert to using explicit parcel profile for CAPE/CIN to match plot exactly.
-            cape, cin = mpcalc.cape_cin(p_calc, T_calc, Td_calc, prof_calc)
+            # Using mpcalc.cape_cin often stops at the first EL, thus missing CAPE/CIN from higher layers
+            # We perform a robust manual integration for ALL layers up to the top EL.
             
-            # CUSTOM ROBUST CIN CALCULATION
-            # A veces mpcalc.cape_cin se detiene en el primer EL o maneja múltiples capas de forma restrictiva.
-            # Se requiere la inhibición total por debajo del nivel EL más alto.
+            # Default values if calculation fails
+            cape = 0 * units('J/kg')
+            cin = 0 * units('J/kg')
+            
             try:
-                # Encontrar todos los ELs para obtener el superior
-                # el_pressure, _ = mpcalc.el(p, T, Td, parcel_prof) # Esto devuelve solo uno.
-                # Se realiza integración manual para mayor robustez.
-                # B = (Tv_parcel - Tv_env) / Tv_env * g
-                # Pero aproximación simple: Área entre T_parcel y T_env en el Skew-T (Rd * (T_p - T_e) dlnp)
-                
-                # Se requiere Temp. Virtual para una flotabilidad precisa
-                # Tv = T * (1 + 0.61 * q) - aproximado por T si no se dispone fácilmente de la relación de mezcla, 
-                # pero se usan los arrays del perfil directamente ya que parcel_prof suele ser T_virtual. 
-                # ¿MetPy parcel_profile devuelve Temperatura, no Temperatura Virtual usualmente, a menos que se configure?
-                # En realidad mpcalc.parcel_profile devuelve T de la parcela.
-                # CAPE/CIN usan corrección de Temperatura Virtual.
-                
-                # Se utilizan los arrays proporcionados.
-                # Identificar capas de flotabilidad negativa por debajo del EL (EL ya calculado como el_p)
-                
-                if el_p_top is not None and not pd.isna(el_p_top) and len(p_calc) > 1:
-                    # Mask profile from surface to EL top
-                    mask_layer = (p_calc <= p_calc[0]) & (p_calc >= el_p_top)
+                if len(p_calc) > 1:
+                    # Calculate difference (Parcel - Env) in Temperature
+                    diff = prof_calc - T_calc
                     
-                    if np.any(mask_layer):
-                        p_layer = p_calc[mask_layer]
-                        T_layer = T_calc[mask_layer]
-                        prof_layer = prof_calc[mask_layer]
+                    x = np.log(p_calc.magnitude)
+                    y = diff.magnitude
+                    Rd = 287.05 # Gas constant for dry air ~ J/(kg K)
+                    
+                    # 1. Calculate Total CIN (Negative areas)
+                    y_neg = y.copy()
+                    y_neg[y > 0] = 0
+                    if np.any(y_neg < 0):
+                        # x (log p) is decreasing with height, so dx is negative.
+                        # y_neg is negative.
+                        # Integral(y dx) is positive. CIN convention is negative.
+                        area_cin = np.trapz(y_neg, x) * Rd
+                        cin = -1 * abs(area_cin) * units('J/kg')
                         
-                        # Calculate difference (Parcel - Env). Negative = Inhibition
-                        # Note: This is T, not Tv, so it's approx. but consistent with visual Skew-T T-lines.
-                        diff = prof_layer - T_layer
+                    # 2. Calculate Total CAPE (Positive areas)
+                    y_pos = y.copy()
+                    y_pos[y < 0] = 0
+                    if np.any(y_pos > 0):
+                        area_cape = np.trapz(y_pos, x) * Rd
+                        cape = abs(area_cape) * units('J/kg')
                         
-                        # Identify negative areas
-                        neg_mask = diff < 0 * diff.units
-                        
-                        if np.any(neg_mask):
-                            # Integrate using trapezoidal rule
-                            # Energy = - Rd * Integral( (Tp - Te) / p * dp ) ??? 
-                            # Standard Skew-T Area: Rd * integral ( (Tp - Te) d (ln p) )
-                            # CIN is positive integral of negative buoyancy, or negative integral. 
-                            # MetPy returns negative J/kg.
-                            
-                            # Simple integration or metpy.calc.apparent_temperature can be used
-                            # CIN ~ Rd * integral( (T_par - T_env) * d(ln p) ) for T_par < T_env
-                            
-                            x = np.log(p_layer.magnitude)
-                            y = diff.magnitude
-                            
-                            # Integrate only where y < 0
-                            y_neg = y.copy()
-                            y_neg[y > 0] = 0
-                            
-                            # Trapz integration (x is decreasing because p is decreasing)
-                            # Area = integral y dx
-                            # Rd_dry approx 287 J/(kg K)
-                            Rd = 287.05
-                            area = np.trapz(y_neg, x) * Rd
-                            
-                            # Area will be positive because x is decreasing (log(p) goes down) and y_neg is negative?
-                            # x: log(1000) -> log(200). Decreasing. dx < 0.
-                            # y_neg: < 0.
-                            # y*dx > 0.
-                            # So Area is positive J/kg representing the "energy" (CIN is usually negative).
-                            # MetPy convention: CIN is negative.
-                            
-                            cin_manual = -1 * abs(area) * units('J/kg')
-                            
-                            # This is used if it is "more negative" (more inhibition) than the standard calculation,
-                            # or if standard is 0 but this is not.
-                            if cin_manual.magnitude < cin.magnitude:
-                                cin = cin_manual
-
             except Exception as e:
-                print(f"Error in manual CIN calc: {e}")
-
-            # Ensure CAPE is not negative (floating point noise)
-            if cape.magnitude < 0:
-                cape = 0 * cape.units
-            
-            # Ensure CIN is negative or zero
-            if cin.magnitude > 0:
-                cin = 0 * cin.units
+                print(f"Error in robust CAPE/CIN calc: {e}")
+                # Fallback to standard if custom fails
+                cape, cin = mpcalc.cape_cin(p_calc, T_calc, Td_calc, prof_calc)
             
             # Formulate source URL for storage
             source_url = ""
