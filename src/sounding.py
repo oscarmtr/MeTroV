@@ -348,12 +348,17 @@ if __name__ == "__main__":
         step = 45 if source_used.startswith("UWYO") else 3
         skew.plot_barbs(p[::step], u[::step], v[::step])
 
-    if cape > 0:
-        skew.shade_cape(p, T, parcel_prof)
-    
-    if not pd.isna(lfc_p.magnitude):
-        mask_cin = p >= lfc_p
-        skew.shade_cin(p[mask_cin], T[mask_cin], parcel_prof[mask_cin])
+    # Shade CIN and CAPE, restricted only by the top Equilibrium Level,
+    # so multiple alternating layers (even below LFC) are correctly painted.
+    # We use explicit `shade_area` instead of `shade_cin`/`shade_cape` to bypass
+    # MetPy's internal restriction that ignores CAPE below the lowest LFC.
+    if el_p_top is not None and not pd.isna(el_p_top):
+        mask_el = (p >= el_p_top)
+        skew.shade_area(p[mask_el], T[mask_el], parcel_prof[mask_el], color='cornflowerblue', alpha=0.3)
+        skew.shade_area(p[mask_el], parcel_prof[mask_el], T[mask_el], color='orangered', alpha=0.3)
+    else:
+        skew.shade_area(p, T, parcel_prof, color='cornflowerblue', alpha=0.3)
+        skew.shade_area(p, parcel_prof, T, color='orangered', alpha=0.3)
 
     skew.ax.set_ylim(1050, 75)
     skew.ax.set_xlim(-40, 40)
