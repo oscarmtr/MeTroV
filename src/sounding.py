@@ -20,11 +20,11 @@ import matplotlib.gridspec as gridspec
 # =====================================
 # USER CONFIGURATION
 # =====================================
-STATION_CODE = "SPM00008383"  # "AAA00001111" (ID used to download data) check "/data/igra_stations_active.csv"
+STATION_CODE = "AAA00001111"  # "AAA00001111" (ID used to download data) check "/data/igra_stations_active.csv"
 CITY = "City"               # String to display in the plot title
-DATE_YEAR = "2025"
-DATE_MONTH = "10"
-DATE_DAY = "15"
+DATE_YEAR = "2026"
+DATE_MONTH = "03"
+DATE_DAY = "02"
 TIME_HOUR = "12"
 SOURCE_MODE = "AUTO"     # "IGRA" | "UWYO" | "AUTO"
 PLOT_MODE = "SIMPLE"   # "SIMPLE" | "ADVANCED"
