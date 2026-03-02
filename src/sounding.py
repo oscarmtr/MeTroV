@@ -278,6 +278,8 @@ if __name__ == "__main__":
         if not pd.isna(lfc_p.magnitude):
             mask_cin_graphic = p_calc >= lfc_p
             y_neg[~mask_cin_graphic] = 0
+        else:
+            y_neg[:] = 0
             
         if np.any(y_neg < 0):
             area_cin = np.trapezoid(y_neg, x) * Rd
@@ -289,6 +291,8 @@ if __name__ == "__main__":
         if not pd.isna(lfc_p.magnitude):
             mask_cape_graphic = p_calc <= lfc_p
             y_pos[~mask_cape_graphic] = 0
+        else:
+            y_pos[:] = 0
             
         if np.any(y_pos > 0):
             area_cape = np.trapezoid(y_pos, x) * Rd
