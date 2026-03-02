@@ -247,7 +247,47 @@ if __name__ == "__main__":
     lfc_p, _ = mpcalc.lfc(p, T, Td, parcel_prof, which='bottom')
     ccl_p, ccl_T, ccl_Tc = mpcalc.ccl(p, T, Td, which='bottom')
     el_p,  _ = mpcalc.el(p, T, Td, parcel_prof, which='bottom')
-    cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
+    
+    # Calculate top EL to restrict CAPE/CIN calculations precisely up to this level
+    try:
+        el_p_top, _ = mpcalc.el(p, T, Td, parcel_prof, which='top')
+    except:
+        el_p_top = None
+
+    if el_p_top is not None and not pd.isna(el_p_top) and len(p) > 1:
+        calc_mask = p >= el_p_top
+        p_calc = p[calc_mask]
+        T_calc = T[calc_mask]
+        Td_calc = Td[calc_mask]
+        prof_calc = parcel_prof[calc_mask]
+    else:
+        p_calc, T_calc, Td_calc, prof_calc = p, T, Td, parcel_prof
+
+    cape = 0 * units('J/kg')
+    cin = 0 * units('J/kg')
+    
+    try:
+        if len(p_calc) > 1:
+            diff = prof_calc - T_calc
+            x = np.log(p_calc.magnitude)
+            y = diff.magnitude
+            Rd = 287.05
+            
+            y_neg = y.copy()
+            y_neg[y > 0] = 0
+            if np.any(y_neg < 0):
+                area_cin = np.trapz(y_neg, x) * Rd
+                cin = -1 * abs(area_cin) * units('J/kg')
+                
+            y_pos = y.copy()
+            y_pos[y < 0] = 0
+            if np.any(y_pos > 0):
+                area_cape = np.trapz(y_pos, x) * Rd
+                cape = abs(area_cape) * units('J/kg')
+                
+    except Exception as e:
+        print(f"Error in robust CAPE/CIN calc: {e}")
+        cape, cin = mpcalc.cape_cin(p_calc, T_calc, Td_calc, prof_calc)
 
     # =====================================
     # METPY - INDICES AVANZADOS
@@ -348,12 +388,17 @@ if __name__ == "__main__":
         step = 45 if source_used.startswith("UWYO") else 3
         skew.plot_barbs(p[::step], u[::step], v[::step])
 
-    if cape > 0:
-        skew.shade_cape(p, T, parcel_prof)
-    
-    if not pd.isna(lfc_p.magnitude):
-        mask_cin = p >= lfc_p
-        skew.shade_cin(p[mask_cin], T[mask_cin], parcel_prof[mask_cin])
+    # Shade CIN and CAPE, restricted only by the top Equilibrium Level,
+    # so multiple alternating layers (even below LFC) are correctly painted.
+    # We use explicit `shade_area` instead of `shade_cin`/`shade_cape` to bypass
+    # MetPy's internal restriction that ignores CAPE below the lowest LFC.
+    if el_p_top is not None and not pd.isna(el_p_top):
+        mask_el = (p >= el_p_top)
+        skew.shade_area(p[mask_el], T[mask_el], parcel_prof[mask_el], color='cornflowerblue', alpha=0.3)
+        skew.shade_area(p[mask_el], parcel_prof[mask_el], T[mask_el], color='orangered', alpha=0.3)
+    else:
+        skew.shade_area(p, T, parcel_prof, color='cornflowerblue', alpha=0.3)
+        skew.shade_area(p, parcel_prof, T, color='orangered', alpha=0.3)
 
     skew.ax.set_ylim(1050, 75)
     skew.ax.set_xlim(-40, 40)
