@@ -41,7 +41,8 @@ MeTroV/
 │   ├── app.py                     # Streamlit application
 │   ├── stations.py                # Station search and automatic list updates
 │   ├── sondeo.py                  # Sounding retrieval logic (IGRA / UWYO)
-│   ├── sondeo_plotly.py           # Interactive Skew-T (Plotly)
+│   ├── sounding_plotly.py         # Interactive Skew-T (Plotly)
+│   ├── interpretation_text.py     # Atmospheric Interpretation Guidelines
 │   └── sounding_sources.py        # Data source definitions
 │
 ├── .gitignore                     # Git exclusion rules

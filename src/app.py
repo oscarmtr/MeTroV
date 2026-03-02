@@ -14,7 +14,7 @@ warnings.filterwarnings('ignore', message='.*Duplicate pressure.*')
 
 import pathlib
 from stations import find_station, update_station_list
-from sondeo_plotly import create_skewt_plotly
+from sounding_plotly import create_skewt_plotly
 from metpy.plots import SkewT, Hodograph
 from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
