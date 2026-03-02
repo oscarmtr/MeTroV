@@ -354,6 +354,13 @@ if st.button("Generate Sounding"):
             except:
                 el_p_top = None
 
+            # Physical constraint: EL cannot be below LFC (pressure EL > pressure LFC is invalid)
+            if not pd.isna(lfc_p.magnitude):
+                if not pd.isna(el_p.magnitude) and el_p.magnitude > lfc_p.magnitude:
+                    el_p = np.nan * units.hPa
+                if el_p_top is not None and not pd.isna(el_p_top.magnitude) and el_p_top.magnitude > lfc_p.magnitude:
+                    el_p_top = None
+
             if el_p_top is not None and not pd.isna(el_p_top) and len(p) > 1:
                 # Restrict calculations up to EL top (pressure >= el_p_top)
                 calc_mask = p >= el_p_top

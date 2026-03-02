@@ -20,12 +20,12 @@ import matplotlib.gridspec as gridspec
 # =====================================
 # USER CONFIGURATION
 # =====================================
-STATION_CODE = "AAA00001111"  # "AAA00001111" (ID used to download data) check "/data/igra_stations.csv"
+STATION_CODE = "SPM00008383"  # "AAA00001111" (ID used to download data) check "/data/igra_stations_active.csv"
 CITY = "City"               # String to display in the plot title
-DATE_YEAR = "2026"
-DATE_MONTH = "01"
-DATE_DAY = "14"
-TIME_HOUR = "00"
+DATE_YEAR = "2025"
+DATE_MONTH = "10"
+DATE_DAY = "15"
+TIME_HOUR = "12"
 SOURCE_MODE = "AUTO"     # "IGRA" | "UWYO" | "AUTO"
 PLOT_MODE = "SIMPLE"   # "SIMPLE" | "ADVANCED"
 
@@ -250,6 +250,13 @@ if __name__ == "__main__":
     
     # Custom Graphic-matched CIN and CAPE
     el_p_top, _ = mpcalc.el(p, T, Td, parcel_prof, which='top')
+
+    # Physical constraint: EL cannot be below LFC (pressure EL > pressure LFC is invalid)
+    if not pd.isna(lfc_p.magnitude):
+        if not pd.isna(el_p.magnitude) and el_p.magnitude > lfc_p.magnitude:
+            el_p = np.nan * units.hPa
+        if el_p_top is not None and not pd.isna(el_p_top.magnitude) and el_p_top.magnitude > lfc_p.magnitude:
+            el_p_top = None
     
     cape = 0 * units('J/kg')
     cin = 0 * units('J/kg')
