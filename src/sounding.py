@@ -247,7 +247,48 @@ if __name__ == "__main__":
     lfc_p, _ = mpcalc.lfc(p, T, Td, parcel_prof, which='bottom')
     ccl_p, ccl_T, ccl_Tc = mpcalc.ccl(p, T, Td, which='bottom')
     el_p,  _ = mpcalc.el(p, T, Td, parcel_prof, which='bottom')
-    cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
+    
+    # Custom Graphic-matched CIN and CAPE
+    el_p_top, _ = mpcalc.el(p, T, Td, parcel_prof, which='top')
+    
+    cape = 0 * units('J/kg')
+    cin = 0 * units('J/kg')
+    
+    try:
+        mask_calc_all = (p >= el_p_top)
+        p_calc = p[mask_calc_all]
+        T_calc = T[mask_calc_all]
+        prof_calc = parcel_prof[mask_calc_all]
+        
+        diff = prof_calc - T_calc
+        x = np.log(p_calc.magnitude)
+        y = diff.magnitude
+        Rd = 287.05 # Gas constant for dry air
+        
+        # 1. Calculate Graphic-matched CIN (Negative areas below LFC)
+        y_neg = y.copy()
+        y_neg[y > 0] = 0
+        if not pd.isna(lfc_p.magnitude):
+            mask_cin_graphic = p_calc >= lfc_p
+            y_neg[~mask_cin_graphic] = 0
+            
+        if np.any(y_neg < 0):
+            area_cin = np.trapz(y_neg, x) * Rd
+            cin = -1 * abs(area_cin) * units('J/kg')
+            
+        # 2. Calculate Graphic-matched CAPE (Positive areas above LFC)
+        y_pos = y.copy()
+        y_pos[y < 0] = 0
+        if not pd.isna(lfc_p.magnitude):
+            mask_cape_graphic = p_calc <= lfc_p
+            y_pos[~mask_cape_graphic] = 0
+            
+        if np.any(y_pos > 0):
+            area_cape = np.trapz(y_pos, x) * Rd
+            cape = abs(area_cape) * units('J/kg')
+            
+    except Exception as e:
+        cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
 
     # =====================================
     # METPY - INDICES AVANZADOS

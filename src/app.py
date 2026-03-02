@@ -381,9 +381,13 @@ if st.button("Generate Sounding"):
                     y = diff.magnitude
                     Rd = 287.05 # Gas constant for dry air ~ J/(kg K)
                     
-                    # 1. Calculate Total CIN (Negative areas)
+                    # 1. Calculate Graphic-matched CIN (Negative areas below LFC)
                     y_neg = y.copy()
                     y_neg[y > 0] = 0
+                    if not pd.isna(lfc_p.magnitude):
+                        mask_cin_graphic = p_calc >= lfc_p
+                        y_neg[~mask_cin_graphic] = 0
+                        
                     if np.any(y_neg < 0):
                         # x (log p) is decreasing with height, so dx is negative.
                         # y_neg is negative.
@@ -391,9 +395,13 @@ if st.button("Generate Sounding"):
                         area_cin = np.trapz(y_neg, x) * Rd
                         cin = -1 * abs(area_cin) * units('J/kg')
                         
-                    # 2. Calculate Total CAPE (Positive areas)
+                    # 2. Calculate Graphic-matched CAPE (Positive areas above LFC)
                     y_pos = y.copy()
                     y_pos[y < 0] = 0
+                    if not pd.isna(lfc_p.magnitude):
+                        mask_cape_graphic = p_calc <= lfc_p
+                        y_pos[~mask_cape_graphic] = 0
+                        
                     if np.any(y_pos > 0):
                         area_cape = np.trapz(y_pos, x) * Rd
                         cape = abs(area_cape) * units('J/kg')
