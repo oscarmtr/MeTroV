@@ -343,8 +343,24 @@ if st.button("Generate Sounding"):
             ccl_p, ccl_T, ccl_Tc = mpcalc.ccl(p, T, Td, which='bottom')
             el_p,  _ = mpcalc.el (p, T, Td, parcel_prof, which='bottom')
             
+            # Calculate top EL to restrict CAPE/CIN calculations precisely up to this level
+            try:
+                el_p_top, _ = mpcalc.el(p, T, Td, parcel_prof, which='top')
+            except:
+                el_p_top = None
+
+            if el_p_top is not None and not pd.isna(el_p_top) and len(p) > 1:
+                # Restrict calculations up to EL top (pressure >= el_p_top)
+                calc_mask = p >= el_p_top
+                p_calc = p[calc_mask]
+                T_calc = T[calc_mask]
+                Td_calc = Td[calc_mask]
+                prof_calc = parcel_prof[calc_mask]
+            else:
+                p_calc, T_calc, Td_calc, prof_calc = p, T, Td, parcel_prof
+
             # Revert to using explicit parcel profile for CAPE/CIN to match plot exactly.
-            cape, cin = mpcalc.cape_cin(p, T, Td, parcel_prof)
+            cape, cin = mpcalc.cape_cin(p_calc, T_calc, Td_calc, prof_calc)
             
             # CUSTOM ROBUST CIN CALCULATION
             # A veces mpcalc.cape_cin se detiene en el primer EL o maneja múltiples capas de forma restrictiva.
@@ -366,14 +382,14 @@ if st.button("Generate Sounding"):
                 # Se utilizan los arrays proporcionados.
                 # Identificar capas de flotabilidad negativa por debajo del EL (EL ya calculado como el_p)
                 
-                if not pd.isna(el_p) and len(p) > 1:
-                    # Mask profile from surface to EL
-                    mask_layer = (p <= p[0]) & (p >= el_p)
+                if el_p_top is not None and not pd.isna(el_p_top) and len(p_calc) > 1:
+                    # Mask profile from surface to EL top
+                    mask_layer = (p_calc <= p_calc[0]) & (p_calc >= el_p_top)
                     
                     if np.any(mask_layer):
-                        p_layer = p[mask_layer]
-                        T_layer = T[mask_layer]
-                        prof_layer = parcel_prof[mask_layer]
+                        p_layer = p_calc[mask_layer]
+                        T_layer = T_calc[mask_layer]
+                        prof_layer = prof_calc[mask_layer]
                         
                         # Calculate difference (Parcel - Env). Negative = Inhibition
                         # Note: This is T, not Tv, so it's approx. but consistent with visual Skew-T T-lines.
@@ -562,13 +578,19 @@ if 'sounding_data' in st.session_state:
                 
                 skew.plot_barbs(p[::step], u[::step], v[::step])
 
-        if cape > 0:
-            skew.shade_cape(p, T, parcel_prof)
-        
-        # Restrict CIN to area below LFC
+        # Restrict CIN to area below LFC and EL
         if not pd.isna(lfc_p.magnitude):
-            mask_cin = p >= lfc_p
+            mask_cin = (p >= lfc_p)
+            if el_p_top is not None and not pd.isna(el_p_top):
+                mask_cin = mask_cin & (p >= el_p_top)
             skew.shade_cin(p[mask_cin], T[mask_cin], parcel_prof[mask_cin])
+
+        # Shade CAPE
+        if not pd.isna(lfc_p):
+            mask_cape = p <= lfc_p
+            if el_p_top is not None and not pd.isna(el_p_top):
+                mask_cape = mask_cape & (p >= el_p_top)
+            skew.shade_cape(p[mask_cape], T[mask_cape], parcel_prof[mask_cape])
 
         skew.ax.set_ylim(1050, 75)
         skew.ax.set_xlim(-40, 40)
