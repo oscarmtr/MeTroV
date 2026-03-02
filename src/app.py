@@ -392,7 +392,7 @@ if st.button("Generate Sounding"):
                         # x (log p) is decreasing with height, so dx is negative.
                         # y_neg is negative.
                         # Integral(y dx) is positive. CIN convention is negative.
-                        area_cin = np.trapz(y_neg, x) * Rd
+                        area_cin = np.trapezoid(y_neg, x) * Rd
                         cin = -1 * abs(area_cin) * units('J/kg')
                         
                     # 2. Calculate Graphic-matched CAPE (Positive areas above LFC)
@@ -403,7 +403,7 @@ if st.button("Generate Sounding"):
                         y_pos[~mask_cape_graphic] = 0
                         
                     if np.any(y_pos > 0):
-                        area_cape = np.trapz(y_pos, x) * Rd
+                        area_cape = np.trapezoid(y_pos, x) * Rd
                         cape = abs(area_cape) * units('J/kg')
                         
             except Exception as e:
