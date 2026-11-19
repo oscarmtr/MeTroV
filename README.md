@@ -1,6 +1,6 @@
 # MeTroV
 
-Interactive web application for visualizing atmospheric soundings (radiosondes) using data from **IGRA (NOAA)** and **University of Wyoming (UWYO)**.
+Interactive web application for visualizing atmospheric soundings (radiosondes) using data from **IGRA (NOAA)**, **University of Wyoming (UWYO)** and **SondeHub**.
 
 The app allows users to search stations by city or airport name, select date and time, and generate both **static (MetPy)** and **interactive (Plotly)** Skew-T diagrams, along with key thermodynamic indices commonly used in meteorology.
 
@@ -10,9 +10,10 @@ The app allows users to search stations by city or airport name, select date and
 
 - Global radiosonde station catalog with city/airport-based search
 - Multiple data sources:
+  - **SondeHub** (Real-Time Live radiosonde telemetry)
   - **IGRA** (Integrated Global Radiosonde Archive – NOAA)
   - **UWYO** (University of Wyoming Weather Web)
-  - Automatic fallback between sources
+  - Automatic fallback between sources (IGRA, UWYO)
 - Automatic detection of available synoptic hours
 - Skew-T Log-P diagrams:
   - Static plots using **MetPy**
@@ -21,7 +22,7 @@ The app allows users to search stations by city or airport name, select date and
   - **Hodograph** visualization with Bunkers storm motion
   - **Kinematic parameters** (0-1km/0-3km/0-6km Shear, SRH)
   - **Advanced thermodynamic indices** (SBCAPE, MUCAPE, MLCAPE, TT, K-Index)
-  - **Composite indices** (Significant Tornado Parameter, Supercell Composite)
+  - **Composite indices** (Significant tornado parameter, Supercell composite)
 - Thermodynamic diagnostics:
   - **LCL** (Lifted Condensation Level)
   - **CCL** (Convective Condensation Level)
@@ -31,10 +32,9 @@ The app allows users to search stations by city or airport name, select date and
 - Direct links to the original data source used for each sounding
 - Change the web app workflow to a local workflow or scripts
 
-
 ---
 
-## 📂 Project Structure
+## 📂 Project structure
 
 ```text
 MeTroV/
@@ -49,6 +49,7 @@ MeTroV/
 ├── src/
 │   ├── app.py                     # Streamlit application
 │   ├── interpretation_text.py     # Graphic interpretation
+│   ├── sondehub_service.py        # SondeHub real-time telemetry & QC
 │   ├── stations.py                # Station search and automatic list updates
 │   ├── sounding.py                # Sounding script
 │   ├── sounding_plotly.py         # Interactive Skew-T (Plotly)
@@ -59,9 +60,10 @@ MeTroV/
 ├── requirements.txt               # Python dependencies
 └── README.md                      # Project documentation
 ```
+
 ---
 
-## ▶️ Run locally (Web App or Python Script)
+## ▶️ Run locally (Web app or Python script)
 
 1. Clone the repository:
 
@@ -84,25 +86,27 @@ MeTroV/
      ```bash
      conda run -n metrov_env streamlit run src/app.py
      ```
+
    3.2  Script
   
      ```bash
      conda run -n metrov_env python src/sounding.py
      ```
+
 ---
 
 ## 📄 License
 
 This project is licensed under a **Dual License** model:
 
-### 💻 Source Code
+### 💻 Source code
 
 The source code (software logic, scripts, Python files) is licensed under the **GNU Affero General Public License v3.0 (AGPLv3)**.
 > See [LICENSE](LICENSE) for details.
 
-### 📊 Content & Data Visualization
+### 📊 Content & data visualization
 
-The generated content, visualizations, and website presentation are licensed under **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)**.
+The generated content, visualizations, and website presentation are licensed under **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)** (except **SondeHub** data).
 
 **Summary**:
 
