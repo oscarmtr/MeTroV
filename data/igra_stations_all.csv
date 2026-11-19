@@ -48,10 +48,10 @@ AJM00037895,"Khankandy, Azerbaijan",Khankandy,KHANKANDY
 AJM00037936,"Naxcivan, Azerbaijan",Naxcivan,NAXCIVAN
 AJM00037985,"Lankaran, Azerbaijan",Lankaran,LANKARAN
 AMM00037686,"Gumri, Armenia",Gumri,GUMRI
-AMM00037789,"Yerevan Aero, Armenia",Yerevan Aero,YEREVAN AERO
+AMM00037789,"Yerevan Arabkir, Armenia",Yerevan Arabkir,YEREVAN ARABKIR
 AOM00066152,"Dundo, Angola",Dundo,DUNDO
 AOM00066160,"Luanda, Angola",Luanda,LUANDA
-AOM00066285,"Luena, Angola",Luena,LUENA
+AOM00066285,"Luena Luso, Angola",Luena Luso,LUENA LUSO
 AOM00066318,"Huambo, Angola",Huambo,HUAMBO
 AOM00066390,"Lubango Sa Da Bandeira, Angola",Lubango Sa Da Bandeira,LUBANGO SA DA BANDEIRA
 AOM00066422,"Mocamedes, Angola",Mocamedes,MOCAMEDES
@@ -129,7 +129,7 @@ ASM00094776,"Williamtown Raaf, Australia",Williamtown Raaf,WILLIAMTOWN RAAF
 ASM00094791,"Coffs Harbour Mo, Australia",Coffs Harbour Mo,COFFS HARBOUR MO
 ASM00094802,"Albany Airport, Australia",Albany Airport,ALBANY AIRPORT
 ASM00094821,"Mount Gambier Aero, Australia",Mount Gambier Aero,MOUNT GAMBIER AERO
-ASM00094865,"Laverton Aerodrome, Australia",Laverton Aerodrome,LAVERTON AERODROME
+ASM00094865,"Laverton Raaf, Australia",Laverton Raaf,LAVERTON RAAF
 ASM00094866,"Melbourne Airport, Australia",Melbourne Airport,MELBOURNE AIRPORT
 ASM00094907,"East Sale (Aus-Afb), Australia",East Sale (Aus-Afb),EAST SALE (AUS-AFB)
 ASM00094910,"Wagga Wagga Amo, Australia",Wagga Wagga Amo,WAGGA WAGGA AMO
@@ -146,6 +146,7 @@ ASXUA942005,"Talgarno, Australia",Talgarno,TALGARNO
 ASXUA946505,"Maralinga, Australia",Maralinga,MARALINGA
 ATM00094001,"Yeppoon (Barmaryee), Ashmore and Cartier Islands",Yeppoon (Barmaryee),YEPPOON (BARMARYEE)
 ATM00094005,"Clifton Beach, Ashmore and Cartier Islands",Clifton Beach,CLIFTON BEACH
+ATM00094113,"Shoal Bay, Ashmore and Cartier Islands",Shoal Bay,SHOAL BAY
 ATM00094772,"Guyra Hospital, Ashmore and Cartier Islands",Guyra Hospital,GUYRA HOSPITAL
 ATM00094775,"Tocal Aws, Ashmore and Cartier Islands",Tocal Aws,TOCAL AWS
 ATM00095282,"Woodstock, Ashmore and Cartier Islands",Woodstock,WOODSTOCK
@@ -162,10 +163,11 @@ AYM00089022,"Halley, Antarctica",Halley,HALLEY
 AYM00089050,"Bellingshausen Aws, Antarctica",Bellingshausen Aws,BELLINGSHAUSEN AWS
 AYM00089051,"Petrel Nas, Antarctica",Petrel Nas,PETREL NAS
 AYM00089055,"Base Marambio, Antarctica",Base Marambio,BASE MARAMBIO
-AYM00089056,"Centro Met. Anti Rtico Pres, Antarctica",Centro Met. Anti Rtico Pres,CENTRO MET. ANTI RTICO PRES
+AYM00089056,"Centro Met. Anta Rtico Pres, Antarctica",Centro Met. Anta Rtico Pres,CENTRO MET. ANTA RTICO PRES
 AYM00089062,"Rothera, Antarctica",Rothera,ROTHERA
 AYM00089063,"Vernadsky, Antarctica",Vernadsky,VERNADSKY
 AYM00089125,"Usaf-Ds3-619, Antarctica",Usaf-Ds3-619,USAF-DS3-619
+AYM00089504,"Troll, Antarctica",Troll,TROLL
 AYM00089512,"Novolazarevskaja, Antarctica",Novolazarevskaja,NOVOLAZAREVSKAJA
 AYM00089522,"Base Roi Baudouin, Antarctica",Base Roi Baudouin,BASE ROI BAUDOUIN
 AYM00089532,"Syowa, Antarctica",Syowa,SYOWA
@@ -339,7 +341,7 @@ CAM00071124,"Primrose Lake, Canada",Primrose Lake,PRIMROSE LAKE
 CAM00071129,"Kindersley Arpt, Canada",Kindersley Arpt,KINDERSLEY ARPT
 CAM00071145,"Island Lake Arpt, Canada",Island Lake Arpt,ISLAND LAKE ARPT
 CAM00071197,"Port-Aux-Basques, Canada",Port-Aux-Basques,PORT-AUX-BASQUES
-CAM00071203,"Kelowna Ua; Bc, Canada",Kelowna Ua; Bc,KELOWNA UA; BC
+CAM00071203,"Kelowna; Bc, Canada",Kelowna; Bc,KELOWNA; BC
 CAM00071450,"Elbow Cs, Canada",Elbow Cs,ELBOW CS
 CAM00071524,"Lassomption Cda, Canada",Lassomption Cda,LASSOMPTION CDA
 CAM00071569,"Bratt'S Lake Climate; Sask, Canada",Bratt'S Lake Climate; Sask,BRATT'S LAKE CLIMATE; SASK
@@ -348,7 +350,7 @@ CAM00071603,"Yarmouth A; Ns, Canada",Yarmouth A; Ns,YARMOUTH A; NS
 CAM00071621,"Trenton Arpt, Canada",Trenton Arpt,TRENTON ARPT
 CAM00071625,"Petawawa, Canada",Petawawa,PETAWAWA
 CAM00071627,"Montreal/Trudeau Int, Canada",Montreal,MONTREAL/TRUDEAU INT
-CAM00071701,"Gagetown A; Nb, Canada",Gagetown A; Nb,GAGETOWN A; NB
+CAM00071701,"Gagetown Awos A; Nb, Canada",Gagetown Awos A; Nb,GAGETOWN AWOS A; NB
 CAM00071716,"Valcartier Airport, Canada",Valcartier Airport,VALCARTIER AIRPORT
 CAM00071722,"Maniwaki Ua; Que, Canada",Maniwaki Ua; Que,MANIWAKI UA; QUE
 CAM00071801,"Saint John'S Arpt, Canada",Saint John'S Arpt,SAINT JOHN'S ARPT
@@ -356,7 +358,7 @@ CAM00071802,"St John'S West Ua; Nfld, Canada",St John'S West Ua; Nfld,ST JOHN'S 
 CAM00071811,"Sept-Iles Ua; Que, Canada",Sept-Iles Ua; Que,SEPT-ILES UA; QUE
 CAM00071815,"Stephenville A; Nfld, Canada",Stephenville A; Nfld,STEPHENVILLE A; NFLD
 CAM00071816,"Goose A; Nfld, Canada",Goose A; Nfld,GOOSE A; NFLD
-CAM00071823,"La Grande Iv Ua; Que, Canada",La Grande Iv Ua; Que,LA GRANDE IV UA; QUE
+CAM00071823,"La Grande Iv; Que, Canada",La Grande Iv; Que,LA GRANDE IV; QUE
 CAM00071836,"Moosonee A; Ont, Canada",Moosonee A; Ont,MOOSONEE A; ONT
 CAM00071843,"Winnipeg Ua; Man, Canada",Winnipeg Ua; Man,WINNIPEG UA; MAN
 CAM00071845,"Pickle Lake A; Ont, Canada",Pickle Lake A; Ont,PICKLE LAKE A; ONT
@@ -400,6 +402,7 @@ CAM00072848,"Usaf-Ds3-550, Canada",Usaf-Ds3-550,USAF-DS3-550
 CAM00072918,"Arctic Bay (Nwt), Canada",Arctic Bay (Nwt),ARCTIC BAY (NWT)
 CAM00072953,"Usaf-Ds3-576, Canada",Usaf-Ds3-576,USAF-DS3-576
 CAM00073033,"Vernon Ua; Bc, Canada",Vernon Ua; Bc,VERNON UA; BC
+CAM00073110,"Shearwater Ua; Ns, Canada",Shearwater Ua; Ns,SHEARWATER UA; NS
 CAM00073111,"Kapuskasing Ua; On, Canada",Kapuskasing Ua; On,KAPUSKASING UA; ON
 CAM00074127,"Usaf-Ds3-592, Canada",Usaf-Ds3-592,USAF-DS3-592
 CAM00074399,"Usaf-Ds3-594, Canada",Usaf-Ds3-594,USAF-DS3-594
@@ -421,7 +424,7 @@ CEM00043475,"Pottuvil, Sri Lanka",Pottuvil,POTTUVIL
 CEM00043497,"Hambantota, Sri Lanka",Hambantota,HAMBANTOTA
 CFM00064400,"Pointe-Noire, Congo Republic of the",Pointe-Noire,POINTE-NOIRE
 CFM00064401,"Dolisie, Congo Republic of the",Dolisie,DOLISIE
-CFM00064450,"Brazzaville /Maya-Maya, Congo Republic of the",Brazzaville ,BRAZZAVILLE /MAYA-MAYA
+CFM00064450,"Brazzaville-Pilot, Congo Republic of the",Brazzaville-Pilot,BRAZZAVILLE-PILOT
 CFM00064453,"Djambala, Congo Republic of the",Djambala,DJAMBALA
 CFM00064458,"Ouesso, Congo Republic of the",Ouesso,OUESSO
 CFM00064459,"Impfondo, Congo Republic of the",Impfondo,IMPFONDO
@@ -686,7 +689,7 @@ CNM00067001,"Moroni Airport, Comoros",Moroni Airport,MORONI AIRPORT
 CNM00067002,"Hahaya Int. Airport, Comoros",Hahaya Int. Airport,HAHAYA INT. AIRPORT
 CNM00067004,"Ouani (Anjouan), Comoros",Ouani (Anjouan),OUANI (ANJOUAN)
 COM00071764,"Usaf-Ds3-525, Colombia",Usaf-Ds3-525,USAF-DS3-525
-COM00080001,"San Andres (Isla)/Sesquicen, Colombia",San Andres (Isla),SAN ANDRES (ISLA)/SESQUICEN
+COM00080001,"San Andres, Colombia",San Andres,SAN ANDRES
 COM00080028,"Barranquilla/Ernesto Cortis, Colombia",Barranquilla,BARRANQUILLA/ERNESTO CORTIS
 COM00080035,"Riohacha/Almirante Padilla, Colombia",Riohacha,RIOHACHA/ALMIRANTE PADILLA
 COM00080094,"Bucaramanga/Palonegro, Colombia",Bucaramanga,BUCARAMANGA/PALONEGRO
@@ -758,7 +761,7 @@ EGXUAE04956,"Asyut, Egypt",Asyut,ASYUT
 EGXUAE04958,"Bur Said, Egypt",Bur Said,BUR SAID
 EGXUAE04974,"Sidi Barrani, Egypt",Sidi Barrani,SIDI BARRANI
 EIM00003953,"Valentia Observatory (3953-, Ireland",Valentia Observatory (3953-,VALENTIA OBSERVATORY (3953-
-ENM00026038,"Radar Wrm 200, Estonia",Radar Wrm 200,RADAR WRM 200
+ENM00026038,"Tallinn-Harku, Estonia",Tallinn-Harku,TALLINN-HARKU
 ERM00063021,"Asmara, Eritrea",Asmara,ASMARA
 ESM00078650,"Acajutla, El Salvador",Acajutla,ACAJUTLA
 ESM00078663,"San Salvador/Ilopan, El Salvador",San Salvador,SAN SALVADOR/ILOPAN
@@ -853,7 +856,7 @@ GGM00037549,"Tbilisi/Novoalexeye, Georgia",Tbilisi,TBILISI/NOVOALEXEYE
 GHM00065418,"Tamale, Ghana",Tamale,TAMALE
 GHM00065467,"Takoradi, Ghana",Takoradi,TAKORADI
 GHM00065472,"Accra/Kotoka Intl, Ghana",Accra,ACCRA/KOTOKA INTL
-GIM00008495,"Gibraltar (8495-0), Gibraltar",Gibraltar (8495-0),GIBRALTAR (8495-0)
+GIM00008495,"Gibraltar (8495-1), Gibraltar",Gibraltar (8495-1),GIBRALTAR (8495-1)
 GLM00004202,"Pituffik, Greenland",Pituffik,PITUFFIK
 GLM00004220,"Aasiaat, Greenland",Aasiaat,AASIAAT
 GLM00004231,"Kangerlussuak, Greenland",Kangerlussuak,KANGERLUSSUAK
@@ -883,7 +886,7 @@ GMM00010338,"Usaf-Ds3-085, Germany",Usaf-Ds3-085,USAF-DS3-085
 GMM00010384,"Usaf-Ds3-086, Germany",Usaf-Ds3-086,USAF-DS3-086
 GMM00010393,"Lindenberg, Germany",Lindenberg,LINDENBERG
 GMM00010404,"Kalkar, Germany",Kalkar,KALKAR
-GMM00010410,"Essen (Aerology), Germany",Essen (Aerology),ESSEN (AEROLOGY)
+GMM00010410,"Essen-Bredeney, Germany",Essen-Bredeney,ESSEN-BREDENEY
 GMM00010419,"Ludenscheid, Germany",Ludenscheid,LUDENSCHEID
 GMM00010437,"Usaf-Ds3-091, Germany",Usaf-Ds3-091,USAF-DS3-091
 GMM00010454,"Wernigerode, Germany",Wernigerode,WERNIGERODE
@@ -904,14 +907,14 @@ GMM00010657,"Usaf-Ds3-109, Germany",Usaf-Ds3-109,USAF-DS3-109
 GMM00010659,"Usaf-Ds3-110, Germany",Usaf-Ds3-110,USAF-DS3-110
 GMM00010687,"Grafenwoehr, Germany",Grafenwoehr,GRAFENWOEHR
 GMM00010729,"Usaf-Ds3-113, Germany",Usaf-Ds3-113,USAF-DS3-113
-GMM00010739,"Stuttgart (Aerology), Germany",Stuttgart (Aerology),STUTTGART (AEROLOGY)
+GMM00010739,"Stuttgart/Schnarrenberg, Germany",Stuttgart,STUTTGART/SCHNARRENBERG
 GMM00010763,"Usaf-Ds3-116, Germany",Usaf-Ds3-116,USAF-DS3-116
 GMM00010764,"Feucht(Usa-Af), Germany",Feucht(Usa-Af),FEUCHT(USA-AF)
 GMM00010771,"Kuemmersbruck, Germany",Kuemmersbruck,KUEMMERSBRUCK
 GMM00010828,"Usaf-Ds3-120, Germany",Usaf-Ds3-120,USAF-DS3-120
 GMM00010862,"Usaf-Ds3-124, Germany",Usaf-Ds3-124,USAF-DS3-124
 GMM00010866,"Munich/Riem, Germany",Munich,MUNICH/RIEM
-GMM00010868,"Oberschleii Heim (Aerology), Germany",Oberschleii Heim (Aerology),OBERSCHLEII HEIM (AEROLOGY)
+GMM00010868,"Oberschleia Heim (Aerology), Germany",Oberschleia Heim (Aerology),OBERSCHLEIA HEIM (AEROLOGY)
 GMM00010921,"Usaf-Ds3-126, Germany",Usaf-Ds3-126,USAF-DS3-126
 GMM00010934,"Friedrichshafen, Germany",Friedrichshafen,FRIEDRICHSHAFEN
 GMM00010954,"Altenstadt, Germany",Altenstadt,ALTENSTADT
@@ -954,27 +957,27 @@ HUM00012982,"Szeged, Hungary",Szeged,SZEGED
 ICM00004089,"Egilsstadir, Iceland",Egilsstadir,EGILSSTADIR
 ICXUAE05424,"Akureyri, Iceland",Akureyri,AKUREYRI
 ICXUAE05425,"Reykjavik, Iceland",Reykjavik,REYKJAVIK
-IDM00096009,"Lhokseumawe/Malikussaleh, Indonesia",Lhokseumawe,LHOKSEUMAWE/MALIKUSSALEH
-IDM00096011,"Banda Aceh/Blang Bintang, Indonesia",Banda Aceh,BANDA ACEH/BLANG BINTANG
+IDM00096009,"Aceh Utara/Malikussaleh, Indonesia",Aceh Utara,ACEH UTARA/MALIKUSSALEH
+IDM00096011,"Banda Aceh/Sultan Iskandar, Indonesia",Banda Aceh,BANDA ACEH/SULTAN ISKANDAR
 IDM00096015,"Meulaboh/Cut Nyak Dhien, Indonesia",Meulaboh,MEULABOH/CUT NYAK DHIEN
-IDM00096035,"Kualanamu Medan, Indonesia",Kualanamu Medan,KUALANAMU MEDAN
-IDM00096073,"Sibolga/Pinangsori, Indonesia",Sibolga,SIBOLGA/PINANGSORI
+IDM00096035,"Deli Serdang/Kualanamu, Indonesia",Deli Serdang,DELI SERDANG/KUALANAMU
+IDM00096073,"Sibolga/F.L. Tobing, Indonesia",Sibolga,SIBOLGA/F.L. TOBING
 IDM00096075,"Gunung Sitoli/Binaka, Indonesia",Gunung Sitoli,GUNUNG SITOLI/BINAKA
-IDM00096091,"Tanjung Pinang/Kijang, Indonesia",Tanjung Pinang,TANJUNG PINANG/KIJANG
-IDM00096109,"Pekan Baru/Simpangtiga, Indonesia",Pekan Baru,PEKAN BARU/SIMPANGTIGA
-IDM00096145,"Tarempa, Indonesia",Tarempa,TAREMPA
-IDM00096147,"Ranai, Indonesia",Ranai,RANAI
-IDM00096163,"Mia Padang, Indonesia",Mia Padang,MIA PADANG
-IDM00096171,"Rengat/Japura, Indonesia",Rengat,RENGAT/JAPURA
-IDM00096179,"Singkep/Dabo, Indonesia",Singkep,SINGKEP/DABO
+IDM00096091,"Tanjung Pinang/Raja Haji Fi, Indonesia",Tanjung Pinang,TANJUNG PINANG/RAJA HAJI FI
+IDM00096109,"Pekan Baru/Sultan Syarif Ka, Indonesia",Pekan Baru,PEKAN BARU/SULTAN SYARIF KA
+IDM00096145,"Kepulauan Anambas/Tarempa, Indonesia",Kepulauan Anambas,KEPULAUAN ANAMBAS/TAREMPA
+IDM00096147,"Ranai/Radensadjad, Indonesia",Ranai,RANAI/RADENSADJAD
+IDM00096163,"Padang Pariaman/Minangkabau, Indonesia",Padang Pariaman,PADANG PARIAMAN/MINANGKABAU
+IDM00096171,"Indragiri Hulu/Japura, Indonesia",Indragiri Hulu,INDRAGIRI HULU/JAPURA
+IDM00096179,"Lingga/Dabo, Indonesia",Lingga,LINGGA/DABO
 IDM00096195,"Jambi/Sultan Taha, Indonesia",Jambi,JAMBI/SULTAN TAHA
 IDM00096207,"Kerinci/Depati Parbo, Indonesia",Kerinci,KERINCI/DEPATI PARBO
-IDM00096221,"Palembang/St. M. Badarudin, Indonesia",Palembang,PALEMBANG/ST. M. BADARUDIN
-IDM00096237,"Pangkal Pinang, Indonesia",Pangkal Pinang,PANGKAL PINANG
-IDM00096249,"Tanjung Pandan/Buluh Tumban, Indonesia",Tanjung Pandan,TANJUNG PANDAN/BULUH TUMBAN
-IDM00096253,"Bengkulu/Padang Kemiling, Indonesia",Bengkulu,BENGKULU/PADANG KEMILING
+IDM00096221,"Palembang/Sultan Mahmud Bad, Indonesia",Palembang,PALEMBANG/SULTAN MAHMUD BAD
+IDM00096237,"Pangkal Pinang/Depati Amir, Indonesia",Pangkal Pinang,PANGKAL PINANG/DEPATI AMIR
+IDM00096249,"Tanjung Pandan/H.As. Hanand, Indonesia",Tanjung Pandan,TANJUNG PANDAN/H.AS. HANAND
+IDM00096253,"Bengkulu/Fatmawati Soekarno, Indonesia",Bengkulu,BENGKULU/FATMAWATI SOEKARNO
 IDM00096273,"Menggala/Astra Kset, Indonesia",Menggala,MENGGALA/ASTRA KSET
-IDM00096295,"Tanjung Karang/Radin Inten, Indonesia",Tanjung Karang,TANJUNG KARANG/RADIN INTEN
+IDM00096295,"Lampung Selatan/Radin Inten, Indonesia",Lampung Selatan,LAMPUNG SELATAN/RADIN INTEN
 IDM00096509,"Tarakan/Juwata, Indonesia",Tarakan,TARAKAN/JUWATA
 IDM00096529,"Tanjung Redep/Kalimarau, Indonesia",Tanjung Redep,TANJUNG REDEP/KALIMARAU
 IDM00096535,"Paloh, Indonesia",Paloh,PALOH
@@ -982,50 +985,50 @@ IDM00096565,"Putussibau/Pagsuma, Indonesia",Putussibau,PUTUSSIBAU/PAGSUMA
 IDM00096581,"Pontianak/Supadio, Indonesia",Pontianak,PONTIANAK/SUPADIO
 IDM00096595,"Muara Teweh/Beringin, Indonesia",Muara Teweh,MUARA TEWEH/BERINGIN
 IDM00096607,"Samarinda/Temindung, Indonesia",Samarinda,SAMARINDA/TEMINDUNG
-IDM00096633,"Balikpapan/Sepinggan, Indonesia",Balikpapan,BALIKPAPAN/SEPINGGAN
-IDM00096645,"Pangkalan Bun/Iskandar, Indonesia",Pangkalan Bun,PANGKALAN BUN/ISKANDAR
+IDM00096633,"Balikpapan/Sultan Aji Muham, Indonesia",Balikpapan,BALIKPAPAN/SULTAN AJI MUHAM
+IDM00096645,"Kota Waringin Barat/Iskanda, Indonesia",Kota Waringin Barat,KOTA WARINGIN BARAT/ISKANDA
 IDM00096655,"Palangka Raya/Tjilik Riwut, Indonesia",Palangka Raya,PALANGKA RAYA/TJILIK RIWUT
 IDM00096685,"Banjarmasin/Syamsudin Noor, Indonesia",Banjarmasin,BANJARMASIN/SYAMSUDIN NOOR
 IDM00096737,"Serang, Indonesia",Serang,SERANG
 IDM00096739,"Curug/Budiarto, Indonesia",Curug,CURUG/BUDIARTO
-IDM00096749,"Jakarta/Soekarno-Hatta, Indonesia",Jakarta,JAKARTA/SOEKARNO-HATTA
+IDM00096749,"Tangerang/Soekarno-Hatta, Indonesia",Tangerang,TANGERANG/SOEKARNO-HATTA
 IDM00096755,"Usaf-Ds3-673, Indonesia",Usaf-Ds3-673,USAF-DS3-673
 IDM00096773,"Kalijati, Indonesia",Kalijati,KALIJATI
 IDM00096781,"Bandung/Husein, Indonesia",Bandung,BANDUNG/HUSEIN
 IDM00096791,"Cirebon/Jatiwangi, Indonesia",Cirebon,CIREBON/JATIWANGI
 IDM00096797,"Tegal, Indonesia",Tegal,TEGAL
 IDM00096801,"Cibeurem/Tasik(Afb), Indonesia",Cibeurem,CIBEUREM/TASIK(AFB)
-IDM00096805,"Cilacap, Indonesia",Cilacap,CILACAP
+IDM00096805,"Cilacap/Tunggul Wulung, Indonesia",Cilacap,CILACAP/TUNGGUL WULUNG
 IDM00096839,"Semarang/Ahmad Yani, Indonesia",Semarang,SEMARANG/AHMAD YANI
 IDM00096845,"Surakarta/Adisumarm, Indonesia",Surakarta,SURAKARTA/ADISUMARM
 IDM00096853,"Adisucipto/Jogyakar, Indonesia",Adisucipto,ADISUCIPTO/JOGYAKAR
 IDM00096881,"Madiun/Iswahyud Afb, Indonesia",Madiun,MADIUN/ISWAHYUD AFB
 IDM00096925,"Sangkapura (Bawean Is.), Indonesia",Sangkapura (Bawean Is.),SANGKAPURA (BAWEAN IS.)
-IDM00096935,"Juanda Surabaya, Indonesia",Juanda Surabaya,JUANDA SURABAYA
+IDM00096935,"Sidoarjo / Juanda, Indonesia",Sidoarjo ,SIDOARJO / JUANDA
 IDM00096947,"Malang/Abdul (Afb), Indonesia",Malang,MALANG/ABDUL (AFB)
 IDM00096973,"Kalianget (Madura Is), Indonesia",Kalianget (Madura Is),KALIANGET (MADURA IS)
 IDM00096987,"Banyuwangi, Indonesia",Banyuwangi,BANYUWANGI
 IDM00097008,"Naha/Tahuna, Indonesia",Naha,NAHA/TAHUNA
-IDM00097014,"Menado/ Sam Ratulangi, Indonesia",Menado,MENADO/ SAM RATULANGI
-IDM00097028,"Toli-Toli/Lalos, Indonesia",Toli-Toli,TOLI-TOLI/LALOS
-IDM00097048,"Gorontalo/Jalaluddin, Indonesia",Gorontalo,GORONTALO/JALALUDDIN
-IDM00097072,"Palu/Mutiara, Indonesia",Palu,PALU/MUTIARA
+IDM00097014,"Manado/ Sam Ratulangi, Indonesia",Manado,MANADO/ SAM RATULANGI
+IDM00097028,"Toli-Toli/Sultan Bantilan, Indonesia",Toli-Toli,TOLI-TOLI/SULTAN BANTILAN
+IDM00097048,"Gorontalo/Djalaluddin, Indonesia",Gorontalo,GORONTALO/DJALALUDDIN
+IDM00097072,"Palu/Mutiara Sis Al Jufri, Indonesia",Palu,PALU/MUTIARA SIS AL JUFRI
 IDM00097086,"Luwuk/Bubung, Indonesia",Luwuk,LUWUK/BUBUNG
 IDM00097096,"Poso/Kasiguncu, Indonesia",Poso,POSO/KASIGUNCU
 IDM00097120,"Majene, Indonesia",Majene,MAJENE
 IDM00097146,"Kendari/Wolter Mong, Indonesia",Kendari,KENDARI/WOLTER MONG
-IDM00097180,"Ujung Pandang/Hasanuddin, Indonesia",Ujung Pandang,UJUNG PANDANG/HASANUDDIN
+IDM00097180,"Maros/Sultan Hasanuddin, Indonesia",Maros,MAROS/SULTAN HASANUDDIN
 IDM00097192,"Bau-Bau/Beto Ambari, Indonesia",Bau-Bau,BAU-BAU/BETO AMBARI
-IDM00097230,"Denpasar/Ngurah Rai, Indonesia",Denpasar,DENPASAR/NGURAH RAI
+IDM00097230,"Badung/I Gusti Ngurah Rai, Indonesia",Badung,BADUNG/I GUSTI NGURAH RAI
 IDM00097240,"Praya Lombok, Indonesia",Praya Lombok,PRAYA LOMBOK
-IDM00097260,"Sumbawa Besar/Brangbiji, Indonesia",Sumbawa Besar,SUMBAWA BESAR/BRANGBIJI
-IDM00097270,"Bima/M.Salahuddin, Indonesia",Bima,BIMA/M.SALAHUDDIN
-IDM00097300,"Maumere/Wai Oti, Indonesia",Maumere,MAUMERE/WAI OTI
-IDM00097340,"Waingapu/Mau Hau, Indonesia",Waingapu,WAINGAPU/MAU HAU
+IDM00097260,"Sumbawa/Sultan Muhammad Kah, Indonesia",Sumbawa,SUMBAWA/SULTAN MUHAMMAD KAH
+IDM00097270,"Bima/Sultan Muhammad Salahu, Indonesia",Bima,BIMA/SULTAN MUHAMMAD SALAHU
+IDM00097300,"Sikka/Fransiskus Xaverius S, Indonesia",Sikka,SIKKA/FRANSISKUS XAVERIUS S
+IDM00097340,"Sumba Timur/Umbu Mehang Kun, Indonesia",Sumba Timur,SUMBA TIMUR/UMBU MEHANG KUN
 IDM00097372,"Kupang/Eltari, Indonesia",Kupang,KUPANG/ELTARI
-IDM00097430,"Ternate/Babullah, Indonesia",Ternate,TERNATE/BABULLAH
-IDM00097460,"Labuha/Oesman Sadik, Indonesia",Labuha,LABUHA/OESMAN SADIK
-IDM00097502,"Deo Sorong, Indonesia",Deo Sorong,DEO SORONG
+IDM00097430,"Ternate/Sultan Babullah, Indonesia",Ternate,TERNATE/SULTAN BABULLAH
+IDM00097460,"Halmahera Selatan/Oesman Sa, Indonesia",Halmahera Selatan,HALMAHERA SELATAN/OESMAN SA
+IDM00097502,"Sorong/Domine Eduard Osok, Indonesia",Sorong,SORONG/DOMINE EDUARD OSOK
 IDM00097530,"Manokwari/Rendani, Indonesia",Manokwari,MANOKWARI/RENDANI
 IDM00097560,"Biak/Frans Kaisiepo, Indonesia",Biak,BIAK/FRANS KAISIEPO
 IDM00097600,"Sanana, Indonesia",Sanana,SANANA
@@ -1034,9 +1037,9 @@ IDM00097690,"Jayapura/Sentani, Indonesia",Jayapura,JAYAPURA/SENTANI
 IDM00097724,"Ambon/Pattimura, Indonesia",Ambon,AMBON/PATTIMURA
 IDM00097748,"Geser, Indonesia",Geser,GESER
 IDM00097760,"Kaimana/Utarom, Indonesia",Kaimana,KAIMANA/UTAROM
-IDM00097810,"Tual/Dumatubun, Indonesia",Tual,TUAL/DUMATUBUN
-IDM00097876,"Tanah Merah, Indonesia",Tanah Merah,TANAH MERAH
-IDM00097900,"Saumlaki/Olilit, Indonesia",Saumlaki,SAUMLAKI/OLILIT
+IDM00097810,"Maluku Tenggara/Karel Satsu, Indonesia",Maluku Tenggara,MALUKU TENGGARA/KAREL SATSU
+IDM00097876,"Boven Digul/Tanah Merah, Indonesia",Boven Digul,BOVEN DIGUL/TANAH MERAH
+IDM00097900,"Maluku Tenggara Barat/Mathi, Indonesia",Maluku Tenggara Barat,MALUKU TENGGARA BARAT/MATHI
 IDM00097980,"Merauke/Mopah, Indonesia",Merauke,MERAUKE/MOPAH
 INM00042027,"Srinagar (42027-0), India",Srinagar (42027-0),SRINAGAR (42027-0)
 INM00042056,"Jammu, India",Jammu,JAMMU
@@ -1239,8 +1242,8 @@ JAM00047963,"Torishima, Japan",Torishima,TORISHIMA
 JAM00047971,"Chichijima, Japan",Chichijima,CHICHIJIMA
 JAM00047981,"Iwoto, Japan",Iwoto,IWOTO
 JAM00047991,"Minamitorishima, Japan",Minamitorishima,MINAMITORISHIMA
-JMM00078397,"Windsor, Jamaica",Windsor,WINDSOR
-JNM00001001,"Jan Mayen, Jan Mayen",Jan Mayen,JAN MAYEN
+JMM00078397,"Kingston/Palisadoes, Jamaica",Kingston,KINGSTON/PALISADOES
+JNM00001001,"Jan Mayen (1001-1), Jan Mayen",Jan Mayen (1001-1),JAN MAYEN (1001-1)
 JNM00001005,"Isfjord Radio, Jan Mayen",Isfjord Radio,ISFJORD RADIO
 JNM00001020,"Kinnvika Station, Jan Mayen",Kinnvika Station,KINNVIKA STATION
 JOM00040255,"Irbed, Jordan",Irbed,IRBED
@@ -1289,7 +1292,7 @@ KSM00047110,"Gimpo Intl Airport, Korea South",Gimpo Intl Airport,GIMPO INTL AIRP
 KSM00047111,"Seoul Ab, Korea South",Seoul Ab,SEOUL AB
 KSM00047113,"Incheon Int'L Airport, Korea South",Incheon Int'L Airport,INCHEON INT'L AIRPORT
 KSM00047118,"Wonju Ab, Korea South",Wonju Ab,WONJU AB
-KSM00047122,"Osan Ab, Korea South",Osan Ab,OSAN AB
+KSM00047122,"Osan (Us/Kor-Afb), Korea South",Osan (Us,OSAN (US/KOR-AFB)
 KSM00047123,"Sangdong, Korea South",Sangdong,SANGDONG
 KSM00047128,"Cheongju Intl Airpo, Korea South",Cheongju Intl Airpo,CHEONGJU INTL AIRPO
 KSM00047129,"Seosan, Korea South",Seosan,SEOSAN
@@ -1310,7 +1313,8 @@ KSM00047186,"National Typhoon Center, Korea South",National Typhoon Center,NATIO
 KSM00047187,"Moesulpo Ab, Korea South",Moesulpo Ab,MOESULPO AB
 KSM00047199,"Usaf-Ds3-289, Korea South",Usaf-Ds3-289,USAF-DS3-289
 KSM00047230,"Deokjeokbukri, Korea South",Deokjeokbukri,DEOKJEOKBUKRI
-KSXUA026870,"Usaf-Ds3-288, Korea South",Usaf-Ds3-288,USAF-DS3-288
+KSM00047269,"Anmado, Korea South",Anmado,ANMADO
+KSXUA026960,"Usaf-Ds3-288, Korea South",Usaf-Ds3-288,USAF-DS3-288
 KTM00096995,"Christmas Isl (Pvt), Christmas Island",Christmas Isl (Pvt),CHRISTMAS ISL (PVT)
 KUM00040582,"Kuwait International Airpor, Kuwait",Kuwait International Airpor,KUWAIT INTERNATIONAL AIRPOR
 KZM00028951,"Kostanai As, Kazakhstan",Kostanai As,KOSTANAI AS
@@ -1333,7 +1337,6 @@ KZM00038001,"Fort Shevchenko, Kazakhstan",Fort Shevchenko,FORT SHEVCHENKO
 KZM00038062,"Kyzylorda, Kazakhstan",Kyzylorda,KYZYLORDA
 KZM00038064,"Ams Tasboget/Kyzylorda As, Kazakhstan",Ams Tasboget,AMS TASBOGET/KYZYLORDA AS
 KZM00038341,"Taraz, Kazakhstan",Taraz,TARAZ
-KZM00073110,"Shearwater Ua, Ns, Kazakhstan","Shearwater Ua, Ns","SHEARWATER UA, NS"
 LAM00048930,"Luang-Prabang, Laos",Luang-Prabang,LUANG-PRABANG
 LAM00048940,"Vientiane, Laos",Vientiane,VIENTIANE
 LAM00048947,"Savannakhet, Laos",Savannakhet,SAVANNAKHET
@@ -1393,7 +1396,7 @@ MDM00033815,"Kisinev, Moldova",Kisinev,KISINEV
 MFM00067005,"Dzaoudzi/Pamanzi, Mayotte",Dzaoudzi,DZAOUDZI/PAMANZI
 MGM00044212,"Ulaangom, Mongolia",Ulaangom,ULAANGOM
 MGM00044218,"Hovd, Mongolia",Hovd,HOVD
-MGM00044231,"Muren, Mongolia",Muren,MUREN
+MGM00044231,"Murun, Mongolia",Murun,MURUN
 MGM00044239,"Bulgan, Mongolia",Bulgan,BULGAN
 MGM00044241,"Baruunharaa, Mongolia",Baruunharaa,BARUUNHARAA
 MGM00044259,"Choibalsan, Mongolia",Choibalsan,CHOIBALSAN
@@ -1467,7 +1470,7 @@ MUXUAE05791,"Bait Al Falaj, Oman",Bait Al Falaj,BAIT AL FALAJ
 MVM00043555,"Male, Maldives",Male,MALE
 MVM00043599,"Gan, Maldives",Gan,GAN
 MXM00076151,"Usaf-Ds3-598, Mexico",Usaf-Ds3-598,USAF-DS3-598
-MXM00076225,"Chihuahua; Chih., Mexico",Chihuahua; Chih.,CHIHUAHUA; CHIH.
+MXM00076225,"Chihuahua Universit, Mexico",Chihuahua Universit,CHIHUAHUA UNIVERSIT
 MXM00076256,"Empalme; Son., Mexico",Empalme; Son.,EMPALME; SON.
 MXM00076370,"Topolobampo, Mexico",Topolobampo,TOPOLOBAMPO
 MXM00076382,"Torreon Airport, Mexico",Torreon Airport,TORREON AIRPORT
@@ -1534,14 +1537,13 @@ NIM00065201,"Lagos/Ikeja, Nigeria",Lagos,LAGOS/IKEJA
 NIM00065202,"Lagos/Oshodi, Nigeria",Lagos,LAGOS/OSHODI
 NIM00065257,"Enugu, Nigeria",Enugu,ENUGU
 NLM00006210,"Valkenburg, Netherlands",Valkenburg,VALKENBURG
-NLM00006235,"De Kooij Vk, Netherlands",De Kooij Vk,DE KOOIJ VK
+NLM00006235,"De Kooy Airport, Netherlands",De Kooy Airport,DE KOOY AIRPORT
 NLM00006242,"Vlieland, Netherlands",Vlieland,VLIELAND
-NLM00006260,"Radar 6260 [181] [Nl], Netherlands",Radar 6260 [181] [Nl],RADAR 6260 [181] [NL]
+NLM00006260,"De Bilt, Netherlands",De Bilt,DE BILT
 NNM00078866,"Juliana Airport; St. Maarte, Sint Maarten",Juliana Airport; St. Maarte,JULIANA AIRPORT; ST. MAARTE
 NOM00001010,"Andoya, Norway",Andoya,ANDOYA
 NOM00001030,"Tromso, Norway",Tromso,TROMSO
 NOM00001152,"Bodo Vi, Norway",Bodo Vi,BODO VI
-NOM00001206,"Radar Stad, Norway",Radar Stad,RADAR STAD
 NOM00001241,"Orland Iii, Norway",Orland Iii,ORLAND III
 NOM00001384,"Oslo/Gardermoen, Norway",Oslo,OSLO/GARDERMOEN
 NOM00001400,"Ekofisk, Norway",Ekofisk,EKOFISK
@@ -1589,16 +1591,19 @@ ODM00062880,"Wau, South Sudan",Wau,WAU
 ODM00062941,"Juba, South Sudan",Juba,JUBA
 PAM00086068,"Mariscal Estigarribia, Paraguay",Mariscal Estigarribia,MARISCAL ESTIGARRIBIA
 PAM00086218,"Aeropuerto Silvio Pettiross, Paraguay",Aeropuerto Silvio Pettiross,AEROPUERTO SILVIO PETTIROSS
+PEM00084372,"Rs Iquitos, Peru",Rs Iquitos,RS IQUITOS
 PEM00084377,"Iquitos, Peru",Iquitos,IQUITOS
-PEM00084378,"Morona, Peru",Morona,MORONA
 PEM00084390,"Talara, Peru",Talara,TALARA
 PEM00084401,"Piura, Peru",Piura,PIURA
 PEM00084416,"Piura Grup7, Peru",Piura Grup7,PIURA GRUP7
 PEM00084452,"Chiclayo, Peru",Chiclayo,CHICLAYO
 PEM00084515,"Pucallpa, Peru",Pucallpa,PUCALLPA
+PEM00084516,"Rs Trujillo, Peru",Rs Trujillo,RS TRUJILLO
+PEM00084622,"Rs Junin, Peru",Rs Junin,RS JUNIN
 PEM00084628,"Lima/Callao, Peru",Lima,LIMA/CALLAO
 PEM00084691,"Pisco, Peru",Pisco,PISCO
 PEM00084752,"Arequipa, Peru",Arequipa,AREQUIPA
+PEM00084754,"Rs Arequipa, Peru",Rs Arequipa,RS AREQUIPA
 PFM00048860,"Hoang Sa (Pattle), Paracel Islands",Hoang Sa (Pattle),HOANG SA (PATTLE)
 PFM00059981,"Xisha Dao, Paracel Islands",Xisha Dao,XISHA DAO
 PKM00041506,"Chitral, Pakistan",Chitral,CHITRAL
@@ -1638,7 +1643,7 @@ PLM00012120,"Leba, Poland",Leba,LEBA
 PLM00012330,"Poznan, Poland",Poznan,POZNAN
 PLM00012374,"Legionowo, Poland",Legionowo,LEGIONOWO
 PLM00012375,"Warszawa, Poland",Warszawa,WARSZAWA
-PLM00012425,"Wroclaw-Starachowice, Poland",Wroclaw-Starachowice,WROCLAW-STARACHOWICE
+PLM00012425,"Wroclaw-Strachowice, Poland",Wroclaw-Strachowice,WROCLAW-STRACHOWICE
 PLM00012575,"Tarnow, Poland",Tarnow,TARNOW
 PLXUAC03751,"Mielec, Poland",Mielec,MIELEC
 PLXUAE05764,"Wroclaw, Poland",Wroclaw,WROCLAW
@@ -1665,11 +1670,11 @@ PUM00061766,"Bissau, Guinea-Bissau",Bissau,BISSAU
 QAM00041169,"Hamad International Airport, Qatar",Hamad International Airport,HAMAD INTERNATIONAL AIRPORT
 REM00061980,"Saint-Denis/Gillot (Reunion, Reunion",Saint-Denis,SAINT-DENIS/GILLOT (REUNION
 REM00061984,"St. Pierre/Fonds, Reunion",St. Pierre,ST. PIERRE/FONDS
-RIM00013275,"Beograd/Kosutnjak, Serbia",Beograd,BEOGRAD/KOSUTNJAK
+RIM00013275,"Beograd/Koå Utnjak, Serbia",Beograd,BEOGRAD/KOÅ UTNJAK
 RIM00013276,"Beograd/Seleno Brd, Serbia",Beograd,BEOGRAD/SELENO BRD
 RIM00013295,"Negotin, Serbia",Negotin,NEGOTIN
 RIM00013369,"Sjenica, Serbia",Sjenica,SJENICA
-RIM00013388,"Nis, Serbia",Nis,NIS
+RIM00013388,"Niå, Serbia",Niå,NIÅ
 RMM00091250,"Enewetak, Marshall Islands",Enewetak,ENEWETAK
 RMM00091254,"Bikini, Marshall Islands",Bikini,BIKINI
 RMM00091258,"Utirik Atoll M.Isl, Marshall Islands",Utirik Atoll M.Isl,UTIRIK ATOLL M.ISL
@@ -1814,6 +1819,7 @@ RSM00027331,"Jaroslavl, Russia",Jaroslavl,JAROSLAVL
 RSM00027459,"Niznij Novgorod, Russia",Niznij Novgorod,NIZNIJ NOVGOROD
 RSM00027594,"Kazan'(Vyazovye), Russia",Kazan'(Vyazovye),KAZAN'(VYAZOVYE)
 RSM00027595,"Kazan' (27595-0), Russia",Kazan' (27595-0),KAZAN' (27595-0)
+RSM00027612,"Moskva Vdnh, Russia",Moskva Vdnh,MOSKVA VDNH
 RSM00027707,"Suhinichi, Russia",Suhinichi,SUHINICHI
 RSM00027713,"Moskva (Dolgoprudnyj) (Rs), Russia",Moskva (Dolgoprudnyj) (Rs),MOSKVA (DOLGOPRUDNYJ) (RS)
 RSM00027730,"Ryazan, Russia",Ryazan,RYAZAN
@@ -1946,7 +1952,7 @@ SFM00068858,"East London, South Africa",East London,EAST LONDON
 SFM00068994,"Marion Island, South Africa",Marion Island,MARION ISLAND
 SGM00061600,"Saint-Louis, Senegal",Saint-Louis,SAINT-LOUIS
 SGM00061641,"Dakar/Yoff, Senegal",Dakar,DAKAR/YOFF
-SGM00061660,"Dakar-Diass-Aibd, Senegal",Dakar-Diass-Aibd,DAKAR-DIASS-AIBD
+SGM00061660,"Dakar Blaise Diagne, Senegal",Dakar Blaise Diagne,DAKAR BLAISE DIAGNE
 SGM00061687,"Tambacounda, Senegal",Tambacounda,TAMBACOUNDA
 SGM00061695,"Ziguinchor, Senegal",Ziguinchor,ZIGUINCHOR
 SGXUAAWO067,"Thies, Senegal",Thies,THIES
@@ -2063,18 +2069,18 @@ TTM00097388,"Komoro, Timor-Leste",Komoro,KOMORO
 TTM00097390,"Dilli/Dilli Airport, Timor-Leste",Dilli,DILLI/DILLI AIRPORT
 TTM00097395,"Bau Cau, Timor-Leste",Bau Cau,BAU CAU
 TUM00017022,"Zonguldak, Turkey",Zonguldak,ZONGULDAK
-TUM00017030,"Samsun, Turkey",Samsun,SAMSUN
-TUM00017064,"Istanbul Bolge (Kartal), Turkey",Istanbul Bolge (Kartal),ISTANBUL BOLGE (KARTAL)
+TUM00017030,"Samsun Bolge, Turkey",Samsun Bolge,SAMSUN BOLGE
+TUM00017064,"Istanbul Bolge, Turkey",Istanbul Bolge,ISTANBUL BOLGE
 TUM00017082,"Merzifon, Turkey",Merzifon,MERZIFON
 TUM00017095,"Erzurum Bolge, Turkey",Erzurum Bolge,ERZURUM BOLGE
-,,,
+TUM00017130,"Ankara Bolge, Turkey",Ankara Bolge,ANKARA BOLGE
 TUM00017195,"Kayseri/Erkilet, Turkey",Kayseri,KAYSERI/ERKILET
-TUM00017196,"Kayseri Balge, Turkey",Kayseri Balge,KAYSERI BALGE
-TUM00017220,"Izmir/Guzelyali, Turkey",Izmir,IZMIR/GUZELYALI
+TUM00017196,"Kayseri Bolge, Turkey",Kayseri Bolge,KAYSERI BOLGE
+TUM00017220,"Izmir Bolge, Turkey",Izmir Bolge,IZMIR BOLGE
 TUM00017240,"Isparta, Turkey",Isparta,ISPARTA
 TUM00017281,"Diyarbakir-Bolge, Turkey",Diyarbakir-Bolge,DIYARBAKIR-BOLGE
 TUM00017300,"Antalya, Turkey",Antalya,ANTALYA
-TUM00017351,"Adana/Bolge, Turkey",Adana,ADANA/BOLGE
+TUM00017351,"Adana Bolge, Turkey",Adana Bolge,ADANA BOLGE
 TVM00091643,"Funafuti (91643-0), Tuvalu",Funafuti (91643-0),FUNAFUTI (91643-0)
 TWM00046689,"Mazu (=588490), Taiwan",Mazu (=588490),MAZU (=588490)
 TWM00046697,"Taoyuan Ab, Taiwan",Taoyuan Ab,TAOYUAN AB
@@ -2134,7 +2140,7 @@ UKM00003240,"Boulmer, United Kingdom",Boulmer,BOULMER
 UKM00003257,"Leeming, United Kingdom",Leeming,LEEMING
 UKM00003317,"Woodvale, United Kingdom",Woodvale,WOODVALE
 UKM00003322,"Usaf-Ds3-032, United Kingdom",Usaf-Ds3-032,USAF-DS3-032
-UKM00003354,"Nottingham; Watnall, United Kingdom",Nottingham; Watnall,NOTTINGHAM; WATNALL
+UKM00003354,"Nottingham, United Kingdom",Nottingham,NOTTINGHAM
 UKM00003377,"Waddington, United Kingdom",Waddington,WADDINGTON
 UKM00003414,"Shawbury, United Kingdom",Shawbury,SHAWBURY
 UKM00003470,"Usaf-Ds3-035, United Kingdom",Usaf-Ds3-035,USAF-DS3-035
@@ -2145,7 +2151,7 @@ UKM00003559,"Cardington, United Kingdom",Cardington,CARDINGTON
 UKM00003586,"Usaf-Ds3-043, United Kingdom",Usaf-Ds3-043,USAF-DS3-043
 UKM00003590,"Wattisham, United Kingdom",Wattisham,WATTISHAM
 UKM00003649,"Brize Norton, United Kingdom",Brize Norton,BRIZE NORTON
-UKM00003693,"Shoeburyness; Landwick, United Kingdom",Shoeburyness; Landwick,SHOEBURYNESS; LANDWICK
+UKM00003693,"Shoeburyness, United Kingdom",Shoeburyness,SHOEBURYNESS
 UKM00003715,"Cardiff-Wales Arpt, United Kingdom",Cardiff-Wales Arpt,CARDIFF-WALES ARPT
 UKM00003743,"Larkhill, United Kingdom",Larkhill,LARKHILL
 UKM00003774,"Usaf-Ds3-044, United Kingdom",Usaf-Ds3-044,USAF-DS3-044
@@ -2284,7 +2290,7 @@ USM00072393,"Ca Vandenberg Afb; Ca. (72393-, United States",Ca Vandenberg Afb; C
 USM00072394,"Ca Santa Maria/Public (Cal), United States",Ca Santa Maria,CA SANTA MARIA/PUBLIC (CAL)
 USM00072401,"Va Richmond/Byrd Field, United States",Va Richmond,VA RICHMOND/BYRD FIELD
 USM00072402,"Va Wallops Island; Va., United States",Va Wallops Island; Va.,VA WALLOPS ISLAND; VA.
-USM00072403,"Va Sterling; Va., United States",Va Sterling; Va.,VA STERLING; VA.
+USM00072403,"Va Washington/Dulles Int.; Va., United States",Va Washington,VA WASHINGTON/DULLES INT.; VA.
 USM00072405,"Dc Washington/National, United States",Dc Washington,DC WASHINGTON/NATIONAL
 USM00072407,"Nj Atlantic City U-A, United States",Nj Atlantic City U-A,NJ ATLANTIC CITY U-A
 USM00072408,"Pa Philadelphia Intl, United States",Pa Philadelphia Intl,PA PHILADELPHIA INTL
@@ -2330,7 +2336,7 @@ USM00072509,"Ma Boston/Logan Intl, United States",Ma Boston,MA BOSTON/LOGAN INTL
 USM00072514,"Pa Williamsport/Lycomi, United States",Pa Williamsport,PA WILLIAMSPORT/LYCOMI
 USM00072515,"Ny Binghamton/Broome C, United States",Ny Binghamton,NY BINGHAMTON/BROOME C
 USM00072518,"Ny Albany County Airport; Ny., United States",Ny Albany County Airport; Ny.,NY ALBANY COUNTY AIRPORT; NY.
-USM00072520,"Pa Pittsburgh; Pa., United States",Pa Pittsburgh; Pa.,PA PITTSBURGH; PA.
+USM00072520,"Pa Pittsburgh/Greater Pittsbur, United States",Pa Pittsburgh,PA PITTSBURGH/GREATER PITTSBUR
 USM00072524,"Oh Cleveland, United States",Oh Cleveland,OH CLEVELAND
 USM00072528,"Ny Buffalo/Greater Buffalo Int, United States",Ny Buffalo,NY BUFFALO/GREATER BUFFALO INT
 USM00072531,"Il Rantoul, United States",Il Rantoul,IL RANTOUL
@@ -2369,7 +2375,7 @@ USM00072649,"Mn Chanhassen; Mn., United States",Mn Chanhassen; Mn.,MN CHANHASSEN
 USM00072654,"Sd Huron Rgnl Ap, United States",Sd Huron Rgnl Ap,SD HURON RGNL AP
 USM00072655,"Mn St Cloud Muni Ap, United States",Mn St Cloud Muni Ap,MN ST CLOUD MUNI AP
 USM00072659,"Sd Aberdeen/Reg.; Sd., United States",Sd Aberdeen,SD ABERDEEN/REG.; SD.
-USM00072662,"Sd Rapid City Wfo; Sd., United States",Sd Rapid City Wfo; Sd.,SD RAPID CITY WFO; SD.
+USM00072662,"Sd Rapid City/Regional Airport, United States",Sd Rapid City,SD RAPID CITY/REGIONAL AIRPORT
 USM00072666,"Wy Sheridan Co. Arpt, United States",Wy Sheridan Co. Arpt,WY SHERIDAN CO. ARPT
 USM00072672,"Wy Riverton; Wy., United States",Wy Riverton; Wy.,WY RIVERTON; WY.
 USM00072677,"Mt Billings/Logan Int., United States",Mt Billings,MT BILLINGS/LOGAN INT.
@@ -2712,11 +2718,11 @@ USW00094922,"Ia Waverly, United States",Ia Waverly,IA WAVERLY
 USW00094925,"Nd Grand Forks Afb, United States",Nd Grand Forks Afb,ND GRAND FORKS AFB
 USW00094937,"Nd Ellendale, United States",Nd Ellendale,ND ELLENDALE
 USW00094941,"Ne Drexel, United States",Ne Drexel,NE DREXEL
-USXUA027180,"Nv Usaf-Ds3-496, United States",Nv Usaf-Ds3-496,NV USAF-DS3-496
-USXUA027200,"Md Usaf-Ds3-504, United States",Md Usaf-Ds3-504,MD USAF-DS3-504
-USXUA027260,"Tx Usaf-Ds3-527, United States",Tx Usaf-Ds3-527,TX USAF-DS3-527
-USXUA027270,"Ca Usaf-Ds3-529, United States",Ca Usaf-Ds3-529,CA USAF-DS3-529
-USXUA027280,"Ok Usaf-Ds3-530, United States",Ok Usaf-Ds3-530,OK USAF-DS3-530
+USXUA027270,"Nv Usaf-Ds3-496, United States",Nv Usaf-Ds3-496,NV USAF-DS3-496
+USXUA027290,"Md Usaf-Ds3-504, United States",Md Usaf-Ds3-504,MD USAF-DS3-504
+USXUA027350,"Tx Usaf-Ds3-527, United States",Tx Usaf-Ds3-527,TX USAF-DS3-527
+USXUA027360,"Ca Usaf-Ds3-529, United States",Ca Usaf-Ds3-529,CA USAF-DS3-529
+USXUA027370,"Ok Usaf-Ds3-530, United States",Ok Usaf-Ds3-530,OK USAF-DS3-530
 USXUA724586,"Ks Salina, United States",Ks Salina,KS SALINA
 USXUA724755,"Ut St. George, United States",Ut St. George,UT ST. GEORGE
 USXUA725185,"Ny Rome, United States",Ny Rome,NY ROME
@@ -2774,6 +2780,7 @@ WAM00068312,"Keetmanshoop Airport, Namibia",Keetmanshoop Airport,KEETMANSHOOP AI
 WIM00060096,"Dakhla, Western Sahara",Dakhla,DAKHLA
 WQM00091245,"Wake Is, Wake Island",Wake Is,WAKE IS
 WSM00091762,"Apia, Samoa",Apia,APIA
+XXM00084629,"Las Palmas, XX",Las Palmas,LAS PALMAS
 YMM00041344,"Sana'A (Civ/Mil), Yemen",Sana'A (Civ,SANA'A (CIV/MIL)
 YMM00041360,"Hodeidah (Civ/Mil), Yemen",Hodeidah (Civ,HODEIDAH (CIV/MIL)
 YMM00041390,"Taiz (Civ/Mil), Yemen",Taiz (Civ,TAIZ (CIV/MIL)
@@ -2872,6 +2879,7 @@ ZZV000ASFR1,"Asfr1, Ocean",Asfr1,ASFR1
 ZZV000ASFR2,"Asfr2, Ocean",Asfr2,ASFR2
 ZZV000ASFR3,"Asfr3, Ocean",Asfr3,ASFR3
 ZZV000ASFR4,"Asfr4, Ocean",Asfr4,ASFR4
+ZZV000DSQL7,"Araon, Ocean",Araon,ARAON
 ZZV000ELML7,"Hornbay, Ocean",Hornbay,HORNBAY
 ZZV000LADB2,"Skaugran, Ocean",Skaugran,SKAUGRAN
 ZZV000LAJV4,"Skaubryn, Ocean",Skaubryn,SKAUBRYN
@@ -2898,6 +2906,7 @@ ZZV00ASEU04,"Aseu04, Ocean",Aseu04,ASEU04
 ZZV00ASEU05,"Aseu05, Ocean",Aseu05,ASEU05
 ZZV00ASEU06,"Aseu06, Ocean",Aseu06,ASEU06
 ZZV00ASGB01,"Asgb01, Ocean",Asgb01,ASGB01
+ZZV00ASUK02,"Asuk02, Ocean",Asuk02,ASUK02
 ZZXUAE04977,"Weathership K Cirrus, Ocean",Weathership K Cirrus,WEATHERSHIP K CIRRUS
 ZZXUAICE002,"Np02, Ocean",Np02,NP02
 ZZXUAICE003,"Np03, Ocean",Np03,NP03

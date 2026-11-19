@@ -5,8 +5,9 @@ __pycache__/
 # OS
 .DS_Store
 
-# Data (Auto-generated)
+# Data & Outputs (Auto-generated)
 data/igra_stations_all.csv
+outputs/
 
 # Environment
 .env

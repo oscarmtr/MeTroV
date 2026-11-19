@@ -20,14 +20,14 @@ import matplotlib.gridspec as gridspec
 # =====================================
 # USER CONFIGURATION
 # =====================================
-STATION_CODE = "AAA00001111"  # "AAA00001111" (ID used to download data) check "/data/igra_stations_active.csv"
-CITY = "City"               # String to display in the plot title
+STATION_CODE = "SPM00008383"  # "AAA00001111" (ID used to download data) check "/data/igra_stations_all.csv"
+CITY = "Huelva"               # String to display in the plot title
 DATE_YEAR = "2026"
-DATE_MONTH = "03"
-DATE_DAY = "02"
-TIME_HOUR = "12"
+DATE_MONTH = "02"
+DATE_DAY = "04"
+TIME_HOUR = "00"
 SOURCE_MODE = "AUTO"     # "IGRA" | "UWYO" | "AUTO"
-PLOT_MODE = "SIMPLE"   # "SIMPLE" | "ADVANCED"
+PLOT_MODE = "ADVANCED"   # "SIMPLE" | "ADVANCED"
 
 # =====================================
 # LECTURA SONDEO IGRA
@@ -190,7 +190,7 @@ def lecturaSondeoUWyo(CodEst_WMO, yr, mn, dy, hr):
             u, v = mpcalc.wind_components(wspd_clean, wdir_clean)
 
             if len(p_clean) == 0:
-                raise ValueError("Sondeo UWyo no disponible o vacío después de filtrar")
+                raise ValueError("UWyo sounding not available or empty after filtering")
 
             idx = np.argsort(p_clean.magnitude)[::-1]
             return p_clean[idx], T_clean[idx], Td_clean[idx], u[idx], v[idx], f"UWYO-{src}"
@@ -227,6 +227,83 @@ def get_sounding(CodEst, yr, mn, dy, hr, source_mode="IGRA"):
 # =====================================
 # SCRIPT PRINCIPAL
 # =====================================
+def compute_averaged_wind_barbs(p, u, v, num_barbs=22):
+    """
+    Reduce la frecuencia de aparición de los ticks de viento en el margen derecho del Skew-T,
+    promediando un número de niveles posteriores con niveles anteriores (media móvil / layer average)
+    y representando los datos de forma espaciada entre el suelo (~1000 hPa) y 100 hPa.
+    """
+    if p is None or u is None or v is None:
+        return p, u, v
+
+    try:
+        p_mag = p.to(units.hPa).magnitude if hasattr(p, "magnitude") else np.asarray(p, dtype=float)
+        u_mag = u.magnitude if hasattr(u, "magnitude") else np.asarray(u, dtype=float)
+        v_mag = v.magnitude if hasattr(v, "magnitude") else np.asarray(v, dtype=float)
+
+        u_unit = getattr(u, "units", units.knot)
+        v_unit = getattr(v, "units", units.knot)
+
+        # Filtrar valores no nulos y restringir al rango entre suelo (~1000 hPa) y 100 hPa
+        valid = (~np.isnan(p_mag)) & (~np.isnan(u_mag)) & (~np.isnan(v_mag))
+        valid = valid & (p_mag <= 1025) & (p_mag >= 95)
+
+        p_v = p_mag[valid]
+        u_v = u_mag[valid]
+        v_v = v_mag[valid]
+
+        if len(p_v) < 4:
+            return p[valid], u[valid], v[valid]
+
+        # Ordenar por presión descendente (desde el suelo hacia arriba)
+        sort_idx = np.argsort(p_v)[::-1]
+        p_v = p_v[sort_idx]
+        u_v = u_v[sort_idx]
+        v_v = v_v[sort_idx]
+
+        # Rango vertical: desde el suelo (máximo 1000 hPa o presión superficial) hasta 100 hPa
+        p_max = min(1000.0, float(np.nanmax(p_v)))
+        p_min = max(100.0, float(np.nanmin(p_v)))
+
+        if p_max <= p_min:
+            return p_v * units.hPa, u_v * u_unit, v_v * v_unit
+
+        # Determinar número de barbas objetivo espaciadas verticalmente (~20 a 22 niveles)
+        n_targets = min(num_barbs, max(6, len(p_v) // 2))
+
+        # Niveles objetivo espaciados en la escala logarítmica de presión (Skew-T)
+        p_targets = np.logspace(np.log10(p_max), np.log10(p_min), n_targets)
+
+        log_p_v = np.log10(p_v)
+        d_log_p = (np.log10(p_max) - np.log10(p_min)) / (n_targets - 1) * 0.55
+
+        barb_p, barb_u, barb_v = [], [], []
+        for pt in p_targets:
+            target_log_p = np.log10(pt)
+            mask = np.abs(log_p_v - target_log_p) <= d_log_p
+            if np.sum(mask) >= 2:
+                barb_p.append(pt)
+                barb_u.append(float(np.mean(u_v[mask])))
+                barb_v.append(float(np.mean(v_v[mask])))
+            else:
+                # Ventana de niveles anterior y posterior más cercanos (media móvil)
+                idx = int(np.argmin(np.abs(p_v - pt)))
+                k = max(1, min(10, len(p_v) // 20))
+                i_start = max(0, idx - k)
+                i_end = min(len(p_v), idx + k + 1)
+                barb_p.append(pt)
+                barb_u.append(float(np.mean(u_v[i_start:i_end])))
+                barb_v.append(float(np.mean(v_v[i_start:i_end])))
+
+        return (
+            np.array(barb_p) * units.hPa,
+            np.array(barb_u) * u_unit,
+            np.array(barb_v) * v_unit
+        )
+    except Exception as e:
+        print(f"Error calculando barbas promediadas: {e}")
+        return p, u, v
+
 if __name__ == "__main__":
     CodEst = STATION_CODE.strip()
     station_name = CITY.strip()
@@ -398,9 +475,14 @@ if __name__ == "__main__":
     except Exception as e:
         pass
 
+    # Plot Wind Barbs (Decimated with Moving Average from 1000 to 100 hPa)
     if not np.isnan(u).all() and not np.isnan(v).all():
-        step = 45 if source_used.startswith("UWYO") else 3
-        skew.plot_barbs(p[::step], u[::step], v[::step])
+        try:
+            p_b, u_b, v_b = compute_averaged_wind_barbs(p, u, v, num_barbs=22)
+            if len(p_b) > 0:
+                skew.plot_barbs(p_b, u_b, v_b)
+        except Exception:
+            skew.plot_barbs(p[::40], u[::40], v[::40])
 
     # Restrict CIN to area below LFC and EL
     if not pd.isna(lfc_p.magnitude):

@@ -12,7 +12,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from sounding import get_sounding
 from stations import find_station
 
-def create_skewt_plotly(p, T, Td, station_name, date_str):
+def create_skewt_plotly(p, T, Td, station_name, date_str, is_dark=False):
     """
     Crea un diagrama de Skew-T simple usando Plotly.
     Los datos de temperatura se sesgan manualmente para que encajen en el área de trazado rectangular de Plotly.
@@ -37,6 +37,12 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
 
     T_skewed = skew_x(T_vals, p_vals)
     Td_skewed = skew_x(Td_vals, p_vals)
+
+    hover_style = dict(
+        bgcolor="#1e222b" if is_dark else "#ffffff",
+        bordercolor="rgba(250, 250, 250, 0.35)" if is_dark else "rgba(31, 41, 55, 0.35)",
+        font=dict(color="#fafafa" if is_dark else "#1f2937", size=12)
+    )
     
     # Create traces
     trace_T = go.Scatter(
@@ -44,8 +50,9 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
         y=p_vals,
         mode='lines+markers',
         name='Temperature',
-        line=dict(color='red', width=2),
-        hovertemplate='P: %{y:.1f} hPa<br>T_skewed: %{x:.1f}<br>T_actual: %{text:.1f} °C',
+        line=dict(color='#ff4b4b' if is_dark else 'red', width=2),
+        hoverlabel=hover_style,
+        hovertemplate='P: %{y:.1f} hPa<br>T: %{text:.1f} °C',
         text=T_vals # Pass actual T for hover
     )
     
@@ -53,21 +60,18 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
         x=Td_skewed,
         y=p_vals,
         mode='lines',
-        name='Dew Point',
-        line=dict(color='green', width=2),
-        hovertemplate='P: %{y:.1f} hPa<br>Td_actual: %{text:.1f} °C',
+        name='Dew point',
+        line=dict(color='#00e676' if is_dark else 'green', width=2),
+        hoverlabel=hover_style,
+        hovertemplate='P: %{y:.1f} hPa<br>Td: %{text:.1f} °C',
         text=Td_vals
     )
     
-    # Isobaras (líneas horizontales) - La escala logarítmica lo maneja naturalmente en Y, 
-    # pero se pueden añadir líneas de cuadrícula
-    
     # Isotermas (líneas diagonales en este sistema sesgado)
-    # T = constante -> x = C + skew * log(1000/P)
-    # Se pueden trazar algunas isotermas de referencia
     isotherm_traces = []
     ref_temps = range(-100, 50, 10)
     ref_pressures = np.linspace(1050, 1, 100)
+    iso_color = 'rgba(200, 210, 225, 0.22)' if is_dark else 'lightgrey'
     
     for temp in ref_temps:
         x_iso = skew_x(np.full_like(ref_pressures, temp), ref_pressures)
@@ -75,30 +79,47 @@ def create_skewt_plotly(p, T, Td, station_name, date_str):
             x=x_iso,
             y=ref_pressures,
             mode='lines',
-            line=dict(color='lightgrey', width=0.5, dash='dot'),
+            line=dict(color=iso_color, width=0.6, dash='dot'),
             showlegend=False,
             hoverinfo='skip'
         ))
 
+    text_color = "#fafafa" if is_dark else "#1f2937"
+    grid_color = "rgba(255, 255, 255, 0.12)" if is_dark else "rgba(0, 0, 0, 0.1)"
+    paper_bg = "#0e1117" if is_dark else "#ffffff"
+    plot_bg = "#141821" if is_dark else "#ffffff"
+
     layout = go.Layout(
-        title=f"Skew-T (Plotly) - {station_name} - {date_str}",
+        title=dict(
+            text=f"Skew-T (Plotly) - {station_name} - {date_str}",
+            font=dict(color=text_color)
+        ),
         xaxis=dict(
-            title="Temperature (ºC)",
+            title=dict(text="Temperature (ºC)", font=dict(color=text_color)),
+            tickfont=dict(color=text_color),
+            gridcolor=grid_color,
             showgrid=True,
             zeroline=False
         ),
         yaxis=dict(
-            title="Pressure (hPa)",
+            title=dict(text="Pressure (hPa)", font=dict(color=text_color)),
+            tickfont=dict(color=text_color),
+            gridcolor=grid_color,
             type="log",
-            range=[np.log10(1050), np.log10(1)], # ¿Rango logarítmico invertido visualmente? No, dirección del eje logarítmico de Plotly.
-            # Normalmente el Skew-T tiene la presión alta en la parte inferior.
-            # Eje logarítmico de Plotly: el estándar es creciente hacia arriba. Se requiere decreciente hacia arriba (1000 -> 100).
-            # Se puede utilizar 'autorange="reversed"' o un rango explícito
+            range=[np.log10(1050), np.log10(1)],
             autorange="reversed"
         ),
         height=800,
         width=600,
-        template="plotly_white"
+        template="plotly_dark" if is_dark else "plotly_white",
+        paper_bgcolor=paper_bg,
+        plot_bgcolor=plot_bg,
+        font=dict(color=text_color),
+        legend=dict(
+            font=dict(color=text_color),
+            bgcolor="rgba(20, 24, 33, 0.75)" if is_dark else "rgba(255, 255, 255, 0.75)"
+        ),
+        hoverlabel=hover_style
     )
     
     fig = go.Figure(data=isotherm_traces + [trace_T, trace_Td], layout=layout)
@@ -119,7 +140,7 @@ if __name__ == "__main__":
         print(f"Station: {station_name} ({CodEst})")
         
         # Download
-        (p, T, Td), source = get_sounding(CodEst, yr, mn, dy, hr, "AUTO")
+        (p, T, Td, u, v), source = get_sounding(CodEst, yr, mn, dy, hr, "AUTO")
         print(f"Data retrieved from {source}. Levels: {len(p)}")
         
         # Plot

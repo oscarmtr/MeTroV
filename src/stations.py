@@ -2,8 +2,6 @@ import pandas as pd
 import pathlib
 import requests
 import time
-import os
-import os
 
 # FIX: Utilizar ruta absoluta relativa al script y nombre de archivo actualizado
 script_dir = pathlib.Path(__file__).parent.absolute()
